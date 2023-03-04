@@ -1,0 +1,19 @@
+{
+  "name": "atelier",
+  "version": "1.0.0",
+  "description": "FEC project for Hack Reactor",
+  "main": "client/src/index.jsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RPP2210-Wraith/Atelier.git"
+  },
+  "author": "Team Wraith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RPP2210-Wraith/Atelier/issues"
+  },
+  "homepage": "https://github.com/RPP2210-Wraith/Atelier#readme"
+}
