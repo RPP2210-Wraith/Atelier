@@ -4,7 +4,8 @@
   "description": "FEC project for Hack Reactor",
   "main": "client/src/index.jsx",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client-dev": "npx webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,25 @@
   "bugs": {
     "url": "https://github.com/RPP2210-Wraith/Atelier/issues"
   },
-  "homepage": "https://github.com/RPP2210-Wraith/Atelier#readme"
+  "homepage": "https://github.com/RPP2210-Wraith/Atelier#readme",
+  "dependencies": {
+    "@babel/cli": "^7.21.0",
+    "axios": "^1.3.4",
+    "body-parser": "^1.20.2",
+    "date-fns": "^2.29.3",
+    "express": "^4.18.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
+    "react-refresh": "^0.14.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^9.1.2",
+    "nodemon": "^2.0.21",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
 }
