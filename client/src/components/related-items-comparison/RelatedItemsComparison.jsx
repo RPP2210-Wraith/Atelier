@@ -6,12 +6,15 @@ import fakeData from './fakeData.js';
 
 
 const RelatedItemsComparison = () => {
-  // Should receive product ID and style ID as props and pass them to Related component
+  // Should receive product ID and style ID as props
+  // Should send a request for related items and pass the array to Related
+
+
 
   return (
-    <div>
-      <h1>Related & Comparison Container</h1>
-      <Related />
+    <div style={{border: 'solid, black, 2px'}}>
+      <h1>Related Items, Your Outfit, & Comparison</h1>
+      <Related itemArr={fakeData.relatedItems}/>
       <Outfit />
       <Modal />
     </div>
