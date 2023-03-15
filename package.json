@@ -25,9 +25,11 @@
     "date-fns": "^2.29.3",
     "express": "^4.18.2",
     "react": "^18.2.0",
+    "react-checkmark": "^1.4.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
-    "react-refresh": "^0.14.0"
+    "react-refresh": "^0.14.0",
+    "react-testing-library": "^8.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
