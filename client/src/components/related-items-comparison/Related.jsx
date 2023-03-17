@@ -8,7 +8,20 @@ const Related = ({ productID }) => {
   // Handle loading with a user-friendly message
   const [ isLoading, setIsLoading ] = useState(true)
   // Set data (if no data, use default props)
-  const [ relatedItems, setRelatedItems ] = useState([])
+  const [ relatedItems, setRelatedItems ] = useState(fakeData.fakeProducts);
+  const [ startingIndex, setStartingIndex ] = useState(0);
+
+  const incrementCards = () => {
+    setStartingIndex((currentIndex) => {
+      return currentIndex + 1;
+    })
+  }
+  const decrementCards = () => {
+    setStartingIndex((currentIndex) => {
+      return currentIndex - 1;
+    })
+  }
+  console.log('starting index: ', startingIndex)
 
   useEffect(() => {
     //
@@ -24,8 +37,6 @@ const Related = ({ productID }) => {
       //   return axios.get('/relatedProduct')
       // })
     })
-
-
   }, []);
 
   // Should receive array of integers for related items
@@ -38,9 +49,14 @@ const Related = ({ productID }) => {
     return (
       <div className='container'>
         <h3>Loading Related Items...</h3>
-        <RelatedCard/>
-        <RelatedCard/>
-        <RelatedCard/>
+        {startingIndex !== 0 ? <button onClick={decrementCards}>{'<'}</button> : ''}
+        {
+         relatedItems.slice(startingIndex, startingIndex + 4).map((item) => {
+          return <RelatedCard item={item}/>
+         })
+
+        }
+        {relatedItems[startingIndex + 4] !== undefined ? <button onClick={incrementCards}>{'>'}</button> : ''}
       </div>
 
 

@@ -1,14 +1,14 @@
 
 const fakeData = {
 // 3 fake products:
-threeFakeProducts: [
+fakeProducts: [
   {
         "id": 1,
         "name": "Camo Onesie",
         "slogan": "Blend in to your crowd",
         "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
         "category": "Jackets",
-        "default_price": "140"
+        "price": "140"
     },
   {
         "id": 2,
@@ -16,7 +16,7 @@ threeFakeProducts: [
         "slogan": "You've got to wear shades",
         "description": "Where you're going you might not need roads, but you definitely need some shades. Give those baby blues a rest and let the future shine bright on these timeless lenses.",
         "category": "Accessories",
-        "default_price": "69"
+        "price": "69"
     },
   {
         "id": 3,
@@ -24,8 +24,32 @@ threeFakeProducts: [
         "slogan": "Make yourself a morning person",
         "description": "Whether you're a morning person or not. Whether you're gym bound or not. Everyone looks good in joggers.",
         "category": "Pants",
-        "default_price": "40"
-    }
+        "price": "40"
+    },
+    {
+      "id": 4,
+      "name": "Camo Twosie",
+      "slogan": "Blend in to your crowd",
+      "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
+      "category": "Jackets",
+      "price": "140"
+  },
+{
+      "id": 5,
+      "name": "Some overprices sunglasses",
+      "slogan": "You've got to wear shades",
+      "description": "Where you're going you might not need roads, but you definitely need some shades. Give those baby blues a rest and let the future shine bright on these timeless lenses.",
+      "category": "Accessories",
+      "price": "69"
+  },
+{
+      "id": 6,
+      "name": "Actual Turtle Shell",
+      "slogan": "Make yourself a morning person",
+      "description": "Whether you're a morning person or not. Whether you're gym bound or not. Everyone looks good in joggers.",
+      "category": "Pants",
+      "price": "40"
+  }
   ],
 
   // Single product:

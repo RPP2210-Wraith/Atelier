@@ -1,9 +1,43 @@
+#root {
+  width: 60vw;
+  margin: 0 auto
+}
+
 #relatedItemsComparison {
   border: solid red 4px;
+  padding: 20px
+
 }
 
 .container {
   border: solid black 2px;
   margin: 20px;
-  padding: 10px
+  padding: 5px;
+  border-radius: 5px;
+
+}
+.card {
+  border: solid black 2px;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 10px;
+  margin: 20px;
+  width: 8vw;
+  height: 200px
+}
+
+.relatedCard {
+
+}
+
+.outfitCard {
+
+}
+.cardText {
+  white-space: nowrap;
+  overflow: hidden;
+
+}
+.hidden {
+  visibility: hidden;
 }
