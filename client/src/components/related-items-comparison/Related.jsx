@@ -3,6 +3,7 @@ import RelatedCard from './RelatedCard.jsx';
 import fakeData from './fakeData.js';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { incrementCards, decrementCards } from './helpers.js'
 
 const Related = ({ productID }) => {
   // Handle loading with a user-friendly message
@@ -11,16 +12,16 @@ const Related = ({ productID }) => {
   const [ relatedItems, setRelatedItems ] = useState(fakeData.fakeProducts);
   const [ startingIndex, setStartingIndex ] = useState(0);
 
-  const incrementCards = () => {
-    setStartingIndex((currentIndex) => {
-      return currentIndex + 1;
-    })
-  }
-  const decrementCards = () => {
-    setStartingIndex((currentIndex) => {
-      return currentIndex - 1;
-    })
-  }
+  // const incrementCards = () => {
+  //   setStartingIndex((currentIndex) => {
+  //     return currentIndex + 1;
+  //   })
+  // }
+  // const decrementCards = () => {
+  //   setStartingIndex((currentIndex) => {
+  //     return currentIndex - 1;
+  //   })
+  // }
   console.log('starting index: ', startingIndex)
 
   useEffect(() => {
@@ -49,17 +50,18 @@ const Related = ({ productID }) => {
     return (
       <div className='container'>
         <h3>Loading Related Items...</h3>
-        {startingIndex !== 0 ? <button onClick={decrementCards}>{'<'}</button> : ''}
+        {startingIndex !== 0 ? <button onClick={() => {decrementCards(setStartingIndex)}}>{'<'}</button> : ''}
         {
          relatedItems.slice(startingIndex, startingIndex + 4).map((item, i) => {
           return <RelatedCard item={item} key={i}/>
          })
 
         }
-        {relatedItems[startingIndex + 4] !== undefined ? <button onClick={incrementCards}>{'>'}</button> : ''}
+        {relatedItems[startingIndex + 4] !== undefined ?
+          <button
+            onClick={() => {incrementCards(setStartingIndex)}}>{'>'}
+          </button> : ''}
       </div>
-
-
     )
   } else {
     return (
