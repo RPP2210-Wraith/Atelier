@@ -1,5 +1,5 @@
-RelatedItemComparison * {
-  border: solid black 2px;
+div {
+  border: solid red 2px;
   text-align: center;
   margin: 20px;
 }
