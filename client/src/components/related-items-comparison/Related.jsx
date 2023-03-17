@@ -1,13 +1,31 @@
 import React from 'react';
 import fakeData from './fakeData.js';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const Related = ({ itemArr }) => {
+const Related = ({ productID }) => {
   // Handle loading with a user-friendly message
   const [ isLoading, setIsLoading ] = useState(true)
   // Set data (if no data, use default props)
-  const [ relatedItems, setRelatedItems ] = useState(itemArr)
+  const [ relatedItems, setRelatedItems ] = useState([])
 
+  useEffect(() => {
+    //
+    axios.get('/relatedItems', {
+      params: {
+        productID: productID
+      }
+    })
+    .then((response) => {
+      // Get the related item's title/category from the product endpoint
+      console.log('response: ', response)
+      // const promises = response.map((itemNum) => {
+      //   return axios.get('/relatedProduct')
+      // })
+    })
+
+
+  }, []);
 
   // Should receive array of integers for related items
   // Then send HTTP request for all needed data for those items

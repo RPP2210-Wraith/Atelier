@@ -17,6 +17,10 @@ app.get('/overview', (req, res) => {
   overview.getProduct(req, res)
 })
 
+app.get('/relatedItems', relatedItemsComparison);
+
+
+
 app.listen(port, () => {
   console.log('Listening on port: ', port)
 })

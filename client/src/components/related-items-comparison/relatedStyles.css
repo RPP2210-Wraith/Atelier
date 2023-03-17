@@ -1,5 +1,8 @@
-RelatedItemsComparison * {
-  border: solid red 2px;
-  text-align: center;
+#relatedItemsComparison {
+  border: solid red 4px;
+}
+
+#relatedItemsComparison * {
+  border: solid black 2px;
   margin: 20px;
 }

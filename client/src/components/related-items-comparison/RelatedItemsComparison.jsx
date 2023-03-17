@@ -2,20 +2,20 @@ import React from 'react';
 import Related from './Related.jsx';
 import Outfit from './Outfit.jsx';
 import Modal from './Modal.jsx';
-import fakeData from './fakeData.js';
+import { useEffect, useState } from 'react';
+// import fakeData from './fakeData.js';
 import './relatedStyles.css';
+import axios from 'axios';
 
 
-const RelatedItemsComparison = () => {
-  // Should receive product ID and style ID as props
-  // Should send a request for related items and pass the array to Related
-
+const RelatedItemsComparison = ({ productID, setProductID }) => {
+  // Should receive product ID as props
 
 
   return (
-    <div >
+    <div id='relatedItemsComparison'>
       <h1>Related Items, Your Outfit, & Comparison</h1>
-      <Related itemArr={fakeData.relatedItems}/>
+      <Related productID={productID}/>
       <Outfit />
       <Modal />
     </div>
