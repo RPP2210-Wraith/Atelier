@@ -9,7 +9,7 @@ const Related = ({ productID }) => {
   // Handle loading with a user-friendly message
   const [ isLoading, setIsLoading ] = useState(true)
   // Set data (if no data, use default props)
-  const [ relatedItems, setRelatedItems ] = useState(fakeData.fakeProducts);
+  const [ relatedItems, setRelatedItems ] = useState({});
   const [ startingIndex, setStartingIndex ] = useState(0);
 
   // const incrementCards = () => {
@@ -34,9 +34,10 @@ const Related = ({ productID }) => {
     .then((response) => {
       // Get the related item's title/category from the product endpoint
       console.log('response: ', response)
-      // const promises = response.map((itemNum) => {
-      //   return axios.get('/relatedProduct')
-      // })
+      setRelatedItems(response.data);
+    })
+    .then(() => {
+      setIsLoading(!isLoading);
     })
   }, []);
 
@@ -48,8 +49,16 @@ const Related = ({ productID }) => {
   // If still loading, render still loading message
   if (isLoading) {
     return (
-      <div className='container'>
+      <div>
         <h3>Loading Related Items...</h3>
+      </div>
+    )
+  } else {
+
+
+    return (
+      <div className='container'>
+        <h3>Related Items:</h3>
         {startingIndex !== 0 ? <button onClick={() => {decrementCards(setStartingIndex)}}>{'<'}</button> : ''}
         {
          relatedItems.slice(startingIndex, startingIndex + 4).map((item, i) => {
@@ -63,13 +72,7 @@ const Related = ({ productID }) => {
           </button> : ''}
       </div>
     )
-  } else {
-    return (
-      <div>
-        <h3>Related Items:</h3>
 
-      </div>
-    )
   }
 }
 
