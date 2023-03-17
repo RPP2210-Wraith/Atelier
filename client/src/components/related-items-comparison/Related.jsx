@@ -51,8 +51,8 @@ const Related = ({ productID }) => {
         <h3>Loading Related Items...</h3>
         {startingIndex !== 0 ? <button onClick={decrementCards}>{'<'}</button> : ''}
         {
-         relatedItems.slice(startingIndex, startingIndex + 4).map((item) => {
-          return <RelatedCard item={item}/>
+         relatedItems.slice(startingIndex, startingIndex + 4).map((item, i) => {
+          return <RelatedCard item={item} key={i}/>
          })
 
         }
