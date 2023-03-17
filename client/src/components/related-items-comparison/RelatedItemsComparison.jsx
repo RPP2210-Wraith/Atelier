@@ -3,6 +3,7 @@ import Related from './Related.jsx';
 import Outfit from './Outfit.jsx';
 import Modal from './Modal.jsx';
 import fakeData from './fakeData.js';
+import './relatedStyles.css';
 
 
 const RelatedItemsComparison = () => {
@@ -12,7 +13,7 @@ const RelatedItemsComparison = () => {
 
 
   return (
-    <div style={{border: 'solid, black, 2px'}}>
+    <div >
       <h1>Related Items, Your Outfit, & Comparison</h1>
       <Related itemArr={fakeData.relatedItems}/>
       <Outfit />

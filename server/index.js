@@ -13,7 +13,9 @@ const port = 3000
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-
+app.get('/overview', (req, res) => {
+  overview.getProduct(req, res)
+})
 
 app.listen(port, () => {
   console.log('Listening on port: ', port)
