@@ -1,4 +1,5 @@
 import React from 'react';
+import RelatedCard from './RelatedCard.jsx';
 import fakeData from './fakeData.js';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -13,7 +14,7 @@ const Related = ({ productID }) => {
     //
     axios.get('/relatedItems', {
       params: {
-        productID: productID
+        productID: 71699
       }
     })
     .then((response) => {
@@ -35,7 +36,14 @@ const Related = ({ productID }) => {
   // If still loading, render still loading message
   if (isLoading) {
     return (
-      <h3>Loading Related Items...</h3>
+      <div className='container'>
+        <h3>Loading Related Items...</h3>
+        <RelatedCard/>
+        <RelatedCard/>
+        <RelatedCard/>
+      </div>
+
+
     )
   } else {
     return (

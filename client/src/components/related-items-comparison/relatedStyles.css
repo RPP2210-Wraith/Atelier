@@ -2,7 +2,8 @@
   border: solid red 4px;
 }
 
-#relatedItemsComparison * {
+.container {
   border: solid black 2px;
   margin: 20px;
+  padding: 10px
 }
