@@ -6,8 +6,14 @@
 #relatedItemsComparison {
   border: solid red 4px;
   padding: 20px;
-  border-radius: 5px
-
+  border-radius: 5px;
+  overflow: auto;
+}
+#relatedItemsComparison p {
+  margin: 0;
+}
+#relatedItemsComparison h3 {
+  margin: 0
 }
 
 .container {
@@ -15,6 +21,7 @@
   margin: 20px;
   padding: 5px;
   border-radius: 5px;
+  overflow: auto;
 
 }
 .card {
@@ -23,8 +30,9 @@
   display: inline-block;
   padding: 10px;
   margin: 20px;
-  width: 8vw;
-  height: 200px
+  width: 200px;
+  height: 300px;
+
 }
 
 .relatedCard {
@@ -37,8 +45,14 @@
 .cardText {
   white-space: nowrap;
   overflow: hidden;
-
 }
+.cardThumbs {
+width: 200px;
+height: 200px;
+}
+
+
+
 .hidden {
   visibility: hidden;
 }
