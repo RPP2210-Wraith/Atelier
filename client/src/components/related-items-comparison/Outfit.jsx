@@ -11,6 +11,14 @@ const Outfit = ({ outfit, addToOutfit, removeFromOutfit }) => {
   const { incrementCards } = helpers;
   const { decrementCards } = helpers;
 
+
+  // Add something to localStorage outfit to test(Morning joggers in black and goldenrod):
+  addToOutfit(71699, 444228);
+  addToOutfit(71699, 444230);
+  console.log('outfit: ', outfit)
+
+
+
   if (isLoading) {
     return (
       <div>
@@ -21,6 +29,8 @@ const Outfit = ({ outfit, addToOutfit, removeFromOutfit }) => {
 
   // Add/Remove outfit take a product ID & Style ID
   // They return an array of product IDs and Style IDs
+
+
 
 
   return (
