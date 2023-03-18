@@ -10,6 +10,8 @@
 
 .left1 {
   width: 60%;
+  border: solid lightgray 2px;
+
 }
 
 .left2 {
@@ -18,6 +20,7 @@
 
 .right {
   width: 40%;
+  margin-left: 30px;
 }
 
 .div {
@@ -43,13 +46,13 @@
 }
 
 .styleSelector {
-  width: 100%;
+  width: 80%;
   display: flex;
-  flex-wrap: wrap
+  flex-wrap: wrap;
 }
 
 
-.styleButton {
+/* .styleButton {
   border-color:white;
   border-radius: 50%;
   width: 100px;
@@ -57,7 +60,8 @@
   overflow:hidden;
   margin: 5px;
   cursor: pointer;
-}
+
+} */
 
 .checkmark {
   font-size: 30px;
@@ -68,7 +72,11 @@
 
 .styleButton-img {
   height: 100px;
-  width: 100px
+  width: 100px;
+  border-radius: 50%;
+  overflow:hidden;
+  cursor: pointer;
+  margin: 10px;
 }
 
 select {
@@ -77,13 +85,13 @@ select {
   text-align: center;
   font-size: 18px;
   cursor: pointer;
-  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .AddCartButton {
   width: 200px;
   height: 50px;
-  margin-left: 20px;
+  margin-right: 20px;
   text-align: center;
   font-size: 18px;
   cursor: pointer;
@@ -92,7 +100,7 @@ select {
 .likeBotton {
   width: 200px;
   height: 50px;
-  margin-left: 20px;
+  margin-right: 20px;
   text-align: center;
   font-size: 18px;
   cursor: pointer;
@@ -100,5 +108,6 @@ select {
   font-size: 40px;
 }
 
-
+.imageGallery {
+}
 

@@ -4,6 +4,7 @@ import './overview.css';
 
 import AddToCart from './AddToCart.jsx'
 import StyleSelector from './StyleSelector.jsx';
+import ImageGallery from './ImageGallery.jsx';
 
 const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit }) => {
 
@@ -41,7 +42,9 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
       <h1>Overview</h1>
       <div className='flex'>
 
-        <div className='left1'>Image Gallery</div>
+        <div className='left1'>
+          <ImageGallery />
+        </div>
 
         <div className='right'>
           <div className='div'>✩✩✩✩✩ Read all [#] reviews</div>
@@ -50,7 +53,7 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
 
           <div className='div'>
             {selectedStyle.sale_price ? <><span className='originalPrice'>${selectedStyle.original_price}</span><span className='salePrice'>${selectedStyle.sale_price}</span></>
-              : <>${selectedStyle.original_price}</>}
+            : <>${selectedStyle.original_price}</>}
           </div>
 
           <div className='div'><span className='style'>{'STYLE >'}</span>{selectedStyle.name}</div>
@@ -78,6 +81,7 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
 
         </div>
       </div>
+
       <div className='flex'>
         <div className='left2'><h4>{product.slogan}</h4>{product.description}</div>
         <div className='right'><h4>Features</h4>

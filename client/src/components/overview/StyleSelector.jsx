@@ -10,9 +10,7 @@ const StyleSelector = ({ style, select }) => {
 
   return (
     <div>
-      <button className='styleButton' onClick={() => select(style)}>
-        <img className='styleButton-img' src={style.photos[0].thumbnail_url} />
-      </button>
+      <img className='styleButton-img' src={style.photos[0].thumbnail_url} onClick={() => select(style)}/>
     </div>
   )
 }
