@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const helpers = {
 
   incrementCards: (setter) => {
@@ -9,7 +11,21 @@ const helpers = {
     setter((currentIndex) => {
       return currentIndex - 1;
     })
+  },
+  getRelatedItems: (setRelated, setLoading) => {
+    axios.get('/relatedItems', {
+      params: {
+        productID: 71699
+      }
+    })
+    .then((response) => {
+      setRelated(response.data);
+    })
+    .then(() => {
+      setLoading(false);
+    })
   }
+
 }
 
 export default helpers;

@@ -1,11 +1,10 @@
 import React from 'react';
 import RelatedCard from './RelatedCard.jsx';
-import fakeData from './fakeData.js';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import helpers from './helpers.js'
 
-const Related = ({ productID }) => {
+const Related = ({ productID, setProductID }) => {
   // Handle loading with a user-friendly message
   const [ isLoading, setIsLoading ] = useState(true);
   const [ relatedItems, setRelatedItems ] = useState({});
@@ -14,20 +13,33 @@ const Related = ({ productID }) => {
   const { incrementCards } = helpers;
   const { decrementCards } = helpers;
 
-  // Retrieve related items
-  useEffect(() => {
+  if (productID === 1) {
+    productID = 71699
+  }
+  console.log('related items: ', relatedItems);
+  console.log('productID: ', productID);
+
+
+  const fetchRelatedItems = () => {
+    setIsLoading(true);
     axios.get('/relatedItems', {
       params: {
-        productID: 71699
+        productID: productID
       }
     })
     .then((response) => {
       setRelatedItems(response.data);
     })
     .then(() => {
+      setStartingIndex(0);
+    })
+    .then(() => {
       setIsLoading(!isLoading);
     })
-  }, []);
+  }
+
+  // Retrieve related items whenever product ID updates
+  useEffect(fetchRelatedItems, [productID]);
 
   // If still loading, render still loading message
   if (isLoading) {
@@ -51,7 +63,13 @@ const Related = ({ productID }) => {
 
         {
          relatedItems.slice(startingIndex, startingIndex + 4).map((item, i) => {
-          return <RelatedCard item={item} key={i}/>
+          return <RelatedCard
+          item={item}
+          key={i}
+          id={item.id}
+          setProductID={setProductID}
+          handleClick={fetchRelatedItems}
+          />
          })
 
         }

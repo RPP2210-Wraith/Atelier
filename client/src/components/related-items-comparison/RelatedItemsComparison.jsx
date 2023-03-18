@@ -15,7 +15,7 @@ const RelatedItemsComparison = ({ productID, setProductID }) => {
   return (
     <div id='relatedItemsComparison'>
       <h1>Related Items, Your Outfit, & Comparison</h1>
-      <Related productID={productID}/>
+      <Related productID={productID} setProductID={setProductID}/>
       <Outfit />
       <Modal />
     </div>
