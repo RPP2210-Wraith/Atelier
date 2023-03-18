@@ -59,6 +59,7 @@ const App = () => {
         setProductID={setProductID}
         addToOutfit={addToOutfit}
         removeFromOutfit={removeFromOutfit}
+        outfit={myOutfit}
 
       />
       <QuestionAnswer />

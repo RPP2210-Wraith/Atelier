@@ -1,73 +1,87 @@
 import React from 'react';
 import RelatedCard from './RelatedCard.jsx';
-import fakeData from './fakeData.js';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import helpers from './helpers.js'
 
-const Related = ({ productID }) => {
+const Related = ({ productID, setProductID }) => {
   // Handle loading with a user-friendly message
-  const [ isLoading, setIsLoading ] = useState(true)
-  // Set data (if no data, use default props)
-  const [ relatedItems, setRelatedItems ] = useState(fakeData.fakeProducts);
+  const [ isLoading, setIsLoading ] = useState(true);
+  const [ relatedItems, setRelatedItems ] = useState({});
   const [ startingIndex, setStartingIndex ] = useState(0);
 
-  const incrementCards = () => {
-    setStartingIndex((currentIndex) => {
-      return currentIndex + 1;
-    })
-  }
-  const decrementCards = () => {
-    setStartingIndex((currentIndex) => {
-      return currentIndex - 1;
-    })
-  }
-  console.log('starting index: ', startingIndex)
+  const { incrementCards } = helpers;
+  const { decrementCards } = helpers;
 
-  useEffect(() => {
-    //
+  // Need to fix inside App and remove this; default value of 1 was useless
+  if (productID === 1) {
+    productID = 71699
+  }
+
+  const fetchRelatedItems = () => {
+    setIsLoading(true);
     axios.get('/relatedItems', {
       params: {
-        productID: 71699
+        productID: productID
       }
     })
     .then((response) => {
-      // Get the related item's title/category from the product endpoint
-      console.log('response: ', response)
-      // const promises = response.map((itemNum) => {
-      //   return axios.get('/relatedProduct')
-      // })
+      setRelatedItems(response.data);
     })
-  }, []);
+    .then(() => {
+      setStartingIndex(0);
+    })
+    .then(() => {
+      setIsLoading(false);
+    })
+  }
 
-  // Should receive array of integers for related items
-  // Then send HTTP request for all needed data for those items
-  // Map over the results and render RelatedCards
-
+  // Retrieve related items whenever product ID updates
+  useEffect(fetchRelatedItems, [productID]);
 
   // If still loading, render still loading message
   if (isLoading) {
     return (
-      <div className='container'>
+      <div>
         <h3>Loading Related Items...</h3>
-        {startingIndex !== 0 ? <button onClick={decrementCards}>{'<'}</button> : ''}
+      </div>
+    )
+  } else {
+
+    return (
+      <div className='container'>
+        <h3>Related Items:</h3>
+        <div>
+        <button
+          onClick={() => {decrementCards(setStartingIndex)}}
+          className={startingIndex !== 0 ?  '': 'hidden'}
+          disabled={startingIndex !== 0 ?  false : true}>
+            {'<'}
+        </button>
+
         {
          relatedItems.slice(startingIndex, startingIndex + 4).map((item, i) => {
-          return <RelatedCard item={item} key={i}/>
+          return <RelatedCard
+          item={item}
+          key={i}
+          id={item.id}
+          setProductID={setProductID}
+          handleClick={fetchRelatedItems}
+          />
          })
 
         }
-        {relatedItems[startingIndex + 4] !== undefined ? <button onClick={incrementCards}>{'>'}</button> : ''}
-      </div>
-
-
-    )
-  } else {
-    return (
-      <div>
-        <h3>Related Items:</h3>
-
+        <button
+          onClick={() => {incrementCards(setStartingIndex)}}
+          className={relatedItems[startingIndex + 4] !== undefined ? '': 'hidden'}
+          disabled= {relatedItems[startingIndex + 4] !== undefined ? false : true}
+        >
+            {'>'}
+        </button>
+        </div>
       </div>
     )
+
   }
 }
 
