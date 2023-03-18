@@ -8,10 +8,9 @@
   padding: 20px;
 }
 
-.left1 {
+.imageGallery {
   width: 60%;
   border: solid lightgray 2px;
-
 }
 
 .left2 {
@@ -106,8 +105,5 @@ select {
   cursor: pointer;
   background-Color: white;
   font-size: 40px;
-}
-
-.imageGallery {
 }
 
