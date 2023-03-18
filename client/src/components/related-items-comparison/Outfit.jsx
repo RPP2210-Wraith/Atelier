@@ -13,8 +13,8 @@ const Outfit = ({ outfit, addToOutfit, removeFromOutfit }) => {
 
 
   // Add something to localStorage outfit to test(Morning joggers in black and goldenrod):
-  addToOutfit(71699, 444228);
-  addToOutfit(71699, 444230);
+  // addToOutfit(71699, 444228);
+  // addToOutfit(71699, 444230);
   console.log('outfit: ', outfit)
 
 
