@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import './overview.css';
 
 import AddToCart from './AddToCart.jsx'
+import StyleSelector from './StyleSelector.jsx';
+import ImageGallery from './ImageGallery.jsx';
 
 const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit }) => {
 
@@ -9,7 +12,8 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
   const [styles, setStyles] = useState([]);
   const [features, setFeatures] = useState([]);
 
-  console.log(product)
+  const [selectedStyle, setSelectedStyle] = useState({})
+  console.log('styleID', styleID)
   console.log(styles)
 
   useEffect(() => {
@@ -28,30 +32,61 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
     })
   }, [])
 
+  const handleSelect = (style) => {
+    setStyleID(style.style_id);
+    setSelectedStyle(style);
+  }
+
   return (
     <div>
       <h1>Overview</h1>
-      <div style={{display:'flex', margin: 100}}>
-        <div style={{width:'60%'}}>Image Gallery</div>
+      <div className='flex'>
 
-        <div style={{width:'40%'}}>
-          <div style={{marginBottom:20}}>✩✩✩✩✩ Read all [#] reviews</div>
-          <div>{product.category} <h3>{product.name}</h3></div>
+        <div className='left1'>
+          <ImageGallery />
+        </div>
 
-          <div>price</div>
-          <div> STYLE: style name</div>
-          <div>style selector</div>
+        <div className='right'>
+          <div className='div'>✩✩✩✩✩ Read all [#] reviews</div>
+          <div className='div'>{product.category}</div>
+          <div className='div'><h3>{product.name}</h3></div>
+
+          <div className='div'>
+            {selectedStyle.sale_price ? <><span className='originalPrice'>${selectedStyle.original_price}</span><span className='salePrice'>${selectedStyle.sale_price}</span></>
+            : <>${selectedStyle.original_price}</>}
+          </div>
+
+          <div className='div'><span className='style'>{'STYLE >'}</span>{selectedStyle.name}</div>
+
+          <div className='styleSelector div'>
+            {styles.map((style) => {
+              if (style.style_id === selectedStyle.style_id) {
+                return (
+                  <div>
+                    <div className='checkmark'>☑️</div>
+                    <StyleSelector style={style} select={handleSelect} key={style.style_id} />
+                  </div>
+                )
+              } else {
+                return (
+                  <div>
+                    <StyleSelector style={style} select={handleSelect} key={style.style_id} />
+                  </div>
+                )
+              }
+            })}
+          </div>
 
           <AddToCart />
 
         </div>
       </div>
 
-      <div style={{display:'flex', margin: 100}}>
-        <div style={{width:'60%'}}><h4>{product.slogan}</h4>{product.description}</div>
-        <div style={{width:'40%'}}><h4>Features</h4>
+      <div className='flex'>
+        <div className='left2'><h4>{product.slogan}</h4>{product.description}</div>
+        <div className='right'><h4>Features</h4>
           {features.map((feature) => {
-            return <div key={feature.feature}>{feature.feature}: {feature.value}</div>
+            return <div key={feature.feature}>{feature.feature}: {feature.value}</div>;
           })}
         </div>
       </div>
