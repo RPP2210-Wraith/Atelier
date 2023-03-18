@@ -13,12 +13,10 @@ const Related = ({ productID, setProductID }) => {
   const { incrementCards } = helpers;
   const { decrementCards } = helpers;
 
+  // Need to fix inside App and remove this; default value of 1 was useless
   if (productID === 1) {
     productID = 71699
   }
-  console.log('related items: ', relatedItems);
-  console.log('productID: ', productID);
-
 
   const fetchRelatedItems = () => {
     setIsLoading(true);
@@ -34,7 +32,7 @@ const Related = ({ productID, setProductID }) => {
       setStartingIndex(0);
     })
     .then(() => {
-      setIsLoading(!isLoading);
+      setIsLoading(false);
     })
   }
 
