@@ -1,0 +1,104 @@
+/* div {
+  border: solid black 2px;
+
+} */
+
+.flex {
+  display:flex;
+  padding: 20px;
+}
+
+.left1 {
+  width: 60%;
+}
+
+.left2 {
+  width: 60%;
+}
+
+.right {
+  width: 40%;
+}
+
+.div {
+  margin: 20px;
+}
+
+.productName {
+  font-weight: bolder;
+}
+
+.originalPrice {
+  text-decoration: line-through;
+  margin-right: 10px;
+}
+
+.salePrice {
+  color: red
+}
+
+.style {
+  font-Weight:bold;
+  margin-right: 10px
+}
+
+.styleSelector {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap
+}
+
+
+.styleButton {
+  border-color:white;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  overflow:hidden;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.checkmark {
+  font-size: 30px;
+  margin-left: 70%;
+  height: 0px;
+  position: relative;
+}
+
+.styleButton-img {
+  height: 100px;
+  width: 100px
+}
+
+select {
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.AddCartButton {
+  width: 200px;
+  height: 50px;
+  margin-left: 20px;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.likeBotton {
+  width: 200px;
+  height: 50px;
+  margin-left: 20px;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  background-Color: white;
+  font-size: 40px;
+}
+
+
+
