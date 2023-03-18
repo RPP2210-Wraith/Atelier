@@ -17,7 +17,7 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
 
   useEffect(() => {
 
-    productID = 71698; // use productID 71699 as placeholder for testing
+    productID = 71699; // use productID 71699 as placeholder for testing
 
     axios({
       method: 'GET',
@@ -81,7 +81,7 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
             })}
           </div>
 
-          <AddToCart skus={skus} addCart={addCart} addToOutfit={addToOutfit} productID={productID = 71698} styleID={styleID} key={skus} />
+          <AddToCart skus={skus} addCart={addCart} addToOutfit={addToOutfit} productID={productID = 71699} styleID={styleID} key={skus} />
 
         </div>
       </div>
