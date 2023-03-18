@@ -2,7 +2,9 @@ import React from "react";
 
 const ImageGallery = () => {
   return (
-    <div></div>
+    <div className='imageGallery'>
+
+    </div>
   )
 }
 
