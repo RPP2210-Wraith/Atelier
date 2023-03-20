@@ -2,7 +2,7 @@ import React from 'react';
 
 const OutfitCard = () => {
   return (
-    <div className='card outfitCard'>
+    <div className='card outfitCard' data-testid='outfit-card'>
       <img></img>
       <h3>Title</h3>
       <p>Category</p>
