@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 
-const Style = ({ style, selectStyle }) => {
+const Style = ({ style, select }) => {
 
   useEffect(() => {
     if (style['default?']) {
-      selectStyle(style);
+      select(style);
     }
   }, [])
 
   return (
     <div>
-      <img className='styleButton-img' src={style.photos[0].thumbnail_url} onClick={() => selectStyle(style)}/>
+      <img className='styleButton-img' src={style.photos[0].thumbnail_url} onClick={() => select(style)}/>
     </div>
   )
 }

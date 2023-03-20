@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-// import './overview.css';
+import './overview.css';
 
 import AddToCart from './AddToCart.jsx'
 import StyleSelector from './StyleSelector.jsx';
@@ -13,6 +13,7 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
   const [features, setFeatures] = useState([]);
 
   const [skus, setSkus] = useState([])
+  const [selectedStyle, setSelectedStyle] = useState({})
 
   useEffect(() => {
 
@@ -30,9 +31,10 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
     })
   }, [])
 
-  const handleSelect = (style) => {
+  const select = (style) => {
     setStyleID(style.style_id);
     setSkus(style.skus);
+    setSelectedStyle(style)
   }
 
   const addCart = (size, quantity) => {
@@ -44,14 +46,14 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
       <h1>Overview</h1>
       <div className='flex'>
 
-        <ImageGallery />
+        <ImageGallery style={selectedStyle}/>
 
         <div className='right'>
           <div className='div'>✩✩✩✩✩ Read all [#] reviews</div>
           <div className='div'>{product.category}</div>
           <div className='div'><h3>{product.name}</h3></div>
 
-          <StyleSelector styles={styles} select={handleSelect} />
+          <StyleSelector styles={styles} select={select} selectedStyle={selectedStyle} />
 
           <AddToCart skus={skus} addCart={addCart} addToOutfit={addToOutfit} productID={productID = 71699} styleID={styleID} key={skus} />
 

@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Style from "./Style.jsx";
 
-const StyleSelector = ({ styles, select }) => {
+const StyleSelector = ({ styles, select, selectedStyle }) => {
 
-  const [selectedStyle, setSelectedStyle] = useState({})
-
-  const selectStyle = (style) => {
-    select(style)
-    setSelectedStyle(style)
-  }
+  // const selectStyle = (style) => {
+  //   select(style)
+  //   // setSelectedStyle(style)
+  // }
 
   return (
     <div>
@@ -25,13 +23,13 @@ const StyleSelector = ({ styles, select }) => {
             return (
               <div>
                 <div className='checkmark'>☑️</div>
-                <Style style={style} selectStyle={selectStyle} key={style.style_id} />
+                <Style style={style} select={select} key={style.style_id} />
               </div>
             )
           } else {
             return (
               <div>
-                <Style style={style} selectStyle={selectStyle} key={style.style_id} />
+                <Style style={style} select={select} key={style.style_id} />
               </div>
             )
           }

@@ -10,6 +10,7 @@
 
 .imageGallery {
   width: 60%;
+  height: 660px;
   border: solid lightgray 2px;
 }
 
@@ -24,6 +25,26 @@
 
 .div {
   margin: 20px;
+}
+
+.gallery {
+  position: absolute;
+  z-Index: 1;
+  margin-left: -80px;
+}
+
+.thumbnail {
+  margin: 10px;
+  width:20%;
+  height:20%;
+  cursor:pointer
+}
+
+.image {
+  max-width:35vw;
+  max-height: 660px;
+  margin: auto;
+  display: block;
 }
 
 .productName {
@@ -45,9 +66,10 @@
 }
 
 .styleSelector {
-  width: 100%;
+  width: 40vh;
   display: flex;
   flex-wrap: wrap;
+  text-align: center;
 }
 
 
@@ -70,16 +92,16 @@
 }
 
 .styleButton-img {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   border-radius: 50%;
   overflow:hidden;
   cursor: pointer;
-  margin: 10px;
+  margin: 5px;
 }
 
 select {
-  width: 200px;
+  width: 180px;
   height: 50px;
   text-align: center;
   font-size: 18px;
@@ -88,7 +110,7 @@ select {
 }
 
 .AddCartButton {
-  width: 200px;
+  width: 180px;
   height: 50px;
   margin-right: 20px;
   text-align: center;
@@ -97,7 +119,7 @@ select {
 }
 
 .likeBotton {
-  width: 200px;
+  width: 180px;
   height: 50px;
   margin-right: 20px;
   text-align: center;
