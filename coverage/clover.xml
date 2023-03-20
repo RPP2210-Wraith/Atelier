@@ -1,6 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1679295397100" clover="3.2.0">
-  <project timestamp="1679295397100" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1679298360557" clover="3.2.0">
+  <project timestamp="1679298360557" name="All files">
+    <metrics statements="55" coveredstatements="45" conditionals="28" coveredconditionals="19" methods="26" coveredmethods="18" elements="109" coveredelements="82" complexity="0" loc="55" ncloc="55" packages="4" files="9" classes="9"/>
+    <package name="client.src.components.related-items-comparison">
+      <metrics statements="49" coveredstatements="39" conditionals="28" coveredconditionals="19" methods="23" coveredmethods="15"/>
+      <file name="Comparison.jsx" path="/Users/timdobranski/Desktop/Hack Reactor/fec/Atelier/client/src/components/related-items-comparison/Comparison.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
+      </file>
+      <file name="Outfit.jsx" path="/Users/timdobranski/Desktop/Hack Reactor/fec/Atelier/client/src/components/related-items-comparison/Outfit.jsx">
+        <metrics statements="12" coveredstatements="9" conditionals="10" coveredconditionals="5" methods="3" coveredmethods="1"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+      </file>
+      <file name="OutfitCard.jsx" path="/Users/timdobranski/Desktop/Hack Reactor/fec/Atelier/client/src/components/related-items-comparison/OutfitCard.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+      </file>
+      <file name="Related.jsx" path="/Users/timdobranski/Desktop/Hack Reactor/fec/Atelier/client/src/components/related-items-comparison/Related.jsx">
+        <metrics statements="21" coveredstatements="19" conditionals="12" coveredconditionals="11" methods="8" coveredmethods="7"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="11" type="stmt"/>
+        <line num="10" count="11" type="stmt"/>
+        <line num="11" count="11" type="stmt"/>
+        <line num="13" count="11" type="stmt"/>
+        <line num="14" count="11" type="stmt"/>
+        <line num="17" count="11" type="cond" truecount="1" falsecount="1"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="11" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
+        <line num="32" count="5" type="stmt"/>
+        <line num="35" count="5" type="stmt"/>
+        <line num="40" count="11" type="stmt"/>
+        <line num="43" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="44" count="5" type="stmt"/>
+        <line num="51" count="6" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="64" count="24" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+      </file>
+      <file name="RelatedCard.jsx" path="/Users/timdobranski/Desktop/Hack Reactor/fec/Atelier/client/src/components/related-items-comparison/RelatedCard.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="6" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="7" count="24" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+      </file>
+      <file name="helpers.js" path="/Users/timdobranski/Desktop/Hack Reactor/fec/Atelier/client/src/components/related-items-comparison/helpers.js">
+        <metrics statements="8" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="2"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="spec.overview-testing">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="multiply.js" path="/Users/timdobranski/Desktop/Hack Reactor/fec/Atelier/spec/overview-testing/multiply.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="spec.question-answer">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="multiply3.js" path="/Users/timdobranski/Desktop/Hack Reactor/fec/Atelier/spec/question-answer/multiply3.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="spec.ratingsReviewSpec">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="minus.js" path="/Users/timdobranski/Desktop/Hack Reactor/fec/Atelier/spec/ratingsReviewSpec/minus.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>
