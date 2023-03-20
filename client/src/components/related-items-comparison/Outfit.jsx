@@ -19,7 +19,7 @@ const Outfit = ({ outfit, addToOutfit, removeFromOutfit }) => {
 
 
 
-  if (isLoading) {
+  if (!isLoading) {
     return (
       <div>
         <h3>Loading your outfit...</h3>
