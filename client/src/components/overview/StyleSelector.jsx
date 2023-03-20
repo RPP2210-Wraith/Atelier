@@ -3,11 +3,6 @@ import Style from "./Style.jsx";
 
 const StyleSelector = ({ styles, select, selectedStyle }) => {
 
-  // const selectStyle = (style) => {
-  //   select(style)
-  //   // setSelectedStyle(style)
-  // }
-
   return (
     <div>
       <div className='div'>
@@ -23,13 +18,13 @@ const StyleSelector = ({ styles, select, selectedStyle }) => {
             return (
               <div>
                 <div className='checkmark'>☑️</div>
-                <Style style={style} select={select} key={style.style_id} />
+                <Style Default={style['default?'] ? true : false} style={style} thumbNail={style.photos[0].thumbnail_url} select={select} key={style.style_id} />
               </div>
             )
           } else {
             return (
               <div>
-                <Style style={style} select={select} key={style.style_id} />
+                <Style Default={style['default?'] ? true : false} style={style} thumbNail={style.photos[0].thumbnail_url} select={select} key={style.style_id} />
               </div>
             )
           }

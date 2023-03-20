@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const Gallery = ({ image, index, renderImage }) => {
+const Gallery = ({ thumbNail, image, index, renderImage }) => {
 
   useEffect(() => {
     if (index === 0) {
@@ -10,7 +10,7 @@ const Gallery = ({ image, index, renderImage }) => {
 
   return (
     <div>
-      <img className='thumbnail' src={image.thumbnail_url} onClick={() => renderImage(image, index)}/>
+      <img className='thumbnail' src={thumbNail} onClick={() => renderImage(image, index)}/>
     </div>
   )
 }

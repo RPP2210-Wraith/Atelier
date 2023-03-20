@@ -8,7 +8,7 @@
 
 module.exports = {
   collectCoverage: true,
-  collectCoverageFrom: ['src/**/*.{js,jsx}'],
+  collectCoverageFrom: [],
   coverageDirectory: 'coverage',
   testEnvironment: 'jsdom',
 }

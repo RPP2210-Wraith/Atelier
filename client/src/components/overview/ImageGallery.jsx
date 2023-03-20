@@ -14,14 +14,14 @@ const ImageGallery = ({ style, displayImage }) => {
   // })
 
   const renderImage = (image, index) => {
-     setImage(image.url)
+     setImage(image)
   }
 
   return (
     <div className='imageGallery'>
       <div className='gallery'>
         {images && images.map((image, index) => (
-          <Gallery image={image} index={index} renderImage={renderImage} key={index}/>
+          <Gallery thumbNail={image.thumbnail_url} image={image.url} index={index} renderImage={renderImage} key={index}/>
         ))}
       </div>
 

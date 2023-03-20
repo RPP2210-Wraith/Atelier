@@ -1,16 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-const Style = ({ style, select }) => {
+const Style = ({ Default, style, select, thumbNail }) => {
+console.log(Default)
+  const [image, setImage] = useState('');
 
   useEffect(() => {
-    if (style['default?']) {
+
+    if (Default) {
       select(style);
     }
   }, [])
 
+
   return (
     <div>
-      <img className='styleButton-img' src={style.photos[0].thumbnail_url} onClick={() => select(style)}/>
+      <img className='styleButton-img' data-testid='styleButton-img' src={thumbNail} onClick={() => select(style)}/>
     </div>
   )
 }
