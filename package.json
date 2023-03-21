@@ -6,7 +6,10 @@
   "scripts": {
     "test": "jest",
     "client-dev": "npx webpack --watch",
-    "server-dev": "nodemon server"
+    "server-dev": "nodemon server",
+    "test-overview": "jest --testPathPattern=./spec/overview-testing",
+    "test-related": "jest --testPathPattern=./spec/relatedComparisonSpec",
+    "test-ratings": "jest --testPathPattern=./spec/ratingsReviewSpec"
   },
   "repository": {
     "type": "git",
