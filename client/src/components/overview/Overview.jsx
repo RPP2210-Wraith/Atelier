@@ -17,7 +17,7 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
 
   useEffect(() => {
 
-    productID = 71699; // use productID 71699 as placeholder for testing
+    // productID = 71699; // use productID 71699 as placeholder for testing
 
     axios({
       method: 'GET',

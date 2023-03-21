@@ -9,7 +9,7 @@ import RelatedItemsComparison from './components/related-items-comparison/Relate
 
 const App = () => {
 
-  const [ productID, setProductID ] = useState(1);
+  const [ productID, setProductID ] = useState(71699);
   const [ styleID, setStyleID ] = useState(1);
   const [ myOutfit, setMyOutfit ] = useState([]);
 
