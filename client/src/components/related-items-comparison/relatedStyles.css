@@ -1,5 +1,58 @@
-RelatedItemsComparison * {
-  border: solid red 2px;
-  text-align: center;
+#root {
+  width: 70vw;
+  margin: 0 auto
+}
+
+#relatedItemsComparison {
+  border: solid red 4px;
+  padding: 20px;
+  border-radius: 5px;
+  overflow: auto;
+}
+#relatedItemsComparison p {
+  margin: 0;
+}
+#relatedItemsComparison h3 {
+  margin: 0
+}
+
+.container {
+  border: solid black 2px;
   margin: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  overflow: auto;
+
+}
+.card {
+  border: solid black 2px;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 10px;
+  margin: 20px;
+  width: 200px;
+  height: 300px;
+
+}
+
+.relatedCard {
+
+}
+
+.outfitCard {
+
+}
+.cardText {
+  white-space: nowrap;
+  overflow: hidden;
+}
+.cardThumbs {
+width: 200px;
+height: 200px;
+}
+
+
+
+.hidden {
+  visibility: hidden;
 }
