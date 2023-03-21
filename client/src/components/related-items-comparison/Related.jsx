@@ -14,11 +14,9 @@ const Related = ({ productID, setProductID }) => {
   const { decrementCards } = helpers;
 
   // Need to fix inside App and remove this; default value of 1 was useless
-  if (productID === 1) {
-    productID = 71699
-  }
 
   const fetchRelatedItems = () => {
+    console.log('productID inside Related USEeFFECT: ', productID)
     setIsLoading(true);
     axios.get('/relatedItems', {
       params: {

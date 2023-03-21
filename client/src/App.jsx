@@ -17,9 +17,9 @@ const App = () => {
     if (!localStorage.getItem('myOutfit')) {
       localStorage.setItem('myOutfit', '[]')
     }
-    setMyOutfit(JSON.parse(localStorage.getItem('myOutfit')))
+    setMyOutfit(JSON.parse(localStorage.getItem('myOutfit')));
   }, [])
-
+  console.log('productID inside of App: ', productID)
   // Function to add item to myOutfit localStorage
   const addToOutfit = (productID, styleID) => {
     // Get current outfit array

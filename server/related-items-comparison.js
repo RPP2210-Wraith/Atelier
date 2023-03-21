@@ -6,19 +6,10 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 // Build an array of item objects with title, photo, reg & sale price, category & rating
   getRelated = (req, res) => {
     const productID = req.query.productID;
-    // Sample array of related items:
-  //   [
-  //     71701,
-  //     71705,
-  //     71703,
-  //     71698,
-  //     71697
-  // ]
     const relatedItems = {};
 
     axios({
       url: `${API}/products/${productID}/related`,
-      method: 'GET',
       headers:{
         'Authorization': TOKEN,
         'User-Agent': 'request'
@@ -30,7 +21,6 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
         return Promise.all(APIresponse.data.map((itemID) => {
           return axios({
               url: `${API}/products/${itemID}`,
-              method: 'GET',
               headers:{
                 'Authorization': TOKEN,
                 'User-Agent': 'request'

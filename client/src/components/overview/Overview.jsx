@@ -14,10 +14,11 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
 
   const [skus, setSkus] = useState([])
   const [selectedStyle, setSelectedStyle] = useState({})
+  console.log('productID inside Overview: ', productID)
 
-  useEffect(() => {
+  const thing = () => {
 
-    productID = 71699; // use productID 71699 as placeholder for testing
+    console.log('productID inside Overview useEffect: ', productID)
 
     axios({
       method: 'GET',
@@ -29,7 +30,9 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
       setStyles(response.data[1].results);
       setFeatures(response.data[0].features)
     })
-  }, [])
+  }
+
+  useEffect(thing, [productID])
 
   const select = (style) => {
     setStyleID(style.style_id);
@@ -55,7 +58,7 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
 
           <StyleSelector styles={styles} select={select} selectedStyle={selectedStyle} />
 
-          <AddToCart skus={skus} addCart={addCart} addToOutfit={addToOutfit} productID={productID = 71699} styleID={styleID} key={skus} />
+          <AddToCart skus={skus} addCart={addCart} addToOutfit={addToOutfit} productID={productID} styleID={styleID} key={skus} />
 
         </div>
       </div>

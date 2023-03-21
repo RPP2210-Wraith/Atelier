@@ -6,6 +6,7 @@ const overview = require('./overview.js');
 const questionAnswer = require('./question-answer.js');
 const ratingsReviews = require('./ratings-reviews');
 const relatedItemsComparison = require('./related-items-comparison.js');
+const getOutfitItems = require('./outfit.js');
 
 
 const app = express();
@@ -18,6 +19,8 @@ app.get('/overview', (req, res) => {
 })
 
 app.get('/relatedItems', relatedItemsComparison);
+
+app.get('/outfitItems', getOutfitItems)
 
 
 
