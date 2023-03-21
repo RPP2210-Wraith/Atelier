@@ -18,7 +18,7 @@ const ImageGallery = ({ style, displayImage }) => {
   }
 
   return (
-    <div className='imageGallery'>
+    <div className='imageGallery left'>
       <div className='gallery'>
         {images && images.map((image, index) => (
           <Gallery thumbNail={image.thumbnail_url} image={image.url} index={index} renderImage={renderImage} key={index}/>

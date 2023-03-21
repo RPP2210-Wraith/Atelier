@@ -8,29 +8,27 @@
   padding: 20px;
 }
 
-.imageGallery {
-  width: 60%;
-  height: 660px;
-  border: solid lightgray 2px;
-}
-
-.left2 {
+.left {
   width: 60%;
 }
 
 .right {
-  width: 40%;
+  width: 40vh;
   margin-left: 30px;
 }
 
 .div {
-  margin: 20px;
+  margin: 25px;
+}
+
+.imageGallery {
+  height: 660px;
+  border: solid lightgray 2px;
+  display: flex;
 }
 
 .gallery {
   position: absolute;
-  z-Index: 1;
-  margin-left: -80px;
 }
 
 .thumbnail {
@@ -41,7 +39,7 @@
 }
 
 .image {
-  max-width:35vw;
+  max-width:40vw;
   max-height: 660px;
   margin: auto;
   display: block;
@@ -66,10 +64,8 @@
 }
 
 .styleSelector {
-  width: 40vh;
   display: flex;
   flex-wrap: wrap;
-  text-align: center;
 }
 
 

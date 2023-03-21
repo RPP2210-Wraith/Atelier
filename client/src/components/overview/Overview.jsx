@@ -7,6 +7,7 @@ import StyleSelector from './StyleSelector.jsx';
 import ImageGallery from './ImageGallery.jsx';
 
 const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit }) => {
+  const [ isLoading, setIsLoading ] = useState(true);
 
   const [product, setProduct] = useState({});
   const [styles, setStyles] = useState([]);
@@ -15,10 +16,9 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
   const [skus, setSkus] = useState([])
   const [selectedStyle, setSelectedStyle] = useState({})
 
-  useEffect(() => {
 
-    productID = 71699; // use productID 71699 as placeholder for testing
 
+  const fetchProduct = () => {
     axios({
       method: 'GET',
       url: '/overview',
@@ -29,7 +29,9 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
       setStyles(response.data[1].results);
       setFeatures(response.data[0].features)
     })
-  }, [])
+  }
+
+  useEffect(fetchProduct, [productID]);
 
   const select = (style) => {
     setStyleID(style.style_id);
@@ -40,6 +42,7 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
   const addCart = (size, quantity) => {
     console.log(productID, selectedStyle.style_id, size, quantity)
   }
+
 
   return (
     <div>
@@ -61,7 +64,7 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
       </div>
 
       <div className='flex'>
-        <div className='left2'><h4>{product.slogan}</h4>{product.description}</div>
+        <div className='left'><h4>{product.slogan}</h4>{product.description}</div>
         <div className='right'><h4>Features</h4>
           {features.map((feature) => {
             return <div key={feature.feature}>{feature.feature}: {feature.value}</div>;
