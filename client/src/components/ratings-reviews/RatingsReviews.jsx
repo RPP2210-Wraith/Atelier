@@ -3,14 +3,19 @@ import RatingsOverviewSection from './ratings-overview-section.jsx';
 import RatingsList from './ratings-list.jsx';
 import axios from 'axios';
 
-const RatingsReviews = () => {
+
+const RatingsReviews = (props) => {
+
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
+    console.log('ProductID:', props.productID);
     axios({
       method: 'GET',
       url: '/reviews'
     }).then((res) => {
-      console.log(res);
+      console.log('Review Data:', res.data);
+      setReviews(res.data.results);
     }
     )
   }, []);
@@ -18,8 +23,8 @@ const RatingsReviews = () => {
   return (
 
     <div>
-      <RatingsOverviewSection />
-      <RatingsList />
+      <RatingsOverviewSection productID={props.productID} />
+      <RatingsList reviews={reviews} />
     </div>
   )
 }

@@ -1,4 +1,5 @@
-div {
+#ratingsList * {
   border-style: solid;
-  border-color: blueviolet;
+  border-color: pink;
+  padding: 5px;
 }
