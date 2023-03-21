@@ -19,6 +19,10 @@ app.get('/overview', (req, res) => {
 
 app.get('/relatedItems', relatedItemsComparison);
 
+app.get('/reviews', (req, res) => {
+  ratingsReviews.getReviews(req, res);
+})
+
 
 
 app.listen(port, () => {

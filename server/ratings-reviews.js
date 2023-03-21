@@ -3,8 +3,8 @@ const axios = require('axios');
 const auth = require('../config.js');
 
 //grab some data from the API via an axios call
-exports.getReviews = () => {
+exports.getReviews = (req, res) => {
   //test call
-  console.log('Request for review data made.');
+  res.send(JSON.stringify('Request for review data made!!!!!'));
 };
 
