@@ -13,9 +13,7 @@ const port = 3000
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-app.get('/overview', (req, res) => {
-  overview.getProduct(req, res)
-})
+app.get('/overview', overview)
 
 app.get('/relatedItems', relatedItemsComparison);
 

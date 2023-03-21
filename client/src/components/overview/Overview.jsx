@@ -7,7 +7,6 @@ import StyleSelector from './StyleSelector.jsx';
 import ImageGallery from './ImageGallery.jsx';
 
 const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit }) => {
-  const [ isLoading, setIsLoading ] = useState(true);
 
   const [product, setProduct] = useState({});
   const [styles, setStyles] = useState([]);
@@ -16,19 +15,27 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
   const [skus, setSkus] = useState([])
   const [selectedStyle, setSelectedStyle] = useState({})
 
+  console.log()
+  console.log(product)
 
+  // if (productID === 1) {
+  //   productID = 71699
+  // }
+  console.log('iddd', productID)
 
   const fetchProduct = () => {
-    axios({
-      method: 'GET',
-      url: '/overview',
-      params: {productID: productID}
+    axios.get('/overview', {
+      params: {
+        productID: productID
+      }
     })
     .then((response) => {
+      console.log(response)
       setProduct(response.data[0]);
       setStyles(response.data[1].results);
       setFeatures(response.data[0].features)
     })
+
   }
 
   useEffect(fetchProduct, [productID]);
@@ -56,7 +63,7 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
           <div className='div'>{product.category}</div>
           <div className='div'><h3>{product.name}</h3></div>
 
-          <StyleSelector styles={styles} select={select} selectedStyle={selectedStyle} />
+          <StyleSelector styles={styles} select={select} selectedStyle={selectedStyle} key={styles.length}/>
 
           <AddToCart skus={skus} addCart={addCart} addToOutfit={addToOutfit} productID={productID = 71699} styleID={styleID} key={skus} />
 
