@@ -9,19 +9,17 @@ import RelatedItemsComparison from './components/related-items-comparison/Relate
 
 const App = () => {
 
-  const [ productID, setProductID ] = useState(1);
+  const [ productID, setProductID ] = useState(71699);
   const [ styleID, setStyleID ] = useState(1);
   const [ myOutfit, setMyOutfit ] = useState([]);
 
   useEffect(() => {
+    if (!localStorage.getItem('myOutfit')) {
+      localStorage.setItem('myOutfit', '[]')
+    }
     setMyOutfit(JSON.parse(localStorage.getItem('myOutfit')))
   }, [])
-//  [
-//   {
-//     product: 1,
-//     style: 1
-//   }
-//  ]
+
   // Function to add item to myOutfit localStorage
   const addToOutfit = (productID, styleID) => {
     // Get current outfit array
@@ -33,7 +31,7 @@ const App = () => {
     });
     // OldOutfit is now updated with the new item
     setMyOutfit(outfit);
-    localStorage.setItem(JSON.stringify(outfit))
+    localStorage.setItem('myOutfit', JSON.stringify(outfit))
   }
   // Function to remove item from myOutfit localStorage
   const removeFromOutfit = (productID, styleID) => {

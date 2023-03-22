@@ -12,8 +12,8 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
   const [styles, setStyles] = useState([]);
   const [features, setFeatures] = useState([]);
 
-  const [selectedStyle, setSelectedStyle] = useState({})
   const [skus, setSkus] = useState([])
+  const [selectedStyle, setSelectedStyle] = useState({})
 
   useEffect(() => {
 
@@ -31,10 +31,10 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
     })
   }, [])
 
-  const handleSelect = (style) => {
+  const select = (style) => {
     setStyleID(style.style_id);
-    setSelectedStyle(style);
     setSkus(style.skus);
+    setSelectedStyle(style)
   }
 
   const addCart = (size, quantity) => {
@@ -46,40 +46,14 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit })
       <h1>Overview</h1>
       <div className='flex'>
 
-        <div className='left1'>
-          <ImageGallery />
-        </div>
+        <ImageGallery style={selectedStyle}/>
 
         <div className='right'>
           <div className='div'>✩✩✩✩✩ Read all [#] reviews</div>
           <div className='div'>{product.category}</div>
           <div className='div'><h3>{product.name}</h3></div>
 
-          <div className='div'>
-            {selectedStyle.sale_price ? <><span className='originalPrice'>${selectedStyle.original_price}</span><span className='salePrice'>${selectedStyle.sale_price}</span></>
-            : <>${selectedStyle.original_price}</>}
-          </div>
-
-          <div className='div'><span className='style'>{'STYLE >'}</span>{selectedStyle.name}</div>
-
-          <div className='styleSelector div'>
-            {styles.map((style) => {
-              if (style.style_id === selectedStyle.style_id) {
-                return (
-                  <div>
-                    <div className='checkmark'>☑️</div>
-                    <StyleSelector style={style} select={handleSelect} key={style.style_id} />
-                  </div>
-                )
-              } else {
-                return (
-                  <div>
-                    <StyleSelector style={style} select={handleSelect} key={style.style_id} />
-                  </div>
-                )
-              }
-            })}
-          </div>
+          <StyleSelector styles={styles} select={select} selectedStyle={selectedStyle} />
 
           <AddToCart skus={skus} addCart={addCart} addToOutfit={addToOutfit} productID={productID = 71699} styleID={styleID} key={skus} />
 
