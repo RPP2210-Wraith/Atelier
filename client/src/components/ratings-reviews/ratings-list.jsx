@@ -7,7 +7,7 @@ const RatingsList = (props) => {
   return (
     <div >
       <h2>Ratings List</h2>
-      <h4>Total Review Count and Filtering Options</h4>
+      <h1>{props.reviews.length + ' reviews, sorted by relevance'}</h1>
       <ul>
         {props.reviews.map((review, index) => <RatingsTile review={review} key={index} />)}
       </ul>

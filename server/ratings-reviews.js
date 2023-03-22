@@ -23,3 +23,22 @@ exports.getReviews = (req, res) => {
 
 };
 
+exports.getReviewsMetaData = (req, res) => {
+
+  axios({
+    method: 'GET',
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta',
+    params: {
+      product_id: '71697' //placeholder value
+    },
+    headers: {
+      'User-Agent': 'request',
+      'Authorization': auth.TOKEN
+    }
+  }).then((response) => {
+    //console.log('REVIEWS: ', response.data);
+    res.send(JSON.stringify(response.data));
+  });
+
+};
+

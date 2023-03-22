@@ -9,7 +9,7 @@ const RatingsReviews = (props) => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    console.log('ProductID:', props.productID);
+    //console.log('ProductID:', props.productID);
     axios({
       method: 'GET',
       url: '/reviews'
@@ -21,7 +21,6 @@ const RatingsReviews = (props) => {
   }, []);
 
   return (
-
     <div>
       <RatingsOverviewSection productID={props.productID} />
       <RatingsList reviews={reviews} />

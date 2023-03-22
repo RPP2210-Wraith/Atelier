@@ -5,6 +5,7 @@ const RatingsTile = (props) => {
     <ul>
       <div>
         <h4>{'Star Rating: ' + props.review.rating}</h4>
+        <small>{props.review.reviewer_name + ", " + props.review.date}</small>
         <h2>{'Summary: ' + props.review.summary}</h2>
         <p>{'Body: ' + props.review.body}</p>
         {props.review.reccommend ? <p>I reccommend this product</p> : null}
