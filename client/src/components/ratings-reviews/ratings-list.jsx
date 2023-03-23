@@ -1,15 +1,15 @@
 import React from 'react';
+import RatingsTile from './ratings-tile.jsx';
+import './ratingsStyles.css';
 
-const RatingsList = () => {
+const RatingsList = (props) => {
+
   return (
-    <div>
+    <div >
       <h2>Ratings List</h2>
-      <h4>Total Review Count and Filtering Options</h4>
+      <h1>{props.reviews.length + ' reviews, sorted by relevance'}</h1>
       <ul>
-        <li>Ratings Tile</li>
-        <li>Ratings Tile</li>
-        <li>Ratings Tile</li>
-        <li>Ratings Tile</li>
+        {props.reviews.map((review, index) => <RatingsTile review={review} key={index} />)}
       </ul>
       <button>More Reviews</button>
       <button>Add A Review</button>

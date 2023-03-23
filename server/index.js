@@ -17,6 +17,13 @@ app.get('/overview', overview)
 
 app.get('/relatedItems', relatedItemsComparison);
 
+app.get('/reviews', (req, res) => {
+  ratingsReviews.getReviews(req, res);
+})
+
+app.get('/reviews/meta', (req, res) => {
+  ratingsReviews.getReviewsMetaData(req, res);
+})
 
 
 app.listen(port, () => {
