@@ -3,131 +3,27 @@ const axios = require('axios');
 
 const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 
-// Build an array of item objects with title, photo, reg & sale price, category & rating
-  getOutfitItems = (req, res) => {
-    // Receives an array of tuples in format: [productID, styleID]
-    // Returns an array of item objects
-
-    // Sample intermediate data structure:!!!!!!!!!!!!!! THIS SHOULD WORK
-    // {
-    //   71699_1: {
-    //    id: 71699,
-    //    style: 1
-    //    name: 'Clothes',
-    //    category: 'Shoes',
-    //    price: 140,
-    //    salePrice: 100,
-    //    image: '.jpeg'
-    //   },
-    //   71699_2: {
-    //     id: 71699,
-    //     style: 2
-    //     name: 'Clothes',
-    //     category: 'Shoes',
-    //     price: 140,
-    //     salePrice: 100,
-    //     image: '.jpeg'
-    //   },
-    // }
-
-
-    // Sample return:
-    //  [{
-    //    id: 71699,
-    //    name: 'Clothes',
-    //    category: 'Shoes',
-    //    price: 140,
-    //    salePrice: 100,
-    //    image: '.jpeg'
-    //  }]
-
-    // Create an empty object to store . Will include objects w/id, name, cat, price, salePrice, image
-    const resultArr = [];
-    // For every tuple
-    const outfit = req.query.outfit;
-
-    const productRequests = outfit.map((outfitTuple) => {
-      return getProduct(outfitTuple[0])
-    })
-    // Get the product info.
-    return Promise.All(productRequests)
-    .then((productInfoArr) => {
-      // Push an object to the result array that includes the id, name, and category info
-      productInfoArr.forEach((product) => {
-        resultArr.push({
-          id: product.data.id,
-          name: product.data.name,
-          category: product.data.category,
-        })
-      })
-
-    })
-
-    .then(() => {
-      // Then iterate through the input arr again.
-      // Return an array of promises for each style request
-
-    })
-
-      // Add the object to the result array
-
-    // Send back the result array
-
-  }
-
-  module.exports = getOutfitItems;
-
   // helper functions that: (should return promises)
     // get product info -  given id, return obj of product info
     // get style info - if no arg provided, return default
 
     const getProduct = (id) => {
       return axios({
-        url: `${API}/products/${itemID}`,
+        url: `${API}/products/${id}`,
         headers:{
           'Authorization': TOKEN,
           'User-Agent': 'request'
         }
       })
     }
-    // if no style id passed in, return the default style
-    const getStyle = (productID, styleID) => {
-      var styleInfo = {};
-
-      return axios({
-        url:`${API}/products/${product}/styles`,
-        method: 'GET',
-        headers:{
-          'Authorization': TOKEN,
-          'User-Agent': 'request'
-        }
-      })
-      .then((styles) => {
-        // Create var for the correct style to pull data from
-        var style;
-
-        if (styleID) {
-          style = data.results.find((style) => {
-            return style.style_id === styleID;
-          })
-        } else {
-          style = data.results.find((style) => {
-            return style.default === true;
-          })
-        }
-        // Set the styleInfo obj with props from the style var object
-        styleInfo[price] = style.original_price;
-        styleInfo[salePrice] = style.sale_price;
-        styleInfo[image] = style.photos[0].thumbnail_url;
-        return styleInfo;
-      })
-    }
-
-
 
     // Take in an array of objects with style and product keys
-    const getOutfitItems2 = (outfitItems) => {
+    const getOutfitItems = (req, res) => {
+      const outfitItems = JSON.parse(req.query.outfit);
+      const promises = [];
+
       // Create a result object with each key a combined product/style ID & value an object
+
       var result = {};
       outfitItems.forEach((item) => {
         var currentItem = item.product;
@@ -142,7 +38,6 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
       })
       // Create an iterable obj with each key a product ID and the value an array of style IDs
       var iterableOutfitItems = {};
-      // For each item inside outfitItems
       outfitItems.forEach((item) => {
         var currentItem = item.product;
         var currentStyle = item.style;
@@ -152,35 +47,100 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
         }
         iterableOutfitItems[currentItem].push(currentStyle);
       })
-      console.log('iterable: ', iterableOutfitItems)
-      console.log('result: ', result)
-
+      //console.log('iterable: ', iterableOutfitItems)
+      //console.log('result: ', result)
 
       // For each key in the iterable obj
         for (var item in iterableOutfitItems) {
-        var [ productID, styleID ] = item.split('_');
         // Make an axios request for the product data
-        return getProduct(productID)
+        const productPromise = getProduct(item)
         // Assign it to every key in the result obj that starts with the current productID
         .then((productInfo) => {
-          // For every key in the result obj where the split productID = productID
+          // For every key in the result obj
           for (var resultItem in result) {
             var [ resultProductID, resultStyleID ] = resultItem.split('_');
-            if (resultItem.id === productID) {
-              resultItem[resultProductID].name = productInfo.data.name
-              resultItem[resultProductID].category
+            // If the current item data is the same as the current key in the result obj
+            if (resultProductID === item) {
+              // Set product info on the result object
+              result[resultItem].name = productInfo.data.name
+              result[resultItem].category = productInfo.data.category
             }
           }
-          // Set product info on the result object
-
+          console.log('result after product id: ', result)
+          // Make an axios request for the styles of that item
+          return axios({
+            url:`${API}/products/${item}/styles`,
+            headers:{
+              'Authorization': TOKEN,
+              'User-Agent': 'request'
+            }
+          })
+          .then((stylesArr) => {
+            console.log('stylesArr.data: ', stylesArr.data)
+            // For each value in the result object
+            for (var resultItem in result) {
+              var [ resultProductID, resultStyleID ] = resultItem.split('_');
+              // If the result object is an instance of the current item
+              if (resultProductID === item) {
+                var styles = stylesArr.data.results;
+                // iterate through the stylesArr.data.results
+                for (var i = 0; i < styles.length; i++) {
+                  //if the current style is the one listed in the result obj
+                  console.log('if statement here');
+                  console.log(styles[i].style_id);
+                  console.log(resultStyleID);
+                  if (styles[i].style_id.toString() === resultStyleID) {
+                    result[resultItem].price = styles[i].original_price;
+                    result[resultItem].salePrice = styles[i].sale_price;
+                    result[resultItem].image = styles[i].photos[0].thumbnail_url;
+                  }
+                }
+              }
+            }
+          })
         })
-        // Make an axios request for the styles of that item
-
-        // For each value in the current iterable object's styles array
-
-          // Assign the necessary data to the result object at the current productID/styleID
-
+        .catch((err) => {
+          console.log('error in getting outfit: ', err)
+        })
+        promises.push(productPromise)
         }
-
-
+        Promise.all(promises)
+          .then(() => {
+            // Convert the result object to an array
+            const finalOutfitItemArray = [];
+            for (var itemObj in result) {
+              finalOutfitItemArray.push(result[itemObj])
+            }
+            console.log('final outfit array: ', finalOutfitItemArray)
+            res.status(200).send(finalOutfitItemArray);
+          })
     }
+    module.exports = getOutfitItems;
+
+    // Sample result
+ // {
+ //   71699_1: {
+ //    id: 71699,
+ //    style: 1
+ //    name: 'Clothes',
+ //    category: 'Shoes',
+ //    price: 140,
+ //    salePrice: 100,
+ //    image: '.jpeg'
+ //   },
+ //   71699_2: {
+ //     id: 71699,
+ //     style: 2
+ //     name: 'Clothes',
+ //     category: 'Shoes',
+ //     price: 140,
+ //     salePrice: 100,
+ //     image: '.jpeg'
+ //   },
+ // }
+
+ // Sample iterable:
+ // {
+ //   71699: [1, 2, 3, 4],
+ //   71698: [3, 4, 5, 6]
+ // }
