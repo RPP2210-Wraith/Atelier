@@ -1,9 +1,9 @@
 const axios = require('axios');
 const config = require('../config.js');
 
-overview = (req, res) => {
+exports.getProduct = (req, res) => {
   const productID = req.query.productID;
-  console.log('hhhhh', productID)
+
   let urls = [
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${productID}`,
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${productID}/styles`,
@@ -29,5 +29,3 @@ overview = (req, res) => {
       res.send(datas)
     })
 }
-
-module.exports = overview;

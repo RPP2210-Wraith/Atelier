@@ -9,11 +9,14 @@
 
 .left {
   width: 60%;
+  margin: auto;
+
 }
 
 .right {
-  /* margin-left: 20px; */
   width: 40%;
+  margin: auto;
+
 }
 
 .div {
@@ -21,28 +24,29 @@
 }
 
 .imageGallery {
-  height: 66vh;
+  height: 61vh;
   display: flex;
-  /* border: solid lightgray 2px; */
+  border: solid lightgray 2px;
+  /* border-radius: 20%; */
 }
 
 .gallery {
   position: absolute;
   margin-left: -5%;
+  margin-top: 5%;
   text-align: center;
+
 }
 
 .thumbNail {
   margin: 5px;
-  max-width:8vh;
-  max-height:8vh;
+  max-width:7vh;
+  max-height:7vh;
   cursor:pointer
 }
 
-
-
 .image {
-  max-width: 40vw;
+  max-width: 41vw;
   max-height: 600px;
   margin: auto;
   display: block;
@@ -71,7 +75,6 @@
   display: flex;
   flex-wrap: wrap;
   width: 28vw;
-
 }
 
 .checkmark {

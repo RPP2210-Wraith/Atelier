@@ -12,7 +12,7 @@ const StyleSelector = ({ styles, select, selectedStyle }) => {
 
       <div className='div'><span className='style'>{'STYLE >'}</span>{selectedStyle.name}</div>
 
-      <div className='styleSelector'>
+      <div className='styleSelector div'>
         {styles.map((style, index) => {
           if (style.style_id === selectedStyle.style_id) {
             return (
