@@ -47,10 +47,10 @@ const App = () => {
     <div>
       <Overview
         productID={productID}
-        setProductID={setProductID}
         styleID={styleID}
         setStyleID={setStyleID}
         addToOutfit={addToOutfit}
+        myOutfit = {myOutfit}
       />
       <RelatedItemsComparison
         productID={productID}

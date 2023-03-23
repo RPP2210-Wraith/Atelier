@@ -1,16 +1,22 @@
 import React, { useEffect } from "react";
 
-const Gallery = ({ thumbNail, image, index, renderImage }) => {
+const Gallery = ({ thumbNail, image, index, imageIndex, photos, renderImage, productID }) => {
 
   useEffect(() => {
-    if (index === 0) {
+    if ( index === imageIndex) {
       renderImage(image, index)
     }
-  }, [])
+  }, [photos])
+
+  useEffect(() => {
+    if ( index === 0) {
+      renderImage(image, index)
+    }
+  }, [productID])
 
   return (
     <div>
-      <img className='thumbnail' src={thumbNail} onClick={() => renderImage(image, index)}/>
+      <img className='thumbNail' src={thumbNail} onClick={() => renderImage(image, index)}/>
     </div>
   )
 }

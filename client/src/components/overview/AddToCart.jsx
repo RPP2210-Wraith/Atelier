@@ -1,26 +1,43 @@
 import React, { useEffect, useState } from 'react';
 
-const AddToCart = ({ skus, addCart, addToOutfit, productID, styleID}) => {
+const AddToCart = ({ skus, productID, styleID, addCart, addToOutfit, myOutfit}) => {
 
   const [stocks, setStocks] = useState([]);
   const [stockQuantity, setStockQuantity] = useState(0);
-  const [like, setLike] = useState(false)
 
+  const [index, setIndex] = useState(false);
+  const [like, setLike] = useState(false);
   const [size, setSize] = useState('');
   const [quantity, setQuantity] = useState(0);
 
   console.log('size', size)
   console.log('stockQuantity', stockQuantity)
   console.log('quantity', quantity)
+  console.log('like', like)
 
   useEffect(() => {
     setStocks(Object.values(skus));
-  }, [])
+    var outfit = myOutfit.some((outfit) => (outfit.style === styleID))
+    if (!outfit) {
+      setLike(false)
+    } else {
+      setLike(true)
+    }
+  }, [skus])
+
+  useEffect(() => {
+    setIndex('');
+    setSize('');
+    setStockQuantity(0);
+    setQuantity(0)
+
+  }, [productID])
 
   const handleSize = (index) => {
+    setIndex(index);
     setSize(stocks[index].size)
     setStockQuantity(stocks[index].quantity);
-    setQuantity(1)
+    setQuantity(1);
   }
 
   const handleLike = () => {
@@ -34,8 +51,8 @@ const AddToCart = ({ skus, addCart, addToOutfit, productID, styleID}) => {
         <div>
           {!stocks || (stocks.length === 1 && !stocks[0].size) ?
             <select><option hidden>OUT OF STOCK</option></select>
-          : <select onChange={(e) => handleSize(e.target.value)}>
-              <option hidden>Select Size</option>
+          : <select value={index} onChange={(e) => handleSize(e.target.value)} >
+              <option hidden value={!index} >Select Size</option>
               {stocks.map((stock, index) => (
                 <option value={index} key={stock.size}>{stock.size}</option>
               ))}
