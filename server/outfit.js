@@ -129,32 +129,58 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
     const getOutfitItems2 = (outfitItems) => {
       // Create a result object with each key a combined product/style ID & value an object
       var result = {};
-      var iterableOutfitItems = {};
-      // Create an iterable obj with each key a product ID and the value an array of style IDs
       outfitItems.forEach((item) => {
         var currentItem = item.product;
         var currentStyle = item.style;
         // If the product id doesnt exist in result, create it
         if (!result[`${currentItem}_${currentStyle}`]) {
-          result[`${currentItem}_${currentStyle}`] = {};
+          result[`${currentItem}_${currentStyle}`] = {
+            id: currentItem,
+            style_id: currentStyle
+          };
         }
-
-
       })
-
+      // Create an iterable obj with each key a product ID and the value an array of style IDs
+      var iterableOutfitItems = {};
+      // For each item inside outfitItems
+      outfitItems.forEach((item) => {
+        var currentItem = item.product;
+        var currentStyle = item.style;
+        // If the product id doesnt exist in the iterable, create it
+        if (!iterableOutfitItems[currentItem]) {
+          iterableOutfitItems[currentItem] = [];
+        }
+        iterableOutfitItems[currentItem].push(currentStyle);
+      })
+      console.log('iterable: ', iterableOutfitItems)
       console.log('result: ', result)
 
 
       // For each key in the iterable obj
-
+        for (var item in iterableOutfitItems) {
+        var [ productID, styleID ] = item.split('_');
         // Make an axios request for the product data
+        return getProduct(productID)
         // Assign it to every key in the result obj that starts with the current productID
+        .then((productInfo) => {
+          // For every key in the result obj where the split productID = productID
+          for (var resultItem in result) {
+            var [ resultProductID, resultStyleID ] = resultItem.split('_');
+            if (resultItem.id === productID) {
+              resultItem[resultProductID].name = productInfo.data.name
+              resultItem[resultProductID].category
+            }
+          }
+          // Set product info on the result object
 
+        })
         // Make an axios request for the styles of that item
 
         // For each value in the current iterable object's styles array
 
           // Assign the necessary data to the result object at the current productID/styleID
+
+        }
 
 
     }

@@ -69,9 +69,6 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
           }
         })
         // Now that data processing is done, convert the object to an array and send
-        //console.log('related items response after style data: --------------------');
-        //console.log(relatedItems);
-
         const relatedItemsArr = [];
         for (var item in relatedItems) {
           relatedItemsArr.push(relatedItems[item])

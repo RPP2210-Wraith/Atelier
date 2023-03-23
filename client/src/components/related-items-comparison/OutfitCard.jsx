@@ -1,6 +1,6 @@
 import React from 'react';
 import Comparison from './Comparison.jsx';
-import fakeData from './fakeData.js';
+
 
 const OutfitCard = () => {
 
