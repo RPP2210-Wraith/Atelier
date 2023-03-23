@@ -1,11 +1,10 @@
 /* div {
-  border: solid black 2px;
-
+  border: solid black ;
 } */
 
 .flex {
   display:flex;
-  padding: 20px;
+  padding: 10px;
 }
 
 .left {
@@ -13,8 +12,8 @@
 }
 
 .right {
-  width: '40%vh';
-  margin-left: 30px;
+  /* margin-left: 20px; */
+  width: 40%;
 }
 
 .div {
@@ -22,27 +21,32 @@
 }
 
 .imageGallery {
-  height: 660px;
-  border: solid lightgray 2px;
+  height: 66vh;
   display: flex;
+  /* border: solid lightgray 2px; */
 }
 
 .gallery {
   position: absolute;
+  margin-left: -5%;
+  text-align: center;
 }
 
-.thumbnail {
-  margin: 10px;
-  width:20%;
-  height:20%;
+.thumbNail {
+  margin: 5px;
+  max-width:8vh;
+  max-height:8vh;
   cursor:pointer
 }
 
+
+
 .image {
-  max-width:40vw;
-  max-height: 660px;
+  max-width: 40vw;
+  max-height: 600px;
   margin: auto;
   display: block;
+
 }
 
 .productName {
@@ -66,19 +70,9 @@
 .styleSelector {
   display: flex;
   flex-wrap: wrap;
+  width: 28vw;
+
 }
-
-
-/* .styleButton {
-  border-color:white;
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  overflow:hidden;
-  margin: 5px;
-  cursor: pointer;
-
-} */
 
 .checkmark {
   font-size: 30px;
@@ -88,38 +82,37 @@
 }
 
 .styleButton-img {
-  height: 80px;
-  width: 80px;
+  height: 6vw;
+  width: 6vw;
   border-radius: 50%;
   overflow:hidden;
   cursor: pointer;
-  margin: 5px;
+  margin: 2px;
 }
 
 select {
-  width: 180px;
+  width: 12vw;
   height: 50px;
   text-align: center;
   font-size: 18px;
   cursor: pointer;
-  margin-right: 20px;
+  margin: 10px;
 }
 
 .AddCartButton {
-  width: 180px;
+  width: 12vw;
   height: 50px;
-  margin-right: 20px;
   text-align: center;
   font-size: 18px;
   cursor: pointer;
+  margin: 10px;
 }
 
 .likeBotton {
-  width: 180px;
+  width: 12vw;
   height: 50px;
-  margin-right: 20px;
   text-align: center;
-  font-size: 18px;
+  margin: 10px;
   cursor: pointer;
   background-Color: white;
   font-size: 40px;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Style from "./Style.jsx";
 
 const StyleSelector = ({ styles, select, selectedStyle }) => {
@@ -12,18 +12,18 @@ const StyleSelector = ({ styles, select, selectedStyle }) => {
 
       <div className='div'><span className='style'>{'STYLE >'}</span>{selectedStyle.name}</div>
 
-      <div className='styleSelector div'>
-        {styles.map((style) => {
+      <div className='styleSelector'>
+        {styles.map((style, index) => {
           if (style.style_id === selectedStyle.style_id) {
             return (
-              <div>
+              <div key={index}>
                 <div className='checkmark'>☑️</div>
                 <Style Default={style['default?'] ? true : false} style={style} thumbNail={style.photos[0].thumbnail_url} select={select} key={style.style_id} />
               </div>
             )
           } else {
             return (
-              <div>
+              <div key={index}>
                 <Style Default={style['default?'] ? true : false} style={style} thumbNail={style.photos[0].thumbnail_url} select={select} key={style.style_id} />
               </div>
             )
