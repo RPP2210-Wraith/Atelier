@@ -17,7 +17,7 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
     })
       .then((APIresponse) => {
         // Build an item object for every item in response.data
-        console.log('related item IDs: ', APIresponse.data)
+        //console.log('related item IDs: ', APIresponse.data)
         return Promise.all(APIresponse.data.map((itemID) => {
           return axios({
               url: `${API}/products/${itemID}`,
@@ -73,12 +73,12 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
         for (var item in relatedItems) {
           relatedItemsArr.push(relatedItems[item])
         }
-        console.log('relatedItemsArr final value: ', relatedItemsArr)
+        // console.log('relatedItemsArr final value: ', relatedItemsArr)
         res.status(200).send(relatedItemsArr);
       })
 
       .catch((err) => {
-        console.log('Error in get related products API request: ', err)
+        // console.log('Error in get related products API request: ', err)
       })
   }
 

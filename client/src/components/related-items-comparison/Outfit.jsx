@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import OutfitCard from './OutfitCard.jsx';
 import helpers from './helpers.js'
+import axios from 'axios';
 //import fakeData from './fakeData.js';
 
 const Outfit = ({ outfit, addToOutfit, removeFromOutfit }) => {
@@ -12,16 +13,26 @@ const Outfit = ({ outfit, addToOutfit, removeFromOutfit }) => {
   const { incrementCards } = helpers;
   const { decrementCards } = helpers;
 
-  // Load the outfit every time it changes
-  //useEffect(loadOutfit, [outfit])
-
   const loadOutfit = () => {
     // Outfit is an array of objects with product and style keys
     // Send an axios request for items
+    console.log('outfit: ', outfit)
+
+      axios.get('/outfitItems', {
+        params: {
+          outfit: outfit
+        }
+      })
+      .then((items) => {
+        console.log('outfit items: ', items.data)
+        setOutfitItems(items.data)
+      })
+      .catch((err) => {
+        console.log('error inside get outfit items', err)
+      })
   }
-
-
-
+  // Load the outfit every time it changes
+  useEffect(loadOutfit, [outfit])
 
 
   if (!isLoading) {
@@ -42,10 +53,12 @@ const Outfit = ({ outfit, addToOutfit, removeFromOutfit }) => {
         disabled={startingIndex !== 0 ?  false : true}>
           {'<'}
       </button>
-      <OutfitCard />
-      <OutfitCard />
-      <OutfitCard />
-      <OutfitCard />
+
+      {outfitItems.map((item) => {
+       return <OutfitCard item={item}/>
+      })}
+
+
       <button
         onClick={() => {incrementCards(setStartingIndex)}}
         className={outfitItems[startingIndex + 4] !== undefined ? '': 'hidden'}

@@ -19,9 +19,11 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 
     // Take in an array of objects with style and product keys
     const getOutfitItems = (req, res) => {
-      const outfitItems = JSON.parse(req.query.outfit);
+      console.log('outfit items: ', req.query.outfit)
+      const outfitItems = req.query.outfit;
+      //const outfitItems = JSON.parse(req.query.outfit);
       const promises = [];
-
+      console.log('outfit items: ', outfitItems)
       // Create a result object with each key a combined product/style ID & value an object
 
       var result = {};
@@ -144,3 +146,5 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
  //   71699: [1, 2, 3, 4],
  //   71698: [3, 4, 5, 6]
  // }
+
+ //localStorage.setItem("myOutfit", JSON.stringify([{product: 71699, style: 444230}, {product: 71699, style: 444228}]))
