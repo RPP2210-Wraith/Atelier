@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 const Style = ({ Default, style, select, thumbNail }) => {
-console.log(Default)
-  const [image, setImage] = useState('');
 
   useEffect(() => {
-
     if (Default) {
       select(style);
     }
-  }, [])
+  }, [style])
 
 
   return (
