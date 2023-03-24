@@ -14,6 +14,7 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit, m
 
   const [skus, setSkus] = useState([])
   const [selectedStyle, setSelectedStyle] = useState({})
+  console.log('productID inside Overview: ', productID)
 
 
   const fetchProduct = () => {
