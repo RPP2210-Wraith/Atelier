@@ -4,21 +4,28 @@ import RatingsList from './ratings-list.jsx';
 import axios from 'axios';
 
 
+
+
 const RatingsReviews = (props) => {
 
-  const [reviews, setReviews] = useState([]);
+
+  const reviews = props.reviews;
+  const setReviews = props.setReviews;
 
   useEffect(() => {
-    //console.log('ProductID:', props.productID);
+    console.log('ProductID in Ratings/Review: ', props.productID);
     axios({
       method: 'GET',
-      url: '/reviews'
+      url: '/reviews',
+      params: {
+        product_id: props.productID
+      }
     }).then((res) => {
       console.log('Review Data:', res.data);
       setReviews(res.data.results);
     }
     )
-  }, []);
+  }, [props.productID]);
 
   return (
     <div>

@@ -9,9 +9,10 @@ import RelatedItemsComparison from './components/related-items-comparison/Relate
 
 const App = () => {
 
-  const [ productID, setProductID ] = useState(71699);
-  const [ styleID, setStyleID ] = useState(1);
-  const [ myOutfit, setMyOutfit ] = useState([]);
+  const [productID, setProductID] = useState(71699);
+  const [styleID, setStyleID] = useState(1);
+  const [myOutfit, setMyOutfit] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     if (!localStorage.getItem('myOutfit')) {
@@ -36,10 +37,10 @@ const App = () => {
   // Function to remove item from myOutfit localStorage
   const removeFromOutfit = (productID, styleID) => {
     const outfit = JSON.parse(localStorage.getItem('myOutfit'));
-      // Remove item that has style and product ID
-     outfit = outfit.filter((outfit) => (outfit.style !== styleID && outfit.product !== productID))
-     setMyOutfit(outfit);
-     // Add item to localStorage
+    // Remove item that has style and product ID
+    outfit = outfit.filter((outfit) => (outfit.style !== styleID && outfit.product !== productID))
+    setMyOutfit(outfit);
+    // Add item to localStorage
     localStorage.setItem(JSON.stringify(outfit))
   }
 
@@ -50,7 +51,8 @@ const App = () => {
         styleID={styleID}
         setStyleID={setStyleID}
         addToOutfit={addToOutfit}
-        myOutfit = {myOutfit}
+        myOutfit={myOutfit}
+        reviews={reviews}
       />
       <RelatedItemsComparison
         productID={productID}
@@ -63,6 +65,8 @@ const App = () => {
       <QuestionAnswer />
       <RatingsReviews
         productID={productID}
+        reviews={reviews}
+        setReviews={setReviews}
       />
     </div>
   )
