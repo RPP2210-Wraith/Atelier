@@ -12,14 +12,17 @@ const RatingsOverviewSection = (props) => {
     //console.log('ProductID:', props.productID);
     axios({
       method: 'GET',
-      url: '/reviews/meta'
+      url: '/reviews/meta',
+      params: {
+        product_id: props.productID
+      }
     }).then((res) => {
       console.log('Review MetaData:', res.data);
       setReviewMetaData(res.data);
       setFitRatings(res.data.characteristics);
     }
     )
-  }, []);
+  }, [props.productID]);
 
   var getMeanRating = (ratings) => {
     //ratings is an object with 5 properties, denoting the number of user ratings corresponding to the
@@ -65,8 +68,8 @@ const RatingsOverviewSection = (props) => {
           <h1>{getMeanRating(reviewMetaData.ratings) + ' ⭐⭐⭐⭐⭐'} </h1>
         </div>
         <h3>{getRecommendedPercentage(reviewMetaData.recommended) + '% of reviews recommend this product'}</h3>
-        <h4>{'Mean Size Rating: ' + parseFloat(fitRatings.Fit.value).toFixed(2)}</h4>
-        <h4>{'Mean Comfort Rating: ' + parseFloat(fitRatings.Comfort.value).toFixed(2)}</h4>
+        <h4>{fitRatings.Fit ? 'Mean Size Rating: ' + parseFloat(fitRatings.Fit.value).toFixed(2) : 'Loading...'}</h4>
+        <h4>{fitRatings.Comfort ? 'Mean Comfort Rating: ' + parseFloat(fitRatings.Comfort.value).toFixed(2) : 'Loading...'}</h4>
       </div > : <div>Loading</div>
   );
 };
