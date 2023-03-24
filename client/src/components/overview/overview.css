@@ -15,8 +15,6 @@
 
 .right {
   width: 40%;
-  margin: auto;
-
 }
 
 .div {
@@ -27,30 +25,64 @@
   height: 61vh;
   display: flex;
   border: solid lightgray 2px;
-  /* border-radius: 20%; */
 }
 
 .gallery {
+  border: solid lightgray 2px;
   position: absolute;
-  margin-left: -5%;
-  margin-top: 5%;
+  margin-left: -8%;
   text-align: center;
-
 }
 
 .thumbNail {
   margin: 5px;
-  max-width:7vh;
-  max-height:7vh;
+  height: 7vh;
   cursor:pointer
 }
 
 .image {
   max-width: 41vw;
-  max-height: 600px;
+  max-height: 61vh;
   margin: auto;
-  display: block;
+  /* display: block; */
+  cursor: zoom-in;
+}
 
+.expandedImage {
+  width: 100vw;
+  position: absolute;
+}
+
+.leftButton {
+  position: absolute;
+  margin-left: 3vw;
+  height: 50px;
+  margin-top: 27vh;
+  cursor:pointer
+}
+
+.rightButton {
+  position: absolute;
+  height: 50px;
+  margin-left: 36vw;
+  margin-top: 27vh;
+  cursor:pointer;
+  position: absolute;
+}
+
+.upButton {
+  width: 4vw;
+  cursor:pointer;
+  position: relative;
+}
+
+.downButton {
+  width: 4vw;
+  cursor:pointer;
+  position: relative;
+}
+.selectedImage{
+  background-color: lightgray;
 }
 
 .productName {
