@@ -3,6 +3,7 @@ const config = require('../config.js');
 
 exports.getProduct = (req, res) => {
   const productID = req.query.productID;
+  console.log('product ID sent from client: ', productID)
 
   let urls = [
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${productID}`,

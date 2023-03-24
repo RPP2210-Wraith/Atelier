@@ -6,19 +6,10 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 // Build an array of item objects with title, photo, reg & sale price, category & rating
   getRelated = (req, res) => {
     const productID = req.query.productID;
-    // Sample array of related items:
-  //   [
-  //     71701,
-  //     71705,
-  //     71703,
-  //     71698,
-  //     71697
-  // ]
     const relatedItems = {};
 
     axios({
       url: `${API}/products/${productID}/related`,
-      method: 'GET',
       headers:{
         'Authorization': TOKEN,
         'User-Agent': 'request'
@@ -26,11 +17,10 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
     })
       .then((APIresponse) => {
         // Build an item object for every item in response.data
-        console.log('related item IDs: ', APIresponse.data)
+        //console.log('related item IDs: ', APIresponse.data)
         return Promise.all(APIresponse.data.map((itemID) => {
           return axios({
               url: `${API}/products/${itemID}`,
-              method: 'GET',
               headers:{
                 'Authorization': TOKEN,
                 'User-Agent': 'request'
@@ -79,19 +69,16 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
           }
         })
         // Now that data processing is done, convert the object to an array and send
-        //console.log('related items response after style data: --------------------');
-        //console.log(relatedItems);
-
         const relatedItemsArr = [];
         for (var item in relatedItems) {
           relatedItemsArr.push(relatedItems[item])
         }
-        console.log('relatedItemsArr final value: ', relatedItemsArr)
+        // console.log('relatedItemsArr final value: ', relatedItemsArr)
         res.status(200).send(relatedItemsArr);
       })
 
       .catch((err) => {
-        console.log('Error in get related products API request: ', err)
+        // console.log('Error in get related products API request: ', err)
       })
   }
 
