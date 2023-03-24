@@ -4,9 +4,13 @@ import RatingsList from './ratings-list.jsx';
 import axios from 'axios';
 
 
+
+
 const RatingsReviews = (props) => {
 
-  const [reviews, setReviews] = useState([]);
+
+  const reviews = props.reviews;
+  const setReviews = props.setReviews;
 
   useEffect(() => {
     console.log('ProductID in Ratings/Review: ', props.productID);
