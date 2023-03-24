@@ -5,11 +5,13 @@ const auth = require('../config.js');
 //grab some data from the API via an axios call
 exports.getReviews = (req, res) => {
 
+  //console.log('RATINGS-REVIEW SERVER REQ: ', req.query.product_id);
+
   axios({
     method: 'GET',
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews',
     params: {
-      product_id: '71697' //placeholder value
+      product_id: req.query.product_id
     },
     headers: {
       'User-Agent': 'request',
@@ -29,7 +31,7 @@ exports.getReviewsMetaData = (req, res) => {
     method: 'GET',
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta',
     params: {
-      product_id: '71697' //placeholder value
+      product_id: req.query.product_id
     },
     headers: {
       'User-Agent': 'request',
