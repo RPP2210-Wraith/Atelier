@@ -13,7 +13,7 @@ const RatingsReviews = (props) => {
   const setReviews = props.setReviews;
 
   useEffect(() => {
-    console.log('ProductID in Ratings/Review: ', props.productID);
+    //console.log('ProductID in Ratings/Review: ', props.productID);
     axios({
       method: 'GET',
       url: '/reviews',
@@ -21,7 +21,7 @@ const RatingsReviews = (props) => {
         product_id: props.productID
       }
     }).then((res) => {
-      console.log('Review Data:', res.data);
+      //console.log('Review Data:', res.data);
       setReviews(res.data.results);
     }
     )

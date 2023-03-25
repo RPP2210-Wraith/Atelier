@@ -17,7 +17,7 @@ const RatingsOverviewSection = (props) => {
         product_id: props.productID
       }
     }).then((res) => {
-      console.log('Review MetaData:', res.data);
+      //console.log('Review MetaData:', res.data);
       setReviewMetaData(res.data);
       setFitRatings(res.data.characteristics);
     }
