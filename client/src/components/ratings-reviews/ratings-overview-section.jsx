@@ -62,7 +62,7 @@ const RatingsOverviewSection = (props) => {
   return (
 
     reviewMetaData.ratings ?
-      < div >
+      < div class='flex-child-1' id='ratingsOverview' >
         <h2>Ratings Overview Section</h2>
         <div>
           <h1>{getMeanRating(reviewMetaData.ratings) + ' ⭐⭐⭐⭐⭐'} </h1>

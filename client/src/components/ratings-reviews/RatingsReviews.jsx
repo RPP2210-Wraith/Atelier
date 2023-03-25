@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import RatingsOverviewSection from './ratings-overview-section.jsx';
 import RatingsList from './ratings-list.jsx';
 import axios from 'axios';
-
+import './ratingsStyles.css';
 
 
 
@@ -28,7 +28,7 @@ const RatingsReviews = (props) => {
   }, [props.productID]);
 
   return (
-    <div>
+    <div class='flex-parent center'>
       <RatingsOverviewSection productID={props.productID} />
       <RatingsList reviews={reviews} />
     </div>
