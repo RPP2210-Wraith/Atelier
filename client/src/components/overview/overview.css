@@ -25,6 +25,7 @@
   height: 61vh;
   display: flex;
   border: solid lightgray 2px;
+  text-align: center;
 }
 
 .gallery {
@@ -41,16 +42,11 @@
 }
 
 .image {
-  max-width: 41vw;
+  max-width: 37vw;
   max-height: 61vh;
   margin: auto;
   /* display: block; */
   cursor: zoom-in;
-}
-
-.expandedImage {
-  width: 100vw;
-  position: absolute;
 }
 
 .leftButton {
@@ -67,7 +63,62 @@
   margin-left: 36vw;
   margin-top: 27vh;
   cursor:pointer;
+}
+
+.expanded {
+  /* text-align: center; */
+  /* position: relative; */
+  /* display: flex;
+  border: solid lightgray 2px;
+  height: 61vh;
+  background-color: white;
   position: absolute;
+  top: 8vh; */
+  /* height: 61vh; */
+  /* transform: scale(1.5) */
+
+  display: flex;
+  margin: auto;
+
+}
+
+.expandedImage {
+  max-width: 70vw;
+  max-height: 55vh;
+  /* margin: auto;
+  display: block; */
+  transform: scale(1.5);
+  margin: auto;
+  margin-top: 10vh;
+}
+
+.expandedGallery {
+  display: flex;
+  margin-top: 15vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.expandedThumbNail {
+  height: 7vh;
+  margin: 5px;
+  cursor:pointer;
+}
+
+.leftImage {
+  position: absolute;
+  margin-left: 8vw;
+  height: 60px;
+  margin-top: 27vh;
+  cursor:pointer
+}
+
+.rightImage {
+  position: absolute;
+  height: 60px;
+  margin-left: 83vw;
+  margin-top: 27vh;
+  cursor:pointer;
 }
 
 .upButton {
@@ -110,7 +161,7 @@
 }
 
 .checkmark {
-  font-size: 30px;
+  font-size: 20px;
   margin-left: 70%;
   height: 0px;
   position: relative;

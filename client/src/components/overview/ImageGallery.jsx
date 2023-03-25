@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Gallery from "./Gallery.jsx";
+import Modal from 'react-modal';
 
 const ImageGallery = ({ images, productID }) => {
 
@@ -22,13 +23,9 @@ const ImageGallery = ({ images, productID }) => {
   }
 
   return (
-    <div className='imageGallery left'>
-      {expandedImage ?
-        <><button className='leftButton' onClick={() => setImageIndex(imageIndex - 1)} disabled={imageIndex === 0}>{'<'}</button>
-        <img className='expandedImage' src={image} onClick={() => setExpandedImage(false)} />
-        <button className='rightButton' onClick={() => setImageIndex(imageIndex + 1)} disabled={imageIndex + 1 === lastIndex}>{'>'}</button></>
-      :
-      <><div className='gallery'>
+    <div className='left'>
+      <div className='imageGallery div' >
+        <div className='gallery'>
           <button className='upButton' onClick={() => setStartingIndex(startingIndex - 7)} disabled={startingIndex === 0}>{'^'}</button>
           {images && images.slice(startingIndex, startingIndex + 7).map((image, index) => {
             if (index === imageIndex) {
@@ -46,8 +43,24 @@ const ImageGallery = ({ images, productID }) => {
 
         <button className='leftButton' onClick={() => setImageIndex(imageIndex - 1)} disabled={imageIndex === 0}>{'<'}</button>
         <img className='image' src={image} onClick={() => setExpandedImage(true)} />
-        <button className='rightButton' onClick={() => setImageIndex(imageIndex + 1)} disabled={imageIndex + 1 === lastIndex}>{'>'}</button></>
-      }
+        <button className='rightButton' onClick={() => setImageIndex(imageIndex + 1)} disabled={imageIndex + 1 === lastIndex}>{'>'}</button>
+      </div>
+
+
+      <Modal isOpen={expandedImage}>
+        <div className='expanded'>
+          <button className='leftImage' onClick={() => setImageIndex(imageIndex - 1)} disabled={imageIndex === 0}>{'<'}</button>
+          <img className='expandedImage' src={image} onClick={() => setExpandedImage(false)} />
+          <button className='rightImage' onClick={() => setImageIndex(imageIndex + 1)} disabled={imageIndex + 1 === lastIndex}>{'>'}</button>
+        </div>
+
+        <div className='expandedGallery'>
+        {images && images.map((image, index) => (
+          <img className='expandedThumbNail' src={image.thumbnail_url}  onClick={() => setImageIndex(index)}/>
+        ))}
+        </div>
+      </Modal>
+
     </div>
   )
 }
