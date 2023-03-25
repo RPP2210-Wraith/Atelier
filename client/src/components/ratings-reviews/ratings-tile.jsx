@@ -7,31 +7,36 @@ const RatingsTile = (props) => {
   const [helpfulnessCount, setHelpfulnessCount] = useState(0);
 
   useEffect(() => {
-
     setHelpfulnessCount(props.review.helpfulness);
-
   }, [props.review.helpfulness])
 
   const markAsHelpful = () => {
-
     console.log('Helpful? button clicked!! for ' + props.review.review_id);
-
   };
 
   const reportReview = () => {
-
     console.log('Report button clicked!! for ' + props.review.review_id);
+  }
 
+  const starRating = (starCount) => {
+    var stars = '';
+    for (var i = 0; i < starCount; i++) {
+
+      stars += '⭐';
+    }
+    return stars;
   }
 
 
   return (
     <ul>
       <div>
-        <h4>{'Star Rating: ' + props.review.rating}</h4>
-        <small>{props.review.reviewer_name + ", " + format(parseISO(props.review.date), 'MMMMMMM i, yyyy')}</small>
-        <h2>{'Summary: ' + props.review.summary}</h2>
-        <p>{'Body: ' + props.review.body}</p>
+        <div class='flex-parent'>
+          <h4 class='flex-child-1'>{starRating(props.review.rating)}</h4>
+          <small class='flex-child-1 center-vertically'>{props.review.reviewer_name + ", " + format(parseISO(props.review.date), 'MMMMMMM i, yyyy')}</small>
+        </div>
+        <h2>{props.review.summary}</h2>
+        <p>{props.review.body}</p>
         {props.review.recommend ? <p>✔️ I reccommend this product!</p> : null}
         {props.review.response ? <p>This is where responses will go</p> : null}
         <div>
