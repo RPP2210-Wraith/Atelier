@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import RatingsTile from './ratings-tile.jsx';
 
 const RatingsList = (props) => {
+
+  const [sortBy, setSortBy] = useState('relevant');
 
   const addNewReview = () => {
     console.log('Add new review clicked!');
@@ -11,8 +13,9 @@ const RatingsList = (props) => {
     console.log('See more reviews clicked!');
   };
 
-  const sortReviews = () => {
-    console.log('Sort reviews button clicked!');
+  const sortReviews = (sortBy) => {
+    console.log('Sort reviews button clicked! Reviews will be sorted by: ' + sortBy);
+    setSortBy(sortBy);
   };
 
   return (
@@ -22,8 +25,26 @@ const RatingsList = (props) => {
 
         <div>
           <h1 class='in-line'>{props.reviews.length + ' reviews, sorted by'}</h1>
-          <h1 class='in-line underline'
-            onClick={sortReviews}> relevance </h1>
+          {/* <h1 class='in-line underline'
+            onClick={sortReviews}> relevance </h1> */}
+          <div class='in-line dropdown'>
+            <button class='button'>
+              {sortBy}
+            </button>
+            <div class='dropdown-options'>
+              <button class='button' onClick={() => {
+                sortReviews('newest');
+              }}>newest</button>
+              <button class='button' onClick={() => {
+                sortReviews('helpful');
+              }}>helpful</button>
+              <button class='button' onClick={() => {
+                sortReviews('relevant');
+              }
+
+              }>relevant</button>
+            </div>
+          </div>
         </div>
         : 'Loading...'}
       <ul>
@@ -37,7 +58,7 @@ const RatingsList = (props) => {
           onClick={addNewReview}
         >Add A Review</button>
       </div>
-    </div>
+    </div >
 
   );
 };

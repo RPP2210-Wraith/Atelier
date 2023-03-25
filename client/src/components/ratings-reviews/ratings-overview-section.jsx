@@ -17,7 +17,7 @@ const RatingsOverviewSection = (props) => {
         product_id: props.productID
       }
     }).then((res) => {
-      //console.log('Review MetaData:', res.data);
+      console.log('Review MetaData:', res.data);
       setReviewMetaData(res.data);
       setFitRatings(res.data.characteristics);
     }
@@ -66,10 +66,12 @@ const RatingsOverviewSection = (props) => {
         <h2>Ratings Overview Section</h2>
         <div>
           <h1>{getMeanRating(reviewMetaData.ratings) + ' ⭐⭐⭐⭐⭐'} </h1>
+          {/* https://jsfiddle.net/NullDev/nju10Loz/2/ */}
         </div>
         <h3>{getRecommendedPercentage(reviewMetaData.recommended) + '% of reviews recommend this product'}</h3>
         <h4>{fitRatings.Fit ? 'Mean Size Rating: ' + parseFloat(fitRatings.Fit.value).toFixed(2) : 'Loading...'}</h4>
         <h4>{fitRatings.Comfort ? 'Mean Comfort Rating: ' + parseFloat(fitRatings.Comfort.value).toFixed(2) : 'Loading...'}</h4>
+        {/* https://jsfiddle.net/NullDev/nju10Loz/2/ same logic but just use some rectangles or something*/}
       </div > : <div>Loading</div>
   );
 };

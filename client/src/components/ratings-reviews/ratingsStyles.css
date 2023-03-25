@@ -48,6 +48,16 @@
   flex: 1 1 0;
 }
 
+.button {
+  background-color: lightgray;
+  color: black;
+  padding: 15px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+}
+
 .center-vertically {
 
   padding: 30px 0;
@@ -56,4 +66,27 @@
 .in-line {
   display: inline-block;
   margin-left: 5px;
+}
+
+/*styling for dropdown menu*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-options {
+  display: none;
+  position: absolute;
+}
+
+.dropdown:hover .dropdown-options {
+  display: block;
+}
+
+.dropdown:hover .dropdown-options {
+  display: block;
+}
+
+.button:hover {
+  background-color: darkgrey;
 }
