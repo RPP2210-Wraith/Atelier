@@ -1,4 +1,4 @@
-#ratingsList * {
+/* #ratingsList * {
   border-style: solid;
   border-color: pink;
   padding: 5px;
@@ -8,6 +8,10 @@
   border-style: solid;
   border-color: red;
   padding: 5px;
+} */
+
+.underline {
+  text-decoration: underline;
 }
 
 .flex-parent {

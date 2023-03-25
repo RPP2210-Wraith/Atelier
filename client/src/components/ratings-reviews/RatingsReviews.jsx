@@ -21,7 +21,7 @@ const RatingsReviews = (props) => {
         product_id: props.productID
       }
     }).then((res) => {
-      //console.log('Review Data:', res.data);
+      console.log('Review Data:', res.data);
       setReviews(res.data.results);
     }
     )
