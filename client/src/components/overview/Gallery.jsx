@@ -1,18 +1,19 @@
 import React, { useEffect } from "react";
 
-const Gallery = ({ thumbNail, image, index, imageIndex, photos, renderImage, productID }) => {
+const Gallery = ({ thumbNail, image, index, imageIndex, images, renderImage, setLastIndex }) => {
 
   useEffect(() => {
-    if ( index === imageIndex) {
+    if (index === imageIndex) {
       renderImage(image, index)
     }
-  }, [photos])
+    setLastIndex(images.length)
+  }, [images])
 
   useEffect(() => {
-    if ( index === 0) {
+    if (index === imageIndex) {
       renderImage(image, index)
     }
-  }, [productID])
+  }, [imageIndex])
 
   return (
     <div>

@@ -6,7 +6,7 @@ import AddToCart from './AddToCart.jsx'
 import StyleSelector from './StyleSelector.jsx';
 import ImageGallery from './ImageGallery.jsx';
 
-const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit, myOutfit }) => {
+const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit }) => {
 
   const [product, setProduct] = useState({});
   const [styles, setStyles] = useState([]);
@@ -43,13 +43,12 @@ const Overview = ({ productID, setProductID, styleID, setStyleID, addToOutfit, m
     console.log(productID, selectedStyle.style_id, size, quantity)
   }
 
-
   return (
-    <div>
+    <div id='overview'>
       <h1>Overview</h1>
       <div className='flex'>
 
-        <ImageGallery photos={selectedStyle.photos} productID={productID} />
+        <ImageGallery images={selectedStyle.photos} productID={productID} />
 
         <div className='right'>
           <div className='div'>✩✩✩✩✩ Read all [#] reviews</div>

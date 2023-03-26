@@ -5,7 +5,7 @@ const AddToCart = ({ skus, productID, styleID, addCart, addToOutfit, myOutfit}) 
   const [stocks, setStocks] = useState([]);
   const [stockQuantity, setStockQuantity] = useState(0);
 
-  const [index, setIndex] = useState(false);
+  const [index, setIndex] = useState('')
   const [like, setLike] = useState(false);
   const [size, setSize] = useState('');
   const [quantity, setQuantity] = useState(0);
@@ -17,16 +17,18 @@ const AddToCart = ({ skus, productID, styleID, addCart, addToOutfit, myOutfit}) 
 
   useEffect(() => {
     setStocks(Object.values(skus));
-    var outfit = myOutfit.some((outfit) => (outfit.style === styleID))
-    if (!outfit) {
-      setLike(false)
-    } else {
+
+    var like = myOutfit.some((outfit) => (outfit.style === styleID))
+    if (like) {
       setLike(true)
+    } else {
+      setLike(false)
     }
   }, [skus])
 
   useEffect(() => {
     setIndex('');
+    setStockQuantity(0);
     setSize('');
     setStockQuantity(0);
     setQuantity(0)
@@ -34,7 +36,7 @@ const AddToCart = ({ skus, productID, styleID, addCart, addToOutfit, myOutfit}) 
   }, [productID])
 
   const handleSize = (index) => {
-    setIndex(index);
+    setIndex(index)
     setSize(stocks[index].size)
     setStockQuantity(stocks[index].quantity);
     setQuantity(1);
