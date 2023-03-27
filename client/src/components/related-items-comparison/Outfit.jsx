@@ -54,8 +54,8 @@ const Outfit = ({ outfit, addToOutfit, removeFromOutfit }) => {
           {'<'}
       </button>
 
-      {outfitItems.map((item) => {
-       return <OutfitCard item={item}/>
+      {outfitItems.slice(startingIndex, startingIndex + 4).map((item, i) => {
+       return <OutfitCard item={item} key={i}/>
       })}
 
 

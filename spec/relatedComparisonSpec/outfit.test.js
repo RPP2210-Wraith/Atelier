@@ -4,6 +4,7 @@ import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import axios from 'axios';
+const outfitHandler = require('../../server/outfit.js')
 
 describe('Outfit', () => {
   test('renders Outfit component', () => {
@@ -20,3 +21,16 @@ describe('OutfitCard', () => {
     expect(outfitCardElement).toBeInTheDocument();
   });
 });
+
+describe('Outfit Server Handler', () => {
+  test('renders one item', () => {
+    const outfitObj = outfitHandler([{"product": 71699, "style": 444228 }])
+    expect(outfitObj).toBeDefined();
+  });
+});
+
+const fakeOutfit = {
+  query: {
+    outfit:[{"product": 71699, "style": 444228 }]
+  }
+}
