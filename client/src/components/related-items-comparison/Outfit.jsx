@@ -33,7 +33,9 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
   }
 
   const addHandler = () => {
-    addToOutfit(productID, styleID);
+    if (!outfit.some(item => item.style === styleID && item.product === productID)) {
+      addToOutfit(productID, styleID);
+    }
   }
 
   // Load the outfit every time it changes
