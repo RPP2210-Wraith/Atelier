@@ -8,7 +8,8 @@ import axios from 'axios';
 const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) => {
   const [ isLoading, setIsLoading ] = useState(true);
   const [ startingIndex, setStartingIndex ] = useState(0);
-  const [ outfitItems, setOutfitItems ] = useState([])
+  const [ outfitItems, setOutfitItems ] = useState([]);
+  const [numOfCards, setNumOfCards] = useState(3);
 
   const { incrementCards } = helpers;
   const { decrementCards } = helpers;
@@ -53,16 +54,16 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
   return (
     <div className='container'>
       <h3>Your Outfit</h3>
-      <div>
+      <div id='outfitContainer'>
       <button
         onClick={() => {decrementCards(setStartingIndex)}}
         className={startingIndex !== 0 ?  '': 'hidden'}
         disabled={startingIndex !== 0 ?  false : true}>
           {'<'}
       </button>
-      <div>
-        <button className='card' onClick={addHandler}>Add To Outfit</button>
-      {outfitItems.slice(startingIndex, startingIndex + 4).map((item, i) => {
+      <div className='cardContainer'>
+        <button id='addToOutfit' onClick={addHandler}>Add To Outfit</button>
+      {outfitItems.slice(startingIndex, startingIndex + numOfCards).map((item, i) => {
        return <OutfitCard item={item} key={i} remove={removeFromOutfit}/>
       })}
       </div>
@@ -70,8 +71,8 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
 
       <button
         onClick={() => {incrementCards(setStartingIndex)}}
-        className={outfitItems[startingIndex + 4] !== undefined ? '': 'hidden'}
-        disabled= {outfitItems[startingIndex + 4] !== undefined ? false : true} >
+        className={outfitItems[startingIndex + numOfCards] !== undefined ? '': 'hidden'}
+        disabled= {outfitItems[startingIndex + numOfCards] !== undefined ? false : true} >
           {'>'}
       </button>
 
