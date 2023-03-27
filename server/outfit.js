@@ -67,6 +67,8 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
           var salePrice = style.sale_price;
           result.push({
             image: image,
+            id: outfitItems[index].product,
+            style: outfitItems[index].style,
             name: name,
             category: category,
             price: price,

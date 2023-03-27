@@ -38,10 +38,13 @@ const App = () => {
   const removeFromOutfit = (productID, styleID) => {
     const outfit = JSON.parse(localStorage.getItem('myOutfit'));
     // Remove item that has style and product ID
-    outfit = outfit.filter((outfit) => (outfit.style !== styleID && outfit.product !== productID))
-    setMyOutfit(outfit);
+    const newOutfit = outfit.filter((outfit) =>
+      outfit.style.toString() !== styleID && outfit.product.toString() !== productID
+    )
+    localStorage.setItem('myOutfit', JSON.stringify(newOutfit))
+    setMyOutfit(newOutfit);
+    console.log('new outfit inside remove', newOutfit)
     // Add item to localStorage
-    localStorage.setItem(JSON.stringify(outfit))
   }
 
   return (
@@ -56,6 +59,7 @@ const App = () => {
       />
       <RelatedItemsComparison
         productID={productID}
+        styleID={styleID}
         setProductID={setProductID}
         addToOutfit={addToOutfit}
         removeFromOutfit={removeFromOutfit}
@@ -73,3 +77,16 @@ const App = () => {
 }
 
 export default App;
+
+// const removeFromOutfit = (productID, styleID) => {
+//   const outfit = JSON.parse(localStorage.getItem('myOutfit'));
+//   // Remove item that has style and product ID
+//   const newOutfit = outfit.filter((outfit) => ((outfit.style !== styleID) && (outfit.product !== productID)))
+//   localStorage.setItem('myOutfit', JSON.stringify(newOutfit))
+//   setMyOutfit(newOutfit);
+//   console.log('new outfit inside remove', newOutfit)
+//   // Add item to localStorage
+// }
+
+// [{"product":71699,"style":444228},{"product":71697,"style":444218},{"product":71703,"style":444250}]
+
