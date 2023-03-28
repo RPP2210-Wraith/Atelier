@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import RatingsTile from './ratings-tile.jsx';
+import SubmitReviewModal from './submit-review-modal.jsx';
 
 const RatingsList = (props) => {
 
   const [sortBy, setSortBy] = useState('relevant');
+  const [modalIsShowing, setModalIsShowing] = useState(false);
 
   const addNewReview = () => {
     console.log('Add new review clicked!');
+    setModalIsShowing(!modalIsShowing);
   };
 
   const seeMoreReviews = () => {
@@ -57,6 +60,7 @@ const RatingsList = (props) => {
         <button class='button-center flex-child-1'
           onClick={addNewReview}
         >Add A Review</button>
+        {modalIsShowing ? <SubmitReviewModal /> : null}
       </div>
     </div >
 

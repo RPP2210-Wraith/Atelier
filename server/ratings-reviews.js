@@ -11,7 +11,9 @@ exports.getReviews = (req, res) => {
     method: 'GET',
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews',
     params: {
-      product_id: req.query.product_id
+      product_id: req.query.product_id,
+      //page: req.query.page
+      count: 10
     },
     headers: {
       'User-Agent': 'request',
@@ -31,7 +33,7 @@ exports.getReviewsMetaData = (req, res) => {
     method: 'GET',
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta',
     params: {
-      product_id: req.query.product_id
+      product_id: req.query.product_id,
     },
     headers: {
       'User-Agent': 'request',
