@@ -20,9 +20,43 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
           'User-Agent': 'request'
         }
       }))
+      promises.push(axios({
+        url: `${API}/reviews/meta`,
+        headers:{
+          'Authorization': TOKEN,
+          'User-Agent': 'request'
+        },
+        params: {
+          product_id: id
+        },
+      }))
       return Promise.all(promises);
     }
+    // Takes in an object of star tallies and returns an average number rounded to 1/4
+    const calculateAvg = (obj) => {
+      let total = 0;
+      let count = 0;
 
+      for (const key in obj) {
+        const value = parseInt(obj[key]);
+        total += value * parseInt(key);
+        count += value;
+      }
+
+      const average = total / count;
+      const rounded = Math.round(average * 4) / 4;
+      console.log('avg result: ', rounded)
+
+      if (rounded % 1 === 0) {
+        return rounded.toFixed(0);
+      } else {
+        return rounded.toFixed(2);
+      }
+      // Return average, rounded to 1/4
+      //return result;
+    }
+
+    // Third Attempt
     const getOutfitItems = (req, res) => {
       const outfitItems = req.query.outfit;
       const endpoints = [""]
@@ -43,7 +77,11 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
           var style = dataTuple[1].data.results.find((result) => {
             return result.style_id.toString() === outfitItems[index].style;
           })
-          console.log('style: ', style);
+          var reviewsMeta = dataTuple[2].data;
+          console.log('Reviews: ', reviewsMeta)
+          //console.log('style: ', style);
+          var rating = calculateAvg(dataTuple[2].data.ratings);
+
           var image = style.photos[0].thumbnail_url;
           var name = dataTuple[0].data.name;
           var category = dataTuple[0].data.category;
@@ -56,7 +94,8 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
             name: name,
             category: category,
             price: price,
-            salePrice: salePrice
+            salePrice: salePrice,
+            rating: rating
           })
 
         })
@@ -71,4 +110,3 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 
 
     module.exports = getOutfitItems;
-
