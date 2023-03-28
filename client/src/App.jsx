@@ -41,7 +41,7 @@ const App = () => {
     const outfit = JSON.parse(localStorage.getItem('myOutfit'));
     // Remove item that has style and product ID
     const newOutfit = outfit.filter((item) => {
-      return item.style.toString() !== styleID || item.product.toString() !== productID;
+      return item.style.toString() === styleID && item.product.toString() === productID;
     });
     localStorage.setItem('myOutfit', JSON.stringify(newOutfit))
     setMyOutfit(newOutfit);
