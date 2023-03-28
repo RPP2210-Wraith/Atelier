@@ -17,8 +17,7 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
   const loadOutfit = () => {
     // Outfit is an array of objects with product and style keys
     // Send an axios request for items
-    console.log('outfit: ', outfit)
-
+    if (outfit.length > 0) {
       axios.get('/outfitItems', {
         params: {
           outfit: outfit
@@ -31,6 +30,11 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
       .catch((err) => {
         console.log('error inside get outfit items', err)
       })
+
+    } else {
+      setOutfitItems([])
+    }
+
   }
 
   const addHandler = () => {

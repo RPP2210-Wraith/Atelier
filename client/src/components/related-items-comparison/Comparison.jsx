@@ -1,8 +1,8 @@
 import React from 'react';
 import fakeData from './fakeData';
 
-const Comparison = ({}) => {
-  console.log('oneFakeProduct: ', fakeData.oneFakeProduct)
+const Comparison = ({ }) => {
+  //console.log('oneFakeProduct: ', fakeData.oneFakeProduct)
   function compareFeatures(product1, product2) {
     const features1 = product1.features || []
     const features2 = product2.features || []

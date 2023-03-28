@@ -20,7 +20,7 @@ const App = () => {
     }
     setMyOutfit(JSON.parse(localStorage.getItem('myOutfit')));
   }, [])
-  console.log('productID inside of App: ', productID)
+  //console.log('productID inside of App: ', productID)
   // Function to add item to myOutfit localStorage
   const addToOutfit = (productID, styleID) => {
     // Get current outfit array
@@ -33,14 +33,16 @@ const App = () => {
     // OldOutfit is now updated with the new item
     setMyOutfit(outfit);
     localStorage.setItem('myOutfit', JSON.stringify(outfit))
+    console.log('new outfit inside add', outfit)
+
   }
   // Function to remove item from myOutfit localStorage
   const removeFromOutfit = (productID, styleID) => {
     const outfit = JSON.parse(localStorage.getItem('myOutfit'));
     // Remove item that has style and product ID
-    const newOutfit = outfit.filter((outfit) =>
-      outfit.style.toString() !== styleID && outfit.product.toString() !== productID
-    )
+    const newOutfit = outfit.filter((item) => {
+      return item.style.toString() !== styleID || item.product.toString() !== productID;
+    });
     localStorage.setItem('myOutfit', JSON.stringify(newOutfit))
     setMyOutfit(newOutfit);
     console.log('new outfit inside remove', newOutfit)
