@@ -45,7 +45,7 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 
       const average = total / count;
       const rounded = Math.round(average * 4) / 4;
-      console.log('avg result: ', rounded)
+      //console.log('avg result: ', rounded)
 
       if (rounded % 1 === 0) {
         return rounded.toFixed(0);
@@ -78,7 +78,7 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
             return result.style_id.toString() === outfitItems[index].style;
           })
           var reviewsMeta = dataTuple[2].data;
-          console.log('Reviews: ', reviewsMeta)
+          //console.log('Reviews: ', reviewsMeta)
           //console.log('style: ', style);
           var rating = calculateAvg(dataTuple[2].data.ratings);
 
@@ -99,7 +99,7 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
           })
 
         })
-        console.log('result after all data: ', result)
+        //console.log('result after all data: ', result)
         res.status(200).send(result)
       })
       .catch((err) => {
