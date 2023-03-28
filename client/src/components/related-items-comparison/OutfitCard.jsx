@@ -2,9 +2,9 @@ import React from 'react';
 import Comparison from './Comparison.jsx';
 
 
-const OutfitCard = ({ item }) => {
+const OutfitCard = ({ item, remove, }) => {
 
-
+ const removeItem = () => {remove(item.id, item.style)}
 
   return (
     <div className='card outfitCard'>
@@ -15,7 +15,7 @@ const OutfitCard = ({ item }) => {
       <p>{item.salePrice}</p>
 
       <img></img>
-      <button>Remove</button>
+      <button onClick={removeItem}>Remove</button>
     </div>
   )
 }
