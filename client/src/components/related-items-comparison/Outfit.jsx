@@ -43,6 +43,13 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
     }
   }
 
+  const removeHandler = (product, style) => {
+    if (outfitItems.length > numOfCards) {
+      decrementCards(setStartingIndex);
+    }
+    removeFromOutfit(product, style);
+  }
+
   // Load the outfit every time it changes
   useEffect(loadOutfit, [outfit])
 
@@ -68,7 +75,7 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
       <div className='cardContainer'>
         <button id='addToOutfit' onClick={addHandler}>Add To Outfit</button>
       {outfitItems.slice(startingIndex, startingIndex + numOfCards).map((item, i) => {
-       return <OutfitCard item={item} key={i} remove={removeFromOutfit}/>
+       return <OutfitCard item={item} key={i} remove={removeHandler}/>
       })}
       </div>
 
