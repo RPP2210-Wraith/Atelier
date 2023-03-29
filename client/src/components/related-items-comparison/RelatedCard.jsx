@@ -26,7 +26,11 @@ const RelatedCard = ( { item, setProductID, styleID, productID, handleClick }) =
       onRequestClose={closeModal}
       contentLabel='Product Comparison'
     >
-      <Comparison />
+      <Comparison
+        product1={item}
+        productID={productID}
+        styleID={styleID}
+      />
 
     </Modal>
     </div>

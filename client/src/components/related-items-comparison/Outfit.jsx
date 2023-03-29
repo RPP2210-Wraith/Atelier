@@ -24,7 +24,7 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
         }
       })
       .then((items) => {
-        console.log('outfit items: ', items.data)
+        //console.log('outfit items: ', items.data)
         setOutfitItems(items.data)
       })
       .catch((err) => {

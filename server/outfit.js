@@ -58,8 +58,11 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 
     // Third Attempt
     const getOutfitItems = (req, res) => {
+      console.log('req.query: ', req.query);
+      console.log('req.query.outfit: ', req.query.outfit);
+
       const outfitItems = req.query.outfit;
-      const endpoints = [""]
+      //const endpoints = [""]
       if (outfitItems === undefined) {res.status(400).send(''); return}
       // Create an array to store promises
       const promises = [];
@@ -87,6 +90,7 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
           var category = dataTuple[0].data.category;
           var price = style.original_price;
           var salePrice = style.sale_price;
+          var features = dataTuple[0].data.features;
           result.push({
             image: image,
             id: outfitItems[index].product,
@@ -95,11 +99,11 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
             category: category,
             price: price,
             salePrice: salePrice,
-            rating: rating
+            rating: rating,
+            features: features
           })
-
         })
-        //console.log('result after all data: ', result)
+        console.log('result after all data: ', result)
         res.status(200).send(result)
       })
       .catch((err) => {
