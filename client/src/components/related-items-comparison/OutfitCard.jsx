@@ -13,6 +13,7 @@ const OutfitCard = ({ item, remove, }) => {
       <p>{item.category}</p>
       <p>{item.price}</p>
       <p>{item.salePrice}</p>
+      <p>{`Rating: ${item.rating}`}</p>
 
       <img></img>
       <button onClick={removeItem}>Remove</button>
