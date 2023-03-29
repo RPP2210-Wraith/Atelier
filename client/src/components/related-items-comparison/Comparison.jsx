@@ -1,8 +1,32 @@
 import React from 'react';
 import fakeData from './fakeData';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-const Comparison = ({ }) => {
-  //console.log('oneFakeProduct: ', fakeData.oneFakeProduct)
+const Comparison = ({ product1, productID, styleID }) => {
+  const [product2, setProduct2 ] = useState({})
+
+  console.log('productID in comparison: ', productID);
+  console.log('styleID in comparison: ', styleID)
+
+  const getTableData = () => {
+
+    var item2Params = [{ product: productID, style: styleID }]
+    axios.get('/outfitItems', {
+      params: {
+        outfit: item2Params
+      }
+    })
+    .then((item2) => {
+      console.log('item2.data: ', item2.data)
+      setProduct2(item2.data[0]);
+      console.log('product1: ', product1);
+      console.log('product2: ', product2);
+    })
+  }
+
+  useEffect(getTableData, [])
+
   function compareFeatures(product1, product2) {
     const features1 = product1.features || []
     const features2 = product2.features || []
@@ -39,7 +63,7 @@ const Comparison = ({ }) => {
 
   return (
     <div className='container'>
-     {compareFeatures(fakeData.oneFakeProduct, fakeData.anotherFakeProduct)}
+     {compareFeatures(product1, product2)}
     </div>
   )
 }
