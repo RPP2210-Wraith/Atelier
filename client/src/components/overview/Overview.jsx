@@ -6,7 +6,7 @@ import AddToCart from './AddToCart.jsx'
 import StyleSelector from './StyleSelector.jsx';
 import ImageGallery from './ImageGallery.jsx';
 
-const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit }) => {
+const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, reviews }) => {
 
   const [product, setProduct] = useState({});
   const [styles, setStyles] = useState([]);
@@ -51,7 +51,7 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit }) => 
         <ImageGallery images={selectedStyle.photos} productID={productID} />
 
         <div className='right'>
-          <div className='div'>✩✩✩✩✩ Read all [#] reviews</div>
+          <div className='div'>✩✩✩✩✩ Read all {reviews.length} reviews</div>
           <div className='div'>{product.category}</div>
           <div className='div'><h3>{product.name}</h3></div>
 
