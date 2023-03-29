@@ -1,11 +1,12 @@
 import React from 'react';
 import Comparison from './Comparison.jsx';
+import { useState } from 'react';
 
 
 const OutfitCard = ({ item, remove, }) => {
 
- const removeItem = () => {remove(item.id, item.style)}
-
+  const [ modalIsOpen, setModalIsOpen ] = useState(false);
+  const removeItem = () => {remove(item.id, item.style)};
   const onSale = (item.salePrice ? true : false);
 
   return (
@@ -18,7 +19,7 @@ const OutfitCard = ({ item, remove, }) => {
       <p>{`Rating: ${item.rating}`}</p>
 
       <img></img>
-      <button onClick={removeItem}>Remove</button>
+      <button onClick={removeItem}>❌</button>
     </div>
   )
 }

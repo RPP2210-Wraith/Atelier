@@ -32,7 +32,7 @@
   margin: 20px;
   width: 200px;
   height: 300px;
-
+  position: relative;
 
 }
 
@@ -80,9 +80,9 @@ height: 200px;
   justify-content: center;
 }
 
-#outfitContainer button {
+/* #outfitContainer button {
   margin: 0 10px;
-}
+} */
 
 .redStrikethrough {
   text-decoration: line-through;
@@ -91,4 +91,22 @@ height: 200px;
 
 .hidden {
   visibility: hidden;
+}
+
+.outfitCard {
+  position: relative;
+}
+
+.card button {
+  position: absolute;
+  text-align: center;
+  top: 20px;
+  right: 20px;
+  background-color: white;
+  border-radius: 5px;
+  border: solid black 3px;
+  outline: none;
+  height: 40px;
+  width: 45px;
+  font-size: 26px
 }
