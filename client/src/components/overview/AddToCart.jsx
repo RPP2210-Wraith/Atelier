@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-const AddToCart = ({ skus, productID, styleID, addCart, addToOutfit, myOutfit}) => {
+const AddToCart = ({ skus, productID, styleID, addCart, addToOutfit, myOutfit, like, setLike }) => {
 
   const [stocks, setStocks] = useState([]);
   const [stockQuantity, setStockQuantity] = useState(0);
 
   const [index, setIndex] = useState('')
-  const [like, setLike] = useState(false);
+
   const [size, setSize] = useState('');
   const [quantity, setQuantity] = useState(0);
 
