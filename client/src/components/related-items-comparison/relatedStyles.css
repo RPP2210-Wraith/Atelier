@@ -110,3 +110,17 @@ height: 200px;
   width: 45px;
   font-size: 26px
 }
+
+.compareTable {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.compareTable th,
+.compareTable td {
+  text-align: center;
+  padding: 10px;
+  margin: 30px;
+  border: 1px solid black;
+}
