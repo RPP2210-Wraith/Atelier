@@ -1,10 +1,12 @@
 import React from 'react';
 import RelatedCard from './RelatedCard.jsx';
+import Comparison from './Comparison.jsx';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import helpers from './helpers.js'
+import helpers from './helpers.js';
 
-const Related = ({ productID, setProductID }) => {
+
+const Related = ({ productID, setProductID, styleID }) => {
   // Handle loading with a user-friendly message
   const [ isLoading, setIsLoading ] = useState(true);
   const [ relatedItems, setRelatedItems ] = useState({});
@@ -49,14 +51,14 @@ const Related = ({ productID, setProductID }) => {
     return (
       <div className='container'>
         <h3>Related Items:</h3>
-        <div>
+        <div id='relatedContainer'>
         <button
           onClick={() => {decrementCards(setStartingIndex)}}
           className={startingIndex !== 0 ?  '': 'hidden'}
           disabled={startingIndex !== 0 ?  false : true}>
             {'<'}
         </button>
-
+        <div className='cardContainer'>
         {
          relatedItems.slice(startingIndex, startingIndex + 4).map((item, i) => {
           return <RelatedCard
@@ -65,10 +67,13 @@ const Related = ({ productID, setProductID }) => {
           id={item.id}
           setProductID={setProductID}
           handleClick={fetchRelatedItems}
+          productID={productID}
+          styleID={styleID}
           />
          })
-
         }
+
+        </div>
         <button
           onClick={() => {incrementCards(setStartingIndex)}}
           className={relatedItems[startingIndex + 4] !== undefined ? '': 'hidden'}
@@ -77,6 +82,10 @@ const Related = ({ productID, setProductID }) => {
             {'>'}
         </button>
         </div>
+        <Comparison
+        productID={productID}
+        styleID={styleID}
+      />
       </div>
     )
 
