@@ -22,7 +22,7 @@
 }
 
 .imageGallery {
-  height: 61vh;
+  height: 64vh;
   display: flex;
   border: solid lightgray 2px;
   text-align: center;
@@ -43,7 +43,7 @@
 
 .image {
   max-width: 37vw;
-  max-height: 61vh;
+  max-height: 64vh;
   margin: auto;
   /* display: block; */
   cursor: zoom-in;
@@ -60,7 +60,7 @@
 .rightButton {
   position: absolute;
   height: 50px;
-  margin-left: 36vw;
+  margin-left: 34vw;
   margin-top: 27vh;
   cursor:pointer;
 }
