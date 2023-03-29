@@ -72,6 +72,25 @@ fakeProducts: [
     ]
 },
 
+anotherFakeProduct: {
+      "id": 11,
+      "name": "Sonic Speedshoes",
+      "slogan": "Full court support",
+      "description": "This optimized air cushion pocket reduces impact but keeps a perfect balance underfoot.",
+      "category": "Basketball Shoes",
+      "default_price": "0",
+      "features": [
+          {
+              "feature": "Sole",
+              "value": "Magic"
+          },
+          {
+              "feature": "Material",
+              "value": "Robotnik Tears"
+          }
+      ]
+  },
+
 styleData: {
   "product_id": "1",
   "results": [

@@ -5,10 +5,11 @@ import helpers from './helpers.js'
 import axios from 'axios';
 //import fakeData from './fakeData.js';
 
-const Outfit = ({ outfit, addToOutfit, removeFromOutfit }) => {
+const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) => {
   const [ isLoading, setIsLoading ] = useState(true);
   const [ startingIndex, setStartingIndex ] = useState(0);
-  const [ outfitItems, setOutfitItems ] = useState([])
+  const [ outfitItems, setOutfitItems ] = useState([]);
+  const [numOfCards, setNumOfCards] = useState(3);
 
   const { incrementCards } = helpers;
   const { decrementCards } = helpers;
@@ -16,8 +17,7 @@ const Outfit = ({ outfit, addToOutfit, removeFromOutfit }) => {
   const loadOutfit = () => {
     // Outfit is an array of objects with product and style keys
     // Send an axios request for items
-    console.log('outfit: ', outfit)
-
+    if (outfit.length > 0) {
       axios.get('/outfitItems', {
         params: {
           outfit: outfit
@@ -30,7 +30,26 @@ const Outfit = ({ outfit, addToOutfit, removeFromOutfit }) => {
       .catch((err) => {
         console.log('error inside get outfit items', err)
       })
+
+    } else {
+      setOutfitItems([])
+    }
+
   }
+
+  const addHandler = () => {
+    if (!outfit.some(item => item.style === styleID && item.product === productID)) {
+      addToOutfit(productID, styleID);
+    }
+  }
+
+  const removeHandler = (product, style) => {
+    if (outfitItems.length > numOfCards) {
+      decrementCards(setStartingIndex);
+    }
+    removeFromOutfit(product, style);
+  }
+
   // Load the outfit every time it changes
   useEffect(loadOutfit, [outfit])
 
@@ -46,23 +65,25 @@ const Outfit = ({ outfit, addToOutfit, removeFromOutfit }) => {
   return (
     <div className='container'>
       <h3>Your Outfit</h3>
-      <div>
+      <div id='outfitContainer'>
       <button
         onClick={() => {decrementCards(setStartingIndex)}}
         className={startingIndex !== 0 ?  '': 'hidden'}
         disabled={startingIndex !== 0 ?  false : true}>
           {'<'}
       </button>
-
-      {outfitItems.map((item) => {
-       return <OutfitCard item={item}/>
+      <div className='cardContainer'>
+        <button id='addToOutfit' onClick={addHandler}>Add To Outfit</button>
+      {outfitItems.slice(startingIndex, startingIndex + numOfCards).map((item, i) => {
+       return <OutfitCard item={item} key={i} remove={removeHandler}/>
       })}
+      </div>
 
 
       <button
         onClick={() => {incrementCards(setStartingIndex)}}
-        className={outfitItems[startingIndex + 4] !== undefined ? '': 'hidden'}
-        disabled= {outfitItems[startingIndex + 4] !== undefined ? false : true} >
+        className={outfitItems[startingIndex + numOfCards] !== undefined ? '': 'hidden'}
+        disabled= {outfitItems[startingIndex + numOfCards] !== undefined ? false : true} >
           {'>'}
       </button>
 
