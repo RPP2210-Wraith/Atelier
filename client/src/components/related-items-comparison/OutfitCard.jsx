@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 const OutfitCard = ({ item, remove, }) => {
 
-  const [ modalIsOpen, setModalIsOpen ] = useState(false);
   const removeItem = () => {remove(item.id, item.style)};
   const onSale = (item.salePrice ? true : false);
 
