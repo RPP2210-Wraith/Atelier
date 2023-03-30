@@ -16,7 +16,7 @@ const calculateAvg = (obj) => {
 
   const average = total / count;
   const rounded = Math.round(average * 4) / 4;
-  console.log('avg result: ', rounded)
+  //console.log('avg result: ', rounded)
 
   if (rounded % 1 === 0) {
     return rounded.toFixed(0);
@@ -60,7 +60,8 @@ const calculateAvg = (obj) => {
           relatedItems[item.data.id] = {
             id: item.data.id,
             name: item.data.name,
-            category: item.data.category
+            category: item.data.category,
+            features: item.data.features
           }
           stylingPromises.push(axios({
             url:`${API}/products/${item.data.id}/styles`,
@@ -104,11 +105,11 @@ const calculateAvg = (obj) => {
         return Promise.all(ratingsPromises);
       })
       .then((ratings) => {
-        console.log('ratings----------------------------------------: ', ratings[0].data)
+        //console.log('ratings----------------------------------------: ', ratings[0].data)
         ratings.forEach((item) => {
           //console.log('-----------', ratings[item])
           const avg = calculateAvg(item.data.ratings)
-          console.log('avg-----------------------------------: ', avg)
+          //console.log('avg-----------------------------------: ', avg)
           relatedItems[item.data.product_id].rating = avg;
         })
         // Now that data processing is done, convert the object to an array and send

@@ -82,10 +82,6 @@ const Related = ({ productID, setProductID, styleID }) => {
             {'>'}
         </button>
         </div>
-        <Comparison
-        productID={productID}
-        styleID={styleID}
-      />
       </div>
     )
 

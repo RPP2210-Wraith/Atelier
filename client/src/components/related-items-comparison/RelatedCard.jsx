@@ -1,13 +1,14 @@
 import React from 'react';
-import { useState, useEfect } from 'react';
+import { useState, useEffect } from 'react';
 import Comparison from './Comparison.jsx';
+import Modal from 'react-modal';
 
 const RelatedCard = ( { item, setProductID, styleID, productID, handleClick }) => {
-  const [ openModal, setOpenModal ] = useState(false)
+  const [ modalIsOpen, setModalIsOpen ] = useState(false)
+  const closeModal = () => {
+    setModalIsOpen(false);
+  }
 
-  // const compare = () => {
-  //   // Render Comparison with the correct items
-  // }
 
   return (
     <div className="card relatedCard" onClick={() => {setProductID(item.id)}}>
@@ -18,9 +19,20 @@ const RelatedCard = ( { item, setProductID, styleID, productID, handleClick }) =
       <p>{item !== undefined ? item.category : 'Category'}</p>
       <p>{item !== undefined ? `$${item.price}` : 'Price'}</p>
       <p>{`Rating: ${item.rating}`}</p>
-      <button>Compare</button>
+      <button onClick={(e) => {e.stopPropagation(); setModalIsOpen(true)}}>⭐</button>
 
+    <Modal
+      isOpen={modalIsOpen}
+      onRequestClose={closeModal}
+      contentLabel='Product Comparison'
+    >
+      <Comparison
+        product1={item}
+        productID={productID}
+        styleID={styleID}
+      />
 
+    </Modal>
     </div>
   )
 }

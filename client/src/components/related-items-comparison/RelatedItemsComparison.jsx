@@ -16,7 +16,9 @@ const RelatedItemsComparison = ({ productID, styleID, setProductID, outfit, addT
 
       <Related
         productID={productID}
-        setProductID={setProductID}/>
+        setProductID={setProductID}
+        styleID={styleID}
+      />
 
       <Outfit
         outfit={outfit}
