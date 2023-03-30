@@ -14,6 +14,7 @@ const app = express();
 const port = 3000
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(bodyParser());
 
 app.get('/overview', (req, res) => {
   overview.getProduct(req, res)
@@ -28,7 +29,6 @@ app.post('/interactions', logInteraction)
 app.get('/reviews', (req, res) => {
   ratingsReviews.getReviews(req, res);
 })
-
 app.get('/reviews/meta', (req, res) => {
   ratingsReviews.getReviewsMetaData(req, res);
 })

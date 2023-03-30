@@ -103,7 +103,7 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
             features: features
           })
         })
-        console.log('result after all data: ', result)
+        //console.log('result after all data: ', result)
         res.status(200).send(result)
       })
       .catch((err) => {

@@ -12,7 +12,7 @@ const InteractionTracking = (props) => {
       var element = event.target.outerHTML;
       console.log('handler run');
       const interaction = {
-        component: widgetName,
+        widget: widgetName,
         element: element,
         time: new Date().toISOString()
       };
