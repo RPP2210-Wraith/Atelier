@@ -9,7 +9,7 @@ const InteractionTracking = (props) => {
   return (function(props) {
 
     function handleInteraction(event) {
-      var element = event.target;
+      var element = event.target.outerHTML;
       console.log('handler run');
       const interaction = {
         component: widgetName,
