@@ -4,6 +4,7 @@ import Overview from './components/overview/Overview.jsx';
 import QuestionAnswer from './components/question-answer/QuestionAnswer.jsx';
 import RatingsReviews from './components/ratings-reviews/RatingsReviews.jsx';
 import RelatedItemsComparison from './components/related-items-comparison/RelatedItemsComparison.jsx';
+import InteractionTracking from './InteractionTracking.jsx';
 import Modal from 'react-modal';
 
 
@@ -74,7 +75,14 @@ const App = () => {
         outfit={myOutfit}
 
       />
-      <QuestionAnswer />
+      <InteractionTracking
+        Widget={QuestionAnswer}
+        widgetName={'Question & Answer'}
+      />
+
+
+
+
       <RatingsReviews
         productID={productID}
         reviews={reviews}
