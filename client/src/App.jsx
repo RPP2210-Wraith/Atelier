@@ -9,6 +9,7 @@ import Modal from 'react-modal';
 
 
 
+
 const App = () => {
 
   const [productID, setProductID] = useState(71699);
@@ -16,6 +17,8 @@ const App = () => {
   const [myOutfit, setMyOutfit] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [like, setLike] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [styles, setStyles] = useState(null);
 
 
   useEffect(() => {
@@ -24,6 +27,14 @@ const App = () => {
     }
     setMyOutfit(JSON.parse(localStorage.getItem('myOutfit')));
   }, [])
+
+  useEffect(() => {
+    var styleSheet = document.getElementById('lightMode');
+    if (isDarkMode) {styleSheet.disabled = true; }
+      else { styleSheet.disabled = false; }
+
+  }, [isDarkMode])
+
 
   // Function to add item to myOutfit localStorage
   const addToOutfit = (productID, styleID) => {
@@ -56,6 +67,7 @@ const App = () => {
 
   return (
     <div>
+      <button onClick={() => { setIsDarkMode(!isDarkMode) }}>Toggle Dark Mode</button>
 
       <InteractionTracking
         Widget={Overview}
