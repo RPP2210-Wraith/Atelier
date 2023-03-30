@@ -6,6 +6,7 @@ import RatingsReviews from './components/ratings-reviews/RatingsReviews.jsx';
 import RelatedItemsComparison from './components/related-items-comparison/RelatedItemsComparison.jsx';
 import InteractionTracking from './InteractionTracking.jsx';
 import Modal from 'react-modal';
+import logo from '../../img/logo.png';
 
 
 
@@ -67,7 +68,11 @@ const App = () => {
 
   return (
     <div>
-      <button onClick={() => { setIsDarkMode(!isDarkMode) }}>Toggle Dark Mode</button>
+      <div id='header'>
+        <img src={logo} id='logo'></img>
+
+        <button onClick={() => { setIsDarkMode(!isDarkMode) }}>Toggle Dark Mode</button>
+      </div>
 
       <InteractionTracking
         Widget={Overview}

@@ -28,3 +28,11 @@ body {
   background-color: var(--background1)
 
 }
+
+#header {
+  text-align: center;
+  background-color:#f1f0ec
+}
+#logo {
+  height: 150px
+}
