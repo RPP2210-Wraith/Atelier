@@ -7,6 +7,8 @@ const RatingsList = (props) => {
   const [sortBy, setSortBy] = useState('relevant');
   const [modalIsShowing, setModalIsShowing] = useState(false);
 
+
+
   const addNewReview = () => {
     console.log('Add new review clicked!');
     setModalIsShowing(!modalIsShowing);
@@ -19,6 +21,7 @@ const RatingsList = (props) => {
   const sortReviews = (sortBy) => {
     console.log('Sort reviews button clicked! Reviews will be sorted by: ' + sortBy);
     setSortBy(sortBy);
+    props.getReviews(sortBy, props.productID);
   };
 
   return (

@@ -12,19 +12,24 @@ const RatingsReviews = (props) => {
   const reviews = props.reviews;
   const setReviews = props.setReviews;
 
-  useEffect(() => {
-    //console.log('ProductID in Ratings/Review: ', props.productID);
+  const getReviews = (sortBy = 'relevant', productID) => {
     axios({
       method: 'GET',
       url: '/reviews',
       params: {
-        product_id: props.productID
+        product_id: productID,
+        sort: sortBy
       }
     }).then((res) => {
       console.log('Review Data:', res.data);
       setReviews(res.data.results);
     }
-    )
+    );
+  };
+
+  useEffect(() => {
+    //console.log('ProductID in Ratings/Review: ', props.productID);
+    getReviews(null, props.productID);
   }, [props.productID]);
 
 
@@ -32,7 +37,7 @@ const RatingsReviews = (props) => {
   return (
     <div id='ratings-review-widget' class='flex-parent center'>
       <RatingsOverviewSection productID={props.productID} />
-      <RatingsList reviews={reviews} />
+      <RatingsList productID={props.productID} reviews={reviews} setReviews={setReviews} getReviews={getReviews} />
     </div>
   )
 }
