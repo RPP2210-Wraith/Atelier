@@ -27,8 +27,10 @@ const RatingsReviews = (props) => {
     )
   }, [props.productID]);
 
+
+
   return (
-    <div class='flex-parent center'>
+    <div id='ratings-review-widget' class='flex-parent center'>
       <RatingsOverviewSection productID={props.productID} />
       <RatingsList reviews={reviews} />
     </div>
