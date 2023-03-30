@@ -55,7 +55,7 @@ const App = () => {
 
   return (
     <div>
-      {/* <Overview
+      <Overview
         productID={productID}
         styleID={styleID}
         setStyleID={setStyleID}
@@ -64,7 +64,7 @@ const App = () => {
         reviews={reviews}
         like={like}
         setLike={setLike}
-      /> */}
+      />
       <RelatedItemsComparison
         productID={productID}
         styleID={styleID}

@@ -24,7 +24,7 @@ const ImageGallery = ({ images, productID }) => {
 
   return (
     <div className='left'>
-      <div className='imageGallery div' >
+      <div className='imageGallery' >
         <div className='gallery'>
           <button className='upButton' onClick={() => setStartingIndex(startingIndex - 7)} disabled={startingIndex === 0}>{'^'}</button>
           {images && images.slice(startingIndex, startingIndex + 7).map((image, index) => {
