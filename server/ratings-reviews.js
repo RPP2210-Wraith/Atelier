@@ -46,3 +46,11 @@ exports.getReviewsMetaData = (req, res) => {
 
 };
 
+exports.markReviewHelpful = (req, res) => {
+
+};
+
+exports.reportReview = (req, res) => {
+
+};
+
