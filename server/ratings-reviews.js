@@ -48,9 +48,35 @@ exports.getReviewsMetaData = (req, res) => {
 
 exports.markReviewHelpful = (req, res) => {
 
+  axios({
+    method: 'PUT',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${req.query.review_id}/helpful`,
+    headers: {
+      'User-Agent': 'request',
+      'Authorization': auth.TOKEN
+    }
+  }).then((response) => {
+    //console.log('review marked helpful: ', response.data);
+    res.status(204);
+    res.send(JSON.stringify(response.data));
+  });
+
 };
 
 exports.reportReview = (req, res) => {
+
+  axios({
+    method: 'PUT',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${req.query.review_id}/report`,
+    headers: {
+      'User-Agent': 'request',
+      'Authorization': auth.TOKEN
+    }
+  }).then((response) => {
+    //console.log('review reported: ', response.data);
+    res.status(204);
+    res.send(JSON.stringify(response.data));
+  });
 
 };
 
