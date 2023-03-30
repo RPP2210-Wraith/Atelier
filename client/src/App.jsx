@@ -66,7 +66,7 @@ const App = () => {
         like={like}
         setLike={setLike}
       />
-      <RelatedItemsComparison
+      {/* <RelatedItemsComparison
         productID={productID}
         styleID={styleID}
         setProductID={setProductID}
@@ -74,7 +74,19 @@ const App = () => {
         removeFromOutfit={removeFromOutfit}
         outfit={myOutfit}
 
+      /> */}
+
+      <InteractionTracking
+        Widget={RelatedItemsComparison}
+        widgetName={'RelatedItemsComparison'}
+        productID={productID}
+        styleID={styleID}
+        setProductID={setProductID}
+        addToOutfit={addToOutfit}
+        removeFromOutfit={removeFromOutfit}
+        outfit={myOutfit}
       />
+
       <InteractionTracking
         Widget={QuestionAnswer}
         widgetName={'Question & Answer'}

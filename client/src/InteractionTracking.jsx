@@ -5,8 +5,8 @@ const InteractionTracking = (props) => {
   const Widget = props.Widget;
   const widgetName = props.widgetName;
 
-  console.log('widget: ', Widget)
-  return (function(props) {
+  console.log('WidgetProps: ', props);
+  return (() => {
 
     function handleInteraction(event) {
       var element = event.target.outerHTML;
