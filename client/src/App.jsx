@@ -4,6 +4,7 @@ import Overview from './components/overview/Overview.jsx';
 import QuestionAnswer from './components/question-answer/QuestionAnswer.jsx';
 import RatingsReviews from './components/ratings-reviews/RatingsReviews.jsx';
 import RelatedItemsComparison from './components/related-items-comparison/RelatedItemsComparison.jsx';
+import Modal from 'react-modal';
 
 
 
@@ -13,6 +14,8 @@ const App = () => {
   const [styleID, setStyleID] = useState(1);
   const [myOutfit, setMyOutfit] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [like, setLike] = useState(false);
+
 
   useEffect(() => {
     if (!localStorage.getItem('myOutfit')) {
@@ -34,7 +37,6 @@ const App = () => {
     setMyOutfit(outfit);
     localStorage.setItem('myOutfit', JSON.stringify(outfit))
     console.log('new outfit inside add', outfit)
-
   }
   // Function to remove item from myOutfit localStorage
   const removeFromOutfit = (productID, styleID) => {
@@ -45,6 +47,7 @@ const App = () => {
       return !(item.style.toString() === styleID && item.product.toString() === productID);
     });
     localStorage.setItem('myOutfit', JSON.stringify(newOutfit))
+    setLike(false)
     setMyOutfit(newOutfit);
     console.log('new outfit inside remove', newOutfit)
     // Add item to localStorage
@@ -59,6 +62,8 @@ const App = () => {
         addToOutfit={addToOutfit}
         myOutfit={myOutfit}
         reviews={reviews}
+        like={like}
+        setLike={setLike}
       />
       <RelatedItemsComparison
         productID={productID}

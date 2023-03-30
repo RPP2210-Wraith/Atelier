@@ -24,7 +24,7 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
         }
       })
       .then((items) => {
-        console.log('outfit items: ', items.data)
+        //console.log('outfit items: ', items.data)
         setOutfitItems(items.data)
       })
       .catch((err) => {
@@ -41,6 +41,13 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
     if (!outfit.some(item => item.style === styleID && item.product === productID)) {
       addToOutfit(productID, styleID);
     }
+  }
+
+  const removeHandler = (product, style) => {
+    if (outfitItems.length > numOfCards) {
+      decrementCards(setStartingIndex);
+    }
+    removeFromOutfit(product, style);
   }
 
   // Load the outfit every time it changes
@@ -68,7 +75,7 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
       <div className='cardContainer'>
         <button id='addToOutfit' onClick={addHandler}>Add To Outfit</button>
       {outfitItems.slice(startingIndex, startingIndex + numOfCards).map((item, i) => {
-       return <OutfitCard item={item} key={i} remove={removeFromOutfit}/>
+       return <OutfitCard item={item} key={i} remove={removeHandler}/>
       })}
       </div>
 
