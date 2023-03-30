@@ -16,7 +16,7 @@
 }
 
 .container {
-  border: solid black 2px;
+  /* border: solid black 2px; */
   margin: 20px;
   padding: 5px;
   border-radius: 5px;
@@ -24,7 +24,7 @@
 
 }
 .card {
-  border: solid black 2px;
+  /* border: solid black 2px; */
   border-radius: 5px;
   display: inline-block;
   padding: 10px;

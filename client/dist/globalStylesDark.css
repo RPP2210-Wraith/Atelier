@@ -1,12 +1,13 @@
 :root {
-  --background1: #212121;
-  --background2: #414141;
-  --background3: #616161;
+  --background1: #424242;
+  --background2: #808080;
+  --background3: #cdcdcd;
   --text1: #FFFFFF;
 }
 
 body {
   background-color: var(--background1);
+  font-family: 'Quicksand', sans-serif;
 }
 
 #root {
@@ -14,3 +15,12 @@ body {
   color: var(--text1)
 }
 
+#relatedItemsComparison {
+  /* background-color: var(--background3) */
+  margin: 25px;
+}
+
+.card {
+  background-color: var(--background1)
+
+}

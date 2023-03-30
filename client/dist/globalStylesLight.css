@@ -3,13 +3,28 @@
   --background2: #d3d3d3;
   --background3: #797979;
   --text1: #000000;
+  --color1: #abe4fb;
+  --color2: #00b7ff;
+  --color3: #005678;
+
 }
 
 body {
   background-color: var(--background1);
+  font-family: 'Quicksand', sans-serif;
 }
 
 #root {
   background-color: var(--background2);
   color: var(--text1)
+}
+
+#relatedItemsComparison {
+  /* background-color: var(--background3) */
+  margin: 25px;
+}
+
+.card {
+  background-color: var(--background1)
+
 }
