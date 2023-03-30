@@ -11,8 +11,7 @@
 
 body {
   background-color: var(--background1);
-  font-family: 'Quicksand', sans-serif;
-}
+  font-family: 'Barlow Semi Condensed', sans-serif;}
 
 #root {
   background-color: var(--background2);
@@ -22,6 +21,10 @@ body {
 #relatedItemsComparison {
   /* background-color: var(--background3) */
   margin: 25px;
+}
+
+.widget {
+  margin: 20px;
 }
 
 .card {
