@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import StarRating from './star-rating-component.jsx';
 
 const RatingsOverviewSection = (props) => {
 
 
   const [reviewMetaData, setReviewMetaData] = useState({});
   const [fitRatings, setFitRatings] = useState({});
+  const [ratings, setRating] = useState('0%');
 
 
   useEffect(() => {
@@ -20,6 +22,7 @@ const RatingsOverviewSection = (props) => {
       console.log('Review MetaData:', res.data);
       setReviewMetaData(res.data);
       setFitRatings(res.data.characteristics);
+      setRating(res.data.ratings);
     }
     )
   }, [props.productID]);
@@ -65,7 +68,8 @@ const RatingsOverviewSection = (props) => {
       < div class='flex-child-1' id='ratingsOverview' >
         <h2>Ratings Overview Section</h2>
         <div>
-          <h1>{getMeanRating(reviewMetaData.ratings) + ' ⭐⭐⭐⭐⭐'} </h1>
+          <h1>{getMeanRating(reviewMetaData.ratings)}</h1>
+          <StarRating ratings={ratings} getMeanRating={getMeanRating} />
           {/* https://jsfiddle.net/NullDev/nju10Loz/2/ */}
         </div>
         <h3>{getRecommendedPercentage(reviewMetaData.recommended) + '% of reviews recommend this product'}</h3>
