@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ratingsStyles.css';
 import { format, parseISO } from "date-fns";
+import axios from 'axios';
 
 const RatingsTile = (props) => {
 
@@ -11,11 +12,31 @@ const RatingsTile = (props) => {
   }, [props.review.helpfulness])
 
   const markAsHelpful = () => {
-    console.log('Helpful? button clicked!! for ' + props.review.review_id);
+    //console.log('Helpful? button clicked!! for ' + props.review.review_id);
+    axios({
+      method: 'PUT',
+      url: `/reviews/${props.review.review_id}/helpful`,
+      params: {
+        review_id: props.review.review_id
+      }
+    }).then((response) => {
+      console.log(`review ${props.review.review_id} marked helpful: `, response.data);
+      setHelpfulnessCount(helpfulnessCount + 1);
+
+    });
   };
 
   const reportReview = () => {
-    console.log('Report button clicked!! for ' + props.review.review_id);
+    //console.log('Report button clicked!! for ' + props.review.review_id);
+    axios({
+      method: 'PUT',
+      url: `/reviews/${props.review.review_id}/report`,
+      params: {
+        review_id: props.review.review_id
+      }
+    }).then((response) => {
+      console.log(`review ${props.review.review_id} reported: `, response.data);
+    });
   }
 
   const starRating = (starCount) => {
@@ -57,3 +78,23 @@ const RatingsTile = (props) => {
 };
 
 export default RatingsTile;
+
+
+/**
+ *      "product": "71699",
+    "page": 0,
+    "count": 10,
+    "results": [
+        {
+            "review_id": 1275064,
+            "rating": 5,
+            "summary": "very good 111",
+            "recommend": true,
+            "response": null,
+            "body": "Below the input for the Review body, a counter should appear.  This counter should let the user know how many characters are needed to reach the 50 character minimum",
+            "date": "2022-06-02T00:00:00.000Z",
+            "reviewer_name": "test22",
+            "helpfulness": 2,
+            "photos": []
+        },
+ */
