@@ -11,7 +11,9 @@ exports.getReviews = (req, res) => {
     method: 'GET',
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews',
     params: {
-      product_id: req.query.product_id
+      product_id: req.query.product_id,
+      //page: req.query.page
+      count: 10
     },
     headers: {
       'User-Agent': 'request',
@@ -31,7 +33,7 @@ exports.getReviewsMetaData = (req, res) => {
     method: 'GET',
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta',
     params: {
-      product_id: req.query.product_id
+      product_id: req.query.product_id,
     },
     headers: {
       'User-Agent': 'request',
@@ -39,6 +41,40 @@ exports.getReviewsMetaData = (req, res) => {
     }
   }).then((response) => {
     //console.log('REVIEWS: ', response.data);
+    res.send(JSON.stringify(response.data));
+  });
+
+};
+
+exports.markReviewHelpful = (req, res) => {
+
+  axios({
+    method: 'PUT',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${req.query.review_id}/helpful`,
+    headers: {
+      'User-Agent': 'request',
+      'Authorization': auth.TOKEN
+    }
+  }).then((response) => {
+    //console.log('review marked helpful: ', response.data);
+    res.status(204);
+    res.send(JSON.stringify(response.data));
+  });
+
+};
+
+exports.reportReview = (req, res) => {
+
+  axios({
+    method: 'PUT',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${req.query.review_id}/report`,
+    headers: {
+      'User-Agent': 'request',
+      'Authorization': auth.TOKEN
+    }
+  }).then((response) => {
+    //console.log('review reported: ', response.data);
+    res.status(204);
     res.send(JSON.stringify(response.data));
   });
 

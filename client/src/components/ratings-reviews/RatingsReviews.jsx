@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import RatingsOverviewSection from './ratings-overview-section.jsx';
 import RatingsList from './ratings-list.jsx';
 import axios from 'axios';
-
+import './ratingsStyles.css';
 
 
 
@@ -13,7 +13,7 @@ const RatingsReviews = (props) => {
   const setReviews = props.setReviews;
 
   useEffect(() => {
-    console.log('ProductID in Ratings/Review: ', props.productID);
+    //console.log('ProductID in Ratings/Review: ', props.productID);
     axios({
       method: 'GET',
       url: '/reviews',
@@ -27,8 +27,10 @@ const RatingsReviews = (props) => {
     )
   }, [props.productID]);
 
+
+
   return (
-    <div>
+    <div id='ratings-review-widget' class='flex-parent center'>
       <RatingsOverviewSection productID={props.productID} />
       <RatingsList reviews={reviews} />
     </div>
