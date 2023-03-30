@@ -24,7 +24,7 @@ const App = () => {
     }
     setMyOutfit(JSON.parse(localStorage.getItem('myOutfit')));
   }, [])
-  //console.log('productID inside of App: ', productID)
+
   // Function to add item to myOutfit localStorage
   const addToOutfit = (productID, styleID) => {
     // Get current outfit array
@@ -56,7 +56,10 @@ const App = () => {
 
   return (
     <div>
-      <Overview
+
+      <InteractionTracking
+        Widget={Overview}
+        widgetName={'Overview'}
         productID={productID}
         styleID={styleID}
         setStyleID={setStyleID}
@@ -66,15 +69,6 @@ const App = () => {
         like={like}
         setLike={setLike}
       />
-      {/* <RelatedItemsComparison
-        productID={productID}
-        styleID={styleID}
-        setProductID={setProductID}
-        addToOutfit={addToOutfit}
-        removeFromOutfit={removeFromOutfit}
-        outfit={myOutfit}
-
-      /> */}
 
       <InteractionTracking
         Widget={RelatedItemsComparison}
@@ -93,28 +87,17 @@ const App = () => {
       />
 
 
-
-
-      <RatingsReviews
+      <InteractionTracking
+        Widget={RatingsReviews}
+        widgetName={'Ratings & Reviews'}
         productID={productID}
         reviews={reviews}
         setReviews={setReviews}
       />
+
     </div>
   )
 }
 
 export default App;
-
-// const removeFromOutfit = (productID, styleID) => {
-//   const outfit = JSON.parse(localStorage.getItem('myOutfit'));
-//   // Remove item that has style and product ID
-//   const newOutfit = outfit.filter((outfit) => ((outfit.style !== styleID) && (outfit.product !== productID)))
-//   localStorage.setItem('myOutfit', JSON.stringify(newOutfit))
-//   setMyOutfit(newOutfit);
-//   console.log('new outfit inside remove', newOutfit)
-//   // Add item to localStorage
-// }
-
-// [{"product":71699,"style":444228},{"product":71697,"style":444218},{"product":71703,"style":444250}]
 
