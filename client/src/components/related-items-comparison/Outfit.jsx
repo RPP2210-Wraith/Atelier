@@ -17,7 +17,7 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
   const loadOutfit = () => {
     // Outfit is an array of objects with product and style keys
     // Send an axios request for items
-    console.log('Outfit inside Outfit component: ', outfit)
+    console.log('Outfit inside Outfit component: ', outfit);
     if (outfit.length > 0) {
       axios.get('/outfitItems', {
         params: {
@@ -69,7 +69,7 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
       <div id='outfitContainer'>
       <button
         onClick={() => {decrementCards(setStartingIndex)}}
-        className={startingIndex !== 0 ?  '': 'hidden'}
+        className={startingIndex !== 0 ?  'cardNavButton': 'hidden cardNavButton'}
         disabled={startingIndex !== 0 ?  false : true}>
           {'<'}
       </button>
@@ -83,7 +83,7 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
 
       <button
         onClick={() => {incrementCards(setStartingIndex)}}
-        className={outfitItems[startingIndex + numOfCards] !== undefined ? '': 'hidden'}
+        className={outfitItems[startingIndex + numOfCards] !== undefined ? 'cardNavButton': 'hidden cardNavButton'}
         disabled= {outfitItems[startingIndex + numOfCards] !== undefined ? false : true} >
           {'>'}
       </button>

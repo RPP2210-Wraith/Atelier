@@ -15,8 +15,8 @@ const RelatedCard = ( { item, setProductID, styleID, productID, handleClick }) =
       <div>
       <img src={item.image} className="cardThumbs"></img>
       </div>
-      <h3 className='cardText'>{item !== undefined ? item.name : 'Title' }</h3>
       <p>{item !== undefined ? item.category : 'Category'}</p>
+      <h3 className='cardText'>{item !== undefined ? item.name : 'Title' }</h3>
       <p>{item !== undefined ? `$${item.price}` : 'Price'}</p>
       <p>{`Rating: ${item.rating}`}</p>
       <button onClick={(e) => {e.stopPropagation(); setModalIsOpen(true)}}>⭐</button>

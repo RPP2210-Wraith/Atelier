@@ -16,7 +16,10 @@ body {
 
 #root {
   background-color: var(--background2);
-  color: var(--text1)
+  color: var(--text1);
+  width: 70vw;
+  margin: 0 auto
+
 }
 
 #relatedItemsComparison {
