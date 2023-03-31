@@ -5,6 +5,8 @@ import './overview.css';
 import AddToCart from './AddToCart.jsx'
 import StyleSelector from './StyleSelector.jsx';
 import ImageGallery from './ImageGallery.jsx';
+import StarRatings from 'react-star-ratings';
+import Rating from '../ratings-reviews/ratings-overview-section.jsx'
 
 const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, reviews, like, setLike }) => {
 
@@ -14,8 +16,9 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
 
   const [skus, setSkus] = useState([])
   const [selectedStyle, setSelectedStyle] = useState({})
-  console.log('productID inside Overview: ', productID)
 
+  const [cartCount, setCartCount] = useState(0);
+  const [cartUpdate, setCartUpdate] = useState(false);
 
   const fetchProduct = () => {
     axios.get('/overview', {
@@ -39,19 +42,40 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
     setSelectedStyle(style)
   }
 
-  const addCart = (size, quantity) => {
-    console.log(productID, selectedStyle.style_id, size, quantity)
+  const addCart = (sku_id, quantity) => {
+    setCartCount(cartCount + quantity);
+    setCartUpdate(true);
+    setTimeout(() => {
+      setCartUpdate(false);
+    }, 1500);
+
+    axios({
+      method: 'POST',
+      url: '/cart',
+      params: {
+        "sku_id": sku_id,
+        "count": quantity
+      }
+    })
+
+    console.log('cccc', sku_id, quantity)
   }
 
   return (
     <div id='overview'>
       <h1>Overview</h1>
+      <div className='cart'>🛒 {cartCount}</div>
+      {cartUpdate && <div className='cartMessage'>Added to Cart</div>}
+
       <div className='flex'>
 
         <ImageGallery images={selectedStyle.photos} productID={productID} />
 
         <div className='right'>
-          <div className='div'>✩✩✩✩✩ Read all {reviews.length} reviews</div>
+          <div className='div'>
+            <Rating />
+            <StarRatings rating = {3.85} starDimension="20px" starSpacing="1%vh" starRatedColor = '#FDCC0D'/>
+            <a className='div' href='#'>Read all {reviews.length} reviews</a></div>
           <div className='div'>{product.category}</div>
           <div className='div'><h3>{product.name}</h3></div>
 

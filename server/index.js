@@ -20,6 +20,10 @@ app.get('/overview', (req, res) => {
   overview.getProduct(req, res)
 })
 
+app.post('/cart', (req, res) => {
+  overview.postCart(req, res)
+})
+
 app.get('/relatedItems', relatedItemsComparison);
 
 app.get('/outfitItems', getOutfitItems)
