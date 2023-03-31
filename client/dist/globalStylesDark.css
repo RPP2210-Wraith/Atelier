@@ -3,6 +3,11 @@
   --background2: #808080;
   --background3: #cdcdcd;
   --text1: #FFFFFF;
+  --color1: #abe4fb;
+  --color2: #00b7ff;
+  --color3: #005678;
+  --logoColor: #f1f0ec;
+
 }
 
 body {
@@ -19,15 +24,30 @@ body {
   margin: 25px;
 }
 
-.card {
-  background-color: var(--background1)
+.widget {
+  margin: 20px;
+}
 
+.card {
+  background-color: var(--background1);
 }
 
 #header {
   text-align: center;
-  background-color:#f1f0ec
+  background-color:var(--logoColor);
+  border-bottom: solid black 4px;
+  position: relative
 }
 #logo {
   height: 150px
+}
+#toggleDarkButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 30px;
+  background-color: var(--background3);
+  color: black;
+  border-radius: 5px;
+  border: none
 }

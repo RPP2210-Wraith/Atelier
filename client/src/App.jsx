@@ -71,7 +71,7 @@ const App = () => {
       <div id='header'>
         <img src={logo} id='logo'></img>
 
-        <button onClick={() => { setIsDarkMode(!isDarkMode) }}>Toggle Dark Mode</button>
+        <button onClick={() => { setIsDarkMode(!isDarkMode) }} id='toggleDarkButton'>Toggle Dark Mode</button>
       </div>
 
       <InteractionTracking
