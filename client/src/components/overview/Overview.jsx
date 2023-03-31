@@ -37,6 +37,7 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
   useEffect(fetchProduct, [productID]);
 
   const select = (style) => {
+    console.log('ssss', style)
     setStyleID(style.style_id);
     setSkus(style.skus);
     setSelectedStyle(style)
@@ -49,15 +50,21 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
       setCartUpdate(false);
     }, 1500);
 
-    axios({
-      method: 'POST',
-      url: '/cart',
-      params: {
-        "sku_id": sku_id,
-        "count": quantity
-      }
-    })
-
+    if (!localStorage.getItem('myCart')) {
+      localStorage.setItem('myCart', '[]')
+    }
+    const myCart = JSON.parse(localStorage.getItem('myCart'));
+    myCart.push({
+      sku_id: sku_id,
+      count: quantity
+    });
+    localStorage.setItem('myCart', JSON.stringify(myCart))
+    // axios({
+    //   method: 'POST',
+    //   url: '/cart',
+    //   params: {sku_id, quantity}
+    // })
+    console.log('myCart', myCart)
     console.log('cccc', sku_id, quantity)
   }
 
@@ -74,9 +81,9 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
         <div className='right'>
           <div className='div'>
             <StarRatings rating = {3.85} starDimension="20px" starSpacing="1%vh" starRatedColor = 'orange'/>
-            <a className='div' href='#'>Read all {reviews.length} reviews</a></div>
+            <a className='div' href='#ratings-review-widget'>Read all {reviews.length} reviews</a></div>
           <div className='div'>{product.category}</div>
-          <div className='div'><h3>{product.name}</h3></div>
+          <div className='div'><h2>{product.name}</h2></div>
 
           <StyleSelector styles={styles} select={select} selectedStyle={selectedStyle} key={styles.length}/>
 
@@ -86,8 +93,8 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
       </div>
 
       <div className='flex'>
-        <div className='left'><h4>{product.slogan}</h4>{product.description}</div>
-        <div className='right'><h4>Features</h4>
+        <div className='left'><h3>{product.slogan}</h3>{product.description}</div>
+        <div className='right'><h3>Features</h3>
           {features.map((feature) => {
             return <div key={feature.feature}>{feature.feature}: {feature.value}</div>;
           })}

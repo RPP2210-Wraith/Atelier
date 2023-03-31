@@ -11,7 +11,7 @@ const ImageGallery = ({ images, productID }) => {
   const [lastIndex, setLastIndex] = useState(0);
 
   const [expandedImage, setExpandedImage] = useState(false);
-
+  const [zoom, setZoom] = useState(false)
   useEffect(() => {
    setImageIndex(0);
    setStartingIndex(0);
@@ -51,18 +51,19 @@ const ImageGallery = ({ images, productID }) => {
       </div>
 
 
-      <Modal isOpen={expandedImage}>
-        <div className='expanded'>
-          <button className='leftImage' onClick={() => setImageIndex(imageIndex - 1)} disabled={imageIndex === 0}>{'<'}</button>
-          <img className='expandedImage' src={image} onClick={() => setExpandedImage(false)} />
-          <button className='rightImage' onClick={() => setImageIndex(imageIndex + 1)} disabled={imageIndex + 1 === lastIndex}>{'>'}</button>
-        </div>
-
-        <div className='expandedGallery'>
-        {images && images.map((image, index) => (
-          <img className='expandedThumbNail' src={image.thumbnail_url}  onClick={() => setImageIndex(index)} key={index}/>
-        ))}
-        </div>
+      <Modal isOpen={expandedImage} ariaHideApp={false} stle={{overlay: {position: 'fixed', top: 0, left: 0, width: '100vw', 'align-items': 'center'}, content: {position: 'absolute', top: 0, left: 0, width: '100vw'}}}>
+        {zoom ? <div className='zoom' onClick={() => setZoom(false)}><img className='zoomedImage' src={image} /></div>
+        :
+        <><div className='expanded'>
+            <button className='leftImage' onClick={() => setImageIndex(imageIndex - 1)} disabled={imageIndex === 0}>{'<'}</button>
+            <img className='expandedImage' src={image} onClick={() => setZoom(true)} />
+            <button className='rightImage' onClick={() => setImageIndex(imageIndex + 1)} disabled={imageIndex + 1 === lastIndex}>{'>'}</button>
+            <button className='closeButton' onClick={() => setExpandedImage(false)}>✖</button>
+          </div><div className='expandedGallery'>
+              {images && images.map((image, index) => (
+                <img className='expandedThumbNail' src={image.thumbnail_url} onClick={() => renderImage(image.url, index)} key={index}/>
+              ))}
+            </div></>}
       </Modal>
 
     </div>
