@@ -29,7 +29,8 @@ exports.getProduct = (req, res) => {
       }, [])
       res.send(datas)
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log('Error in retrieving this product', err)
       res.sendStatus(501);
     })
 }

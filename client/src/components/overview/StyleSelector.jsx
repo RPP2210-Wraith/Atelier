@@ -13,18 +13,18 @@ const StyleSelector = ({ styles, select, selectedStyle }) => {
       <div className='div'><span className='style'>{'STYLE >'}</span>{selectedStyle.name}</div>
 
       <div className='styleSelector div'>
-        {styles.map((style, index) => {
+        {styles.map((style) => {
           if (style.style_id === selectedStyle.style_id) {
             return (
-              <div key={index}>
+              <div key={style.style_id}>
                 <div id='checkmark'>☑️</div>
-                <Style Default={style['default?'] ? true : false} style={style} thumbNail={style.photos[0].thumbnail_url} select={select} key={style.style_id} />
+                <Style Default={style['default?'] ? true : false} style={style} thumbNail={style.photos[0].thumbnail_url} select={select} />
               </div>
             )
           } else {
             return (
-              <div key={index}>
-                <Style Default={style['default?'] ? true : false} style={style} thumbNail={style.photos[0].thumbnail_url} select={select} key={style.style_id} />
+              <div key={style.style_id}>
+                <Style Default={style['default?'] ? true : false} style={style} thumbNail={style.photos[0].thumbnail_url} select={select} />
               </div>
             )
           }

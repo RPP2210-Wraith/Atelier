@@ -73,8 +73,7 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
 
         <div className='right'>
           <div className='div'>
-            <Rating />
-            <StarRatings rating = {3.85} starDimension="20px" starSpacing="1%vh" starRatedColor = '#FDCC0D'/>
+            <StarRatings rating = {3.85} starDimension="20px" starSpacing="1%vh" starRatedColor = 'orange'/>
             <a className='div' href='#'>Read all {reviews.length} reviews</a></div>
           <div className='div'>{product.category}</div>
           <div className='div'><h3>{product.name}</h3></div>

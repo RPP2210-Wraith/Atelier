@@ -30,12 +30,16 @@ const ImageGallery = ({ images, productID }) => {
           {images && images.slice(startingIndex, startingIndex + 7).map((image, index) => {
             if (index === imageIndex) {
               return (
-                <div className='selectedImage'>
-                  <Gallery thumbNail={image.thumbnail_url} image={image.url} index={index} imageIndex={imageIndex} images={images} renderImage={renderImage} setLastIndex={setLastIndex} key={index} />
+                <div className='selectedImage' key={index}>
+                  <Gallery thumbNail={image.thumbnail_url} image={image.url} index={index} imageIndex={imageIndex} images={images} renderImage={renderImage} setLastIndex={setLastIndex} />
                 </div>
-              );
+              )
             } else {
-              return <Gallery thumbNail={image.thumbnail_url} image={image.url} index={index} imageIndex={imageIndex} images={images} renderImage={renderImage} setLastIndex={setLastIndex} key={index} />;
+              return (
+                <div key={index}>
+                  <Gallery thumbNail={image.thumbnail_url} image={image.url} index={index} imageIndex={imageIndex} images={images} renderImage={renderImage} setLastIndex={setLastIndex}/>
+                </div>
+              )
             }
           })}
           <button className='downButton' onClick={() => setStartingIndex(startingIndex + 7)} disabled={startingIndex + 7 > lastIndex}>{'⌄'}</button>
@@ -56,7 +60,7 @@ const ImageGallery = ({ images, productID }) => {
 
         <div className='expandedGallery'>
         {images && images.map((image, index) => (
-          <img className='expandedThumbNail' src={image.thumbnail_url}  onClick={() => setImageIndex(index)}/>
+          <img className='expandedThumbNail' src={image.thumbnail_url}  onClick={() => setImageIndex(index)} key={index}/>
         ))}
         </div>
       </Modal>

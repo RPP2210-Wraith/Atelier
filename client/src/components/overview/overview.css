@@ -66,18 +66,23 @@
 
 .leftButton {
   position: absolute;
-  margin-left: 3vw;
-  height: 50px;
+  margin-left: 5vw;
+  height: 40px;
+  width: 40px;
   margin-top: 27vh;
-  cursor:pointer
+  cursor:pointer;
+  font-size: 20px
 }
 
 .rightButton {
   position: absolute;
-  height: 50px;
+  height: 40px;
+  width: 40px;
   margin-left: 34vw;
   margin-top: 27vh;
   cursor:pointer;
+  font-size: 20px
+
 }
 
 .upButton {
@@ -125,6 +130,8 @@
   position: absolute;
   margin-left: 6vw;
   height: 60px;
+  width: 60px;
+  font-size: 30px;
   margin-top: 27vh;
   cursor:pointer
 }
@@ -132,6 +139,8 @@
 .rightImage {
   position: absolute;
   height: 60px;
+  width: 60px;
+  font-size: 30px;
   margin-left: 83vw;
   margin-top: 27vh;
   cursor:pointer;
