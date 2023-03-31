@@ -29,17 +29,21 @@ exports.getProduct = (req, res) => {
       }, [])
       res.send(datas)
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log('Error in retrieving this product', err)
       res.sendStatus(501);
     })
 }
 
 exports.postCart = (req, res) => {
   const data = req.query;
+  // console.log(data)
+  const sku_id = req.query.sku_id;
+  const count = req.query.count;
     axios({
     method: 'POST',
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/cart',
-    query: data,
+    body: {sku_id, count},
     headers: {
     'User-Agent': 'request',
     'Authorization': `${config.TOKEN}`,
