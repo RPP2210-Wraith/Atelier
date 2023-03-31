@@ -17,6 +17,7 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
   const loadOutfit = () => {
     // Outfit is an array of objects with product and style keys
     // Send an axios request for items
+    console.log('Outfit inside Outfit component: ', outfit)
     if (outfit.length > 0) {
       axios.get('/outfitItems', {
         params: {

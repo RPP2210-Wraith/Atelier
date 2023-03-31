@@ -58,7 +58,7 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 
     // Third Attempt
     const getOutfitItems = (req, res) => {
-      console.log('req.query: ', req.query);
+      //console.log('req.query: ', req.query);
       console.log('req.query.outfit: ', req.query.outfit);
 
       const outfitItems = req.query.outfit;
@@ -76,7 +76,9 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
       // Return promise.all and pass it the array of promises
       return Promise.all(promises)
       .then((info) => {
+        console.log('result from ')
         info.forEach((dataTuple, index) => {
+          console.log('dataTuple: ', dataTuple)
           var style = dataTuple[1].data.results.find((result) => {
             return result.style_id.toString() === outfitItems[index].style;
           })
@@ -85,7 +87,8 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
           //console.log('style: ', style);
           var rating = calculateAvg(dataTuple[2].data.ratings);
 
-          var image = style.photos[0].thumbnail_url;
+
+          var image = style.photos ? style.photos[0].thumbnail_url : null;
           var name = dataTuple[0].data.name;
           var category = dataTuple[0].data.category;
           var price = style.original_price;
@@ -114,3 +117,5 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 
 
     module.exports = getOutfitItems;
+
+

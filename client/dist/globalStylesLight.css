@@ -30,7 +30,6 @@ body {
 
 .card {
   background-color: var(--background1);
-  border: solid black 2px;
 }
 
 #header {
