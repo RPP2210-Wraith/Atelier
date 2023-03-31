@@ -16,7 +16,9 @@ body {
 
 #root {
   background-color: var(--logoColor);
-  color: var(--text1)
+  color: var(--text1);
+  width: 70vw;
+  margin: 0 auto;
 }
 
 #relatedItemsComparison {
@@ -50,4 +52,16 @@ body {
   color: white;
   border-radius: 5px;
   border: none
+}
+
+.ReactModal__Content {
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+}
+
+.ReactModal__Overlay {
+  /* background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999; */
 }

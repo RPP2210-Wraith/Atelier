@@ -10,7 +10,7 @@ const OutfitCard = ({ item, remove, }) => {
 
   return (
     <div className='card outfitCard'>
-      <img src={item.image} className='cardThumbs'></img>
+      <img src={item.image} className='cardThumbs' alt='Product Image'></img>
       <p>{item.category}</p>
       <h3>{item.name}</h3>
       <p className={ onSale? 'redStrikethrough' : '' }>{item.price}</p>
