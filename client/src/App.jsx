@@ -98,10 +98,6 @@ const App = () => {
         outfit={myOutfit}
       />
 
-      <InteractionTracking
-        Widget={QuestionAnswer}
-        widgetName={'Question & Answer'}
-      />
 
 
       <InteractionTracking
