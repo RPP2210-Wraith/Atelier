@@ -1,0 +1,67 @@
+:root {
+  --background1: #ffffff;
+  --background2: #d3d3d3;
+  --background3: #797979;
+  --text1: #000000;
+  --color1: #abe4fb;
+  --color2: #00b7ff;
+  --color3: #005678;
+  --logoColor: #f1f0ec;
+
+}
+
+body {
+  background-color: var(--background1);
+  font-family: 'Barlow Semi Condensed', sans-serif;}
+
+#root {
+  background-color: var(--logoColor);
+  color: var(--text1);
+  width: 70vw;
+  margin: 0 auto;
+}
+
+#relatedItemsComparison {
+  /* background-color: var(--background3) */
+  margin: 25px;
+}
+
+.widget {
+  margin: 20px;
+}
+
+.card {
+  background-color: var(--background1);
+}
+
+#header {
+  text-align: center;
+  background-color:var(--logoColor);
+  border-bottom: solid black 4px;
+  position: relative
+}
+#logo {
+  height: 150px
+}
+#toggleDarkButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 30px;
+  background-color: var(--background3);
+  color: white;
+  border-radius: 5px;
+  border: none
+}
+
+.ReactModal__Content {
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+}
+
+.ReactModal__Overlay {
+  /* background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999; */
+}
