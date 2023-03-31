@@ -26,7 +26,6 @@ const RatingsList = (props) => {
 
   return (
     <div class='flex-child-2' id='ratingsList' >
-      <h2>Ratings List</h2>
       {props.reviews ?
 
         <div>

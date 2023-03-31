@@ -14,7 +14,9 @@ const StarRating = (props) => {
         ★★★★★
       </div>
       {/* so i think i know what the issue is, will change it to be individual spans tomorrow and see if it works */}
-      <div class='back-stars'>★★★★★</div>
+      <div class='back-stars'>
+        ★★★★★
+      </div>
       <button onClick={() => {
         changeRating('100%')
       }}>print rating % in console</button>
