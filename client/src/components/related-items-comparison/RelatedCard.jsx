@@ -14,7 +14,7 @@ const RelatedCard = ( { item, setProductID, styleID, productID, handleClick }) =
 
   return (
     <div className="card relatedCard" onClick={() => {setProductID(item.id)}}>
-      <div>
+      <div className='cardImgContainer'>
       <img src={item.image || placeholder} className="cardThumbs" alt='ProductImage'></img>
       </div>
       <p>{item !== undefined ? item.category : 'Category'}</p>
