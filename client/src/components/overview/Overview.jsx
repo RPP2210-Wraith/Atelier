@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './overview.css';
-import xx from '../ratings-reviews/ratingsStyles.css'
 
 import AddToCart from './AddToCart.jsx'
 import StyleSelector from './StyleSelector.jsx';
 import ImageGallery from './ImageGallery.jsx';
+import StarRatings from 'react-star-ratings';
+import Rating from '../ratings-reviews/ratings-overview-section.jsx'
 
 const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, reviews, like, setLike }) => {
 
@@ -52,8 +53,8 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
       method: 'POST',
       url: '/cart',
       params: {
-        sku_id: sku_id,
-        count: quantity
+        "sku_id": sku_id,
+        "count": quantity
       }
     })
 
@@ -71,7 +72,10 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
         <ImageGallery images={selectedStyle.photos} productID={productID} />
 
         <div className='right'>
-          <div className='div'>✩✩✩✩✩<a href='#'> Read all {reviews.length} reviews</a></div>
+          <div className='div'>
+            <Rating />
+            <StarRatings rating = {3.85} starDimension="20px" starSpacing="1%vh" starRatedColor = '#FDCC0D'/>
+            <a className='div' href='#'>Read all {reviews.length} reviews</a></div>
           <div className='div'>{product.category}</div>
           <div className='div'><h3>{product.name}</h3></div>
 

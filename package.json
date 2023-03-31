@@ -48,6 +48,7 @@
     "jest-environment-jsdom": "^29.5.0",
     "node-mocks-http": "^1.12.2",
     "nodemon": "^2.0.21",
+    "react-star-ratings": "^2.3.0",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
   }
