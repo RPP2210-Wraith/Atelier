@@ -20,8 +20,20 @@ module.exports = {
         test: /.css$/i,
         exclude: path.join(__dirname, 'node_modules'),
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|jpeg|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/',
+              publicPath: 'images/'
+            }
+          }
+        ]
       }
     ]
   }
-
 }
