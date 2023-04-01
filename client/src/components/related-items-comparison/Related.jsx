@@ -19,22 +19,32 @@ const Related = ({ productID, setProductID, styleID }) => {
 
   const fetchAndCacheRelatedItems = () => {
     setIsLoading(true);
+
+    // Create cached items in localStorage if it doesn't already exist
+    if (!localStorage.getItem('cachedRelatedItems')) {
+      localStorage.setItem('cachedRelatedItems', '{}')
+    }
+     // Get current cached items object
+     const cacheFromLocalStorage = JSON.parse(localStorage.getItem('cachedRelatedItems'));
+
     //  If the product ID is in the cache
-    if (cachedRelatedItems[productID]) {
-      console.log('pulled from cache');
-      setRelatedItems(cachedRelatedItems[productID]);
+    if (cacheFromLocalStorage[productID]) {
+      console.log('Related items pulled from cache');
+      setRelatedItems(cacheFromLocalStorage[productID]);
       setStartingIndex(0);
       setIsLoading(false);
     } else {
-      console.log('pulled from server')
+      console.log('Related items pulled from server')
       axios.get('/relatedItems', {
         params: { productID: productID }
       })
       .then((response) => {
+        cacheFromLocalStorage[productID] = response.data;
         setCachedRelatedItems((prevState) => {
           prevState[productID] = response.data;
           return prevState;
         })
+        localStorage.setItem('cachedRelatedItems', JSON.stringify(cacheFromLocalStorage))
         setRelatedItems(response.data);
         setStartingIndex(0);
         setIsLoading(false);
@@ -42,7 +52,7 @@ const Related = ({ productID, setProductID, styleID }) => {
     }
   }
 
-  // Retrieve related items whenever product ID updates
+  // Retrieve related items from cache or server whenever product ID updates
   useEffect(fetchAndCacheRelatedItems, [productID]);
 
   // If still loading, render still loading message
