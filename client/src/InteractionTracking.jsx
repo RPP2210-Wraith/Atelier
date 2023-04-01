@@ -16,7 +16,7 @@ const InteractionTracking = (props) => {
         element: element,
         time: new Date().toISOString()
       };
-      console.log('interaction object: ', interaction);
+      //console.log('interaction object: ', interaction);
 
       axios.post('/interactions', interaction)
       .then((response) => {

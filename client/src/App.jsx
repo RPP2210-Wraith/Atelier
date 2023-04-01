@@ -14,12 +14,13 @@ import logo from '../../img/logo.png';
 const App = () => {
 
   const [productID, setProductID] = useState(71699);
-  const [styleID, setStyleID] = useState(1);
+  const [styleID, setStyleID] = useState(444228);
   const [myOutfit, setMyOutfit] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [like, setLike] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [styles, setStyles] = useState(null);
+  const [product, setProduct] = useState({});
 
 
   useEffect(() => {
@@ -35,6 +36,10 @@ const App = () => {
       else { styleSheet.disabled = false; }
 
   }, [isDarkMode])
+
+  useEffect(() => {
+    console.log('New Style ID: ', styleID)
+  }, [ styleID ])
 
 
   // Function to add item to myOutfit localStorage
@@ -85,6 +90,8 @@ const App = () => {
         reviews={reviews}
         like={like}
         setLike={setLike}
+        setProduct={setProduct}
+        product={product}
       />
 
       <InteractionTracking
@@ -93,6 +100,7 @@ const App = () => {
         productID={productID}
         styleID={styleID}
         setProductID={setProductID}
+        setStyleID={setStyleID}
         addToOutfit={addToOutfit}
         removeFromOutfit={removeFromOutfit}
         outfit={myOutfit}

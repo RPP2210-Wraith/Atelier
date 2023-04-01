@@ -6,7 +6,7 @@ import './relatedStyles.css';
 import axios from 'axios';
 
 
-const RelatedItemsComparison = ({ productID, styleID, setProductID, outfit, addToOutfit, removeFromOutfit }) => {
+const RelatedItemsComparison = ({ productID, styleID, setStyleID, setProductID, outfit, addToOutfit, removeFromOutfit }) => {
   // Should receive product ID as props
 
 
@@ -18,6 +18,7 @@ const RelatedItemsComparison = ({ productID, styleID, setProductID, outfit, addT
         productID={productID}
         setProductID={setProductID}
         styleID={styleID}
+        setStyleID={setStyleID}
       />
 
       <Outfit

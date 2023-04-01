@@ -77,7 +77,7 @@ const calculateAvg = (obj) => {
       })
       .then((styleInfo) => {
         const ratingsPromises = [];
-        styleInfo.forEach((itemStylesRes) => {
+        styleInfo.forEach((itemStylesRes, index) => {
           // Iterate through the arr to add the necessary style info to each item's object
           const itemStylesArr = itemStylesRes.data;
           for (var i = 0; i < itemStylesArr.results.length; i++) {
@@ -88,7 +88,20 @@ const calculateAvg = (obj) => {
               relatedItem.price = itemStyle.original_price;
               relatedItem.salePrice = itemStyle.sale_price;
               relatedItem.image = itemStyle.photos[0].thumbnail_url;
+              relatedItem.style_id = itemStyle.style_id;
           }
+        // Here, if no default style, there will be no relateddItem.price/salePrice/image
+        // Set based on the first style
+        if (index === itemStylesRes.length && !relatedItem.image) {
+          console.log('no default found')
+          relatedItem.price = itemStylesArr[0].original_price;
+          relatedItem.salePrice = itemStylesArr[0].sale_price;
+          relatedItem.image = itemStylesArr[0].photos[0].thumbnail_url;
+          relatedItem.style_id = itemStylesArr[0].style_id;
+        }
+
+        console.log('relatedItem after adding style info: ', relatedItem)
+
         // Finally, get the ratings data and pass to the next then block
         ratingsPromises.push(axios({
           url: `${API}/reviews/meta`,
@@ -101,6 +114,8 @@ const calculateAvg = (obj) => {
           },
         }))
         })
+
+
 
         return Promise.all(ratingsPromises);
       })

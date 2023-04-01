@@ -8,9 +8,9 @@ import ImageGallery from './ImageGallery.jsx';
 import StarRatings from 'react-star-ratings';
 import Rating from '../ratings-reviews/ratings-overview-section.jsx'
 
-const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, reviews, like, setLike }) => {
+const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, reviews, like, setLike, product, setProduct }) => {
 
-  const [product, setProduct] = useState({});
+  // const [product, setProduct] = useState({});
   const [styles, setStyles] = useState([]);
   const [features, setFeatures] = useState([]);
 
@@ -30,6 +30,12 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
       setProduct(response.data[0]);
       setStyles(response.data[1].results);
       setFeatures(response.data[0].features)
+
+      const currentStyle = response.data[1].results.find((style) => {
+        // Return the one where the styleID props === style_id
+        return style.style_id === styleID
+      })
+      setSelectedStyle(currentStyle);
     })
 
   }
@@ -37,7 +43,6 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
   useEffect(fetchProduct, [productID]);
 
   const select = (style) => {
-    console.log('ssss', style)
     setStyleID(style.style_id);
     setSkus(style.skus);
     setSelectedStyle(style)
