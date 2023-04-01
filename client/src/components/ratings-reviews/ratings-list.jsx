@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import RatingsTile from './ratings-tile.jsx';
 import SubmitReviewModal from './submit-review-modal.jsx';
+import Modal from 'react-modal';
 
 const RatingsList = (props) => {
 
@@ -62,7 +63,15 @@ const RatingsList = (props) => {
         <button class='button-center flex-child-1'
           onClick={addNewReview}
         >Add A Review</button>
-        {modalIsShowing ? <SubmitReviewModal /> : null}
+        {modalIsShowing ? <Modal
+          isOpen={modalIsShowing}
+          onRequestClose={() => {
+            setModalIsShowing(false);
+          }}
+          contentLabel='Submit Review'
+        >
+          <SubmitReviewModal />
+        </Modal> : null}
       </div>
     </div >
 
