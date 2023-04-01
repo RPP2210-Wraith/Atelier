@@ -88,7 +88,10 @@ const calculateAvg = (obj) => {
               relatedItem.price = itemStyle.original_price;
               relatedItem.salePrice = itemStyle.sale_price;
               relatedItem.image = itemStyle.photos[0].thumbnail_url;
+              relatedItem.style = itemStyle.style_id;
           }
+
+
         // Finally, get the ratings data and pass to the next then block
         ratingsPromises.push(axios({
           url: `${API}/reviews/meta`,

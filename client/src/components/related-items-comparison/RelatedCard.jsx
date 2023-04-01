@@ -6,6 +6,7 @@ import StarRatings from 'react-star-ratings';
 import placeholder from '../../../../img/product-placeholder.jpg'
 
 const RelatedCard = ( { item, setProductID, styleID, productID, handleClick }) => {
+
   const [ modalIsOpen, setModalIsOpen ] = useState(false)
   const closeModal = () => {
     setModalIsOpen(false);
@@ -13,7 +14,7 @@ const RelatedCard = ( { item, setProductID, styleID, productID, handleClick }) =
 
 
   return (
-    <div className="card relatedCard" onClick={() => {setProductID(item.id)}}>
+    <div className="card relatedCard" onClick={modalIsOpen ? null : () => {setProductID(item.id); }}>
       <div className='cardImgContainer'>
       <img src={item.image || placeholder} className="cardThumbs" alt='ProductImage'></img>
       </div>
