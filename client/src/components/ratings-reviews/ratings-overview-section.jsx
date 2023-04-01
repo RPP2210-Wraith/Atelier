@@ -41,7 +41,7 @@ const RatingsOverviewSection = (props) => {
       sumOfRatings += (votes * voteWeight);
       //console.log(parseInt(ratings[key]));
     }
-    var mean = (sumOfRatings / numOfVotes).toFixed(2);
+    var mean = (sumOfRatings / numOfVotes);
     console.log('Mean rating: ', mean);
     return mean;
   };
@@ -67,8 +67,8 @@ const RatingsOverviewSection = (props) => {
     reviewMetaData.ratings ?
       < div class='flex-child-1' id='ratingsOverview' >
         <div>
-          <h1>{getMeanRating(reviewMetaData.ratings)}</h1>
-          <StarRating ratings={ratings} getMeanRating={getMeanRating} />
+          <h1>{getMeanRating(reviewMetaData.ratings).toFixed(2)}</h1>
+          <StarRating rating={getMeanRating(reviewMetaData.ratings)} size='30px' />
           {/* https://jsfiddle.net/NullDev/nju10Loz/2/ */}
         </div>
         <h3>{getRecommendedPercentage(reviewMetaData.recommended) + '% of reviews recommend this product'}</h3>

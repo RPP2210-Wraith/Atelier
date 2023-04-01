@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ratingsStyles.css';
 import { format, parseISO } from "date-fns";
 import axios from 'axios';
+import StarRating from './star-rating-component.jsx';
 
 const RatingsTile = (props) => {
 
@@ -38,22 +39,12 @@ const RatingsTile = (props) => {
       console.log(`review ${props.review.review_id} reported: `, response.data);
     });
   }
-
-  const starRating = (starCount) => {
-    var stars = '';
-    for (var i = 0; i < starCount; i++) {
-
-      stars += '⭐';
-    }
-    return stars;
-  }
-
-
+  
   return (
     <ul>
       <div>
         <div class='flex-parent'>
-          <h4 class='flex-child-1'>{starRating(props.review.rating)}</h4>
+          <StarRating rating={props.review.rating} size='20px' />
           <small class='flex-child-1 center-vertically'>{props.review.reviewer_name + ", " + format(parseISO(props.review.date), 'MMMMMMM i, yyyy')}</small>
         </div>
         <h2>{props.review.summary}</h2>

@@ -12,7 +12,7 @@ const RatingsList = (props) => {
 
   const addNewReview = () => {
     console.log('Add new review clicked!');
-    setModalIsShowing(!modalIsShowing);
+    setModalIsShowing(!modalIsShowing)
   };
 
   const seeMoreReviews = () => {
@@ -46,9 +46,7 @@ const RatingsList = (props) => {
               }}>helpful</button>
               <button class='button' onClick={() => {
                 sortReviews('relevant');
-              }
-
-              }>relevant</button>
+              }}>relevant</button>
             </div>
           </div>
         </div>
@@ -69,8 +67,9 @@ const RatingsList = (props) => {
             setModalIsShowing(false);
           }}
           contentLabel='Submit Review'
+
         >
-          <SubmitReviewModal />
+          <SubmitReviewModal productID={props.productID} setModalIsShowing={setModalIsShowing} />
         </Modal> : null}
       </div>
     </div >

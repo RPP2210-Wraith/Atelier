@@ -1,8 +1,8 @@
-/* #ratingsList * {
-  border-style: solid;
-  border-color: pink;
-  padding: 5px;
-} */
+#ratingsList {
+  overflow: auto;
+  max-width: 1000px;
+  max-height: 900px;
+}
 
 /* #ratingsOverview * {
   border-style: solid;
@@ -36,7 +36,6 @@
 .center {
   margin: auto;
   width: 90%;
-  border: 3px solid green;
   padding: 10px;
 }
 
@@ -91,6 +90,20 @@
   background-color: darkgrey;
 }
 
+.bottom-margin {
+  margin-bottom: 50px;
+}
+
+.submit-rating-star {
+  font-size: 35px;
+  margin-right: 20px;
+}
+
+.submit-rating-star:hover {
+  color: orange;
+}
+
+/*end of styling for dropdown menu*/
 .star-rating {
   display: inline-block;
   unicode-bidi: bidi-override;
