@@ -13,6 +13,7 @@ const RatingsList = (props) => {
   const addNewReview = () => {
     console.log('Add new review clicked!');
     setModalIsShowing(!modalIsShowing)
+    
   };
 
   const seeMoreReviews = () => {

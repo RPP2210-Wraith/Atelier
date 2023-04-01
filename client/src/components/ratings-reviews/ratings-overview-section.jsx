@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import StarRating from './star-rating-component.jsx';
+import ProgressBar from './progress-bar.jsx';
 
 const RatingsOverviewSection = (props) => {
 
@@ -69,12 +70,20 @@ const RatingsOverviewSection = (props) => {
         <div>
           <h1>{getMeanRating(reviewMetaData.ratings).toFixed(2)}</h1>
           <StarRating rating={getMeanRating(reviewMetaData.ratings)} size='30px' />
-          {/* https://jsfiddle.net/NullDev/nju10Loz/2/ */}
         </div>
         <h3>{getRecommendedPercentage(reviewMetaData.recommended) + '% of reviews recommend this product'}</h3>
-        <h4>{fitRatings.Fit ? 'Mean Size Rating: ' + parseFloat(fitRatings.Fit.value).toFixed(2) : 'Loading...'}</h4>
-        <h4>{fitRatings.Comfort ? 'Mean Comfort Rating: ' + parseFloat(fitRatings.Comfort.value).toFixed(2) : 'Loading...'}</h4>
-        {/* https://jsfiddle.net/NullDev/nju10Loz/2/ same logic but just use some rectangles or something*/}
+        {fitRatings.Fit ?
+          <div>
+            <h4>{'Mean Size Rating: ' + parseFloat(fitRatings.Fit.value).toFixed(2)}</h4>
+            <ProgressBar bgcolor="orange" progress={`${fitRatings.Fit.value / 5 * 100}`} height={10} />
+          </div> : <div>Loading...</div>
+        }
+        {fitRatings.Comfort ? <div>
+          <h4>{'Mean Comfort Rating: ' + parseFloat(fitRatings.Comfort.value).toFixed(2)}</h4>
+          <ProgressBar bgcolor="orange" progress={`${fitRatings.Comfort.value / 5 * 100}`} height={10} />
+        </div> : <div>Loading...</div>
+        }
+        {/* progress bar https://www.geeksforgeeks.org/how-to-create-a-custom-progress-bar-component-in-react-js/ */}
       </div > : <div>Loading</div>
   );
 };
