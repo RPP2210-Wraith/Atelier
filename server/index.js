@@ -46,6 +46,10 @@ app.put('/reviews/:review_id/report', (req, res) => {
   ratingsReviews.reportReview(req, res);
 });
 
+app.post('/reviews', (req, res) => {
+  ratingsReviews.postNewReview(req, res);
+});
+
 
 
 

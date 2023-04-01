@@ -83,3 +83,21 @@ exports.reportReview = (req, res) => {
 
 };
 
+exports.postNewReview = (req, res) => {
+  console.log('SERVER REVIEW POST: ', req)
+  axios({
+    method: 'POST',
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews',
+    data: req.body,
+    headers: {
+      'User-Agent': 'request',
+      'Authorization': auth.TOKEN
+    }
+  }).then((response) => {
+    res.status(201);
+    res.send(JSON.stringify(response));
+  }).catch((err) => {
+    console.log('Post new review ERORR: ', err.response.data);
+  })
+}
+
