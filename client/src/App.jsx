@@ -4,7 +4,10 @@ import Overview from './components/overview/Overview.jsx';
 import QuestionAnswer from './components/question-answer/QuestionAnswer.jsx';
 import RatingsReviews from './components/ratings-reviews/RatingsReviews.jsx';
 import RelatedItemsComparison from './components/related-items-comparison/RelatedItemsComparison.jsx';
+import InteractionTracking from './InteractionTracking.jsx';
 import Modal from 'react-modal';
+import logo from '../../img/logo.png';
+
 
 
 
@@ -15,6 +18,8 @@ const App = () => {
   const [myOutfit, setMyOutfit] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [like, setLike] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [styles, setStyles] = useState(null);
 
 
   useEffect(() => {
@@ -23,7 +28,15 @@ const App = () => {
     }
     setMyOutfit(JSON.parse(localStorage.getItem('myOutfit')));
   }, [])
-  //console.log('productID inside of App: ', productID)
+
+  useEffect(() => {
+    var styleSheet = document.getElementById('lightMode');
+    if (isDarkMode) {styleSheet.disabled = true; }
+      else { styleSheet.disabled = false; }
+
+  }, [isDarkMode])
+
+
   // Function to add item to myOutfit localStorage
   const addToOutfit = (productID, styleID) => {
     // Get current outfit array
@@ -55,7 +68,15 @@ const App = () => {
 
   return (
     <div>
-      <Overview
+      <div id='header'>
+        <img src={logo} id='logo'></img>
+
+        <button onClick={() => { setIsDarkMode(!isDarkMode) }} id='toggleDarkButton'>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</button>
+      </div>
+
+      <InteractionTracking
+        Widget={Overview}
+        widgetName={'Overview'}
         productID={productID}
         styleID={styleID}
         setStyleID={setStyleID}
@@ -65,36 +86,31 @@ const App = () => {
         like={like}
         setLike={setLike}
       />
-      <RelatedItemsComparison
+
+      <InteractionTracking
+        Widget={RelatedItemsComparison}
+        widgetName={'RelatedItemsComparison'}
         productID={productID}
         styleID={styleID}
         setProductID={setProductID}
         addToOutfit={addToOutfit}
         removeFromOutfit={removeFromOutfit}
         outfit={myOutfit}
-
       />
-      <QuestionAnswer />
-      <RatingsReviews
+
+
+
+      <InteractionTracking
+        Widget={RatingsReviews}
+        widgetName={'Ratings & Reviews'}
         productID={productID}
         reviews={reviews}
         setReviews={setReviews}
       />
+
     </div>
   )
 }
 
 export default App;
-
-// const removeFromOutfit = (productID, styleID) => {
-//   const outfit = JSON.parse(localStorage.getItem('myOutfit'));
-//   // Remove item that has style and product ID
-//   const newOutfit = outfit.filter((outfit) => ((outfit.style !== styleID) && (outfit.product !== productID)))
-//   localStorage.setItem('myOutfit', JSON.stringify(newOutfit))
-//   setMyOutfit(newOutfit);
-//   console.log('new outfit inside remove', newOutfit)
-//   // Add item to localStorage
-// }
-
-// [{"product":71699,"style":444228},{"product":71697,"style":444218},{"product":71703,"style":444250}]
 

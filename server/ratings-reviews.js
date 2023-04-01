@@ -30,6 +30,8 @@ exports.getReviews = (req, res) => {
 
 exports.getReviewsMetaData = (req, res) => {
 
+  console.log('GetReviewsMetaData Request object: ', req.query);
+
   axios({
     method: 'GET',
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta',

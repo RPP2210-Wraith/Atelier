@@ -11,7 +11,7 @@ const ImageGallery = ({ images, productID }) => {
   const [lastIndex, setLastIndex] = useState(0);
 
   const [expandedImage, setExpandedImage] = useState(false);
-
+  const [zoom, setZoom] = useState(false)
   useEffect(() => {
    setImageIndex(0);
    setStartingIndex(0);
@@ -24,18 +24,22 @@ const ImageGallery = ({ images, productID }) => {
 
   return (
     <div className='left'>
-      <div className='imageGallery div' >
+      <div className='imageGallery' >
         <div className='gallery'>
           <button className='upButton' onClick={() => setStartingIndex(startingIndex - 7)} disabled={startingIndex === 0}>{'^'}</button>
           {images && images.slice(startingIndex, startingIndex + 7).map((image, index) => {
             if (index === imageIndex) {
               return (
-                <div className='selectedImage'>
-                  <Gallery thumbNail={image.thumbnail_url} image={image.url} index={index} imageIndex={imageIndex} images={images} renderImage={renderImage} setLastIndex={setLastIndex} key={index} />
+                <div className='selectedImage' key={index}>
+                  <Gallery thumbNail={image.thumbnail_url} image={image.url} index={index} imageIndex={imageIndex} images={images} renderImage={renderImage} setLastIndex={setLastIndex} />
                 </div>
-              );
+              )
             } else {
-              return <Gallery thumbNail={image.thumbnail_url} image={image.url} index={index} imageIndex={imageIndex} images={images} renderImage={renderImage} setLastIndex={setLastIndex} key={index} />;
+              return (
+                <div key={index}>
+                  <Gallery thumbNail={image.thumbnail_url} image={image.url} index={index} imageIndex={imageIndex} images={images} renderImage={renderImage} setLastIndex={setLastIndex}/>
+                </div>
+              )
             }
           })}
           <button className='downButton' onClick={() => setStartingIndex(startingIndex + 7)} disabled={startingIndex + 7 > lastIndex}>{'⌄'}</button>
@@ -47,18 +51,19 @@ const ImageGallery = ({ images, productID }) => {
       </div>
 
 
-      <Modal isOpen={expandedImage}>
-        <div className='expanded'>
-          <button className='leftImage' onClick={() => setImageIndex(imageIndex - 1)} disabled={imageIndex === 0}>{'<'}</button>
-          <img className='expandedImage' src={image} onClick={() => setExpandedImage(false)} />
-          <button className='rightImage' onClick={() => setImageIndex(imageIndex + 1)} disabled={imageIndex + 1 === lastIndex}>{'>'}</button>
-        </div>
-
-        <div className='expandedGallery'>
-        {images && images.map((image, index) => (
-          <img className='expandedThumbNail' src={image.thumbnail_url}  onClick={() => setImageIndex(index)}/>
-        ))}
-        </div>
+      <Modal isOpen={expandedImage} ariaHideApp={false} stle={{overlay: {position: 'fixed', top: 0, left: 0, width: '100vw', 'align-items': 'center'}, content: {position: 'absolute', top: 0, left: 0, width: '100vw'}}}>
+        {zoom ? <div className='zoom' onClick={() => setZoom(false)}><img className='zoomedImage' src={image} /></div>
+        :
+        <><div className='expanded'>
+            <button className='leftImage' onClick={() => setImageIndex(imageIndex - 1)} disabled={imageIndex === 0}>{'<'}</button>
+            <img className='expandedImage' src={image} onClick={() => setZoom(true)} />
+            <button className='rightImage' onClick={() => setImageIndex(imageIndex + 1)} disabled={imageIndex + 1 === lastIndex}>{'>'}</button>
+            <button className='closeButton' onClick={() => setExpandedImage(false)}>✖</button>
+          </div><div className='expandedGallery'>
+              {images && images.map((image, index) => (
+                <img className='expandedThumbNail' src={image.thumbnail_url} onClick={() => renderImage(image.url, index)} key={index}/>
+              ))}
+            </div></>}
       </Modal>
 
     </div>

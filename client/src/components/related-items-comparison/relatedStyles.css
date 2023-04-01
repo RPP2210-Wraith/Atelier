@@ -1,10 +1,4 @@
-#root {
-  width: 70vw;
-  margin: 0 auto
-}
-
 #relatedItemsComparison {
-  border: solid red 4px;
   padding: 20px;
   border-radius: 5px;
   overflow: auto;
@@ -17,7 +11,6 @@
 }
 
 .container {
-  border: solid black 2px;
   margin: 20px;
   padding: 5px;
   border-radius: 5px;
@@ -25,7 +18,6 @@
 
 }
 .card {
-  border: solid black 2px;
   border-radius: 5px;
   display: inline-block;
   padding: 10px;
@@ -33,7 +25,23 @@
   width: 200px;
   height: 300px;
   position: relative;
+  border: solid black 2px;
+}
 
+.cardNavButton {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: transparent;
+  color: black;
+  transition: background-color 0.4s ease-in-out;
+  border: none;
+}
+
+.cardNavButton:hover {
+  background-color: #00b7ff;
 }
 
 #addToOutfit {
@@ -100,21 +108,21 @@ height: 200px;
 .card button {
   position: absolute;
   text-align: center;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 15px;
   background-color: white;
   border-radius: 5px;
   border: solid black 3px;
   outline: none;
-  height: 40px;
-  width: 45px;
-  font-size: 26px
+  height: 35px;
+  width: 40px;
+  font-size: 22px
 }
 
 .compareTable {
   margin: 0 auto;
   border-collapse: collapse;
-  width: 100%;
+  width: 70%;
 }
 
 .compareTable th,
@@ -123,4 +131,9 @@ height: 200px;
   padding: 10px;
   margin: 30px;
   border: 1px solid black;
+}
+
+.ReactModal__Content {
+  width: 70%;
+  height: 70%;
 }

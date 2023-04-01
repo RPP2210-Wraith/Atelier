@@ -2,6 +2,24 @@
   border: solid black ;
 } */
 
+.cart {
+  margin-left: 62vw;
+  font-size: 30px;
+  text-align: center;
+  background-color: lightgray;
+  border-radius: 20px;
+  color: white;
+}
+
+.cartMessage {
+  margin-left: 62vw;
+  margin-top: 1vh;
+  font-size: 18px;
+  text-align: center;
+  background-color: red;
+  color: white;
+}
+
 .flex {
   display:flex;
   padding: 10px;
@@ -10,7 +28,6 @@
 .left {
   width: 60%;
   margin: auto;
-
 }
 
 .right {
@@ -24,20 +41,19 @@
 .imageGallery {
   height: 64vh;
   display: flex;
-  border: solid lightgray 2px;
   text-align: center;
 }
 
 .gallery {
   border: solid lightgray 2px;
   position: absolute;
-  margin-left: -8%;
+  margin-left: -8vw;
   text-align: center;
 }
 
 .thumbNail {
   margin: 5px;
-  height: 7vh;
+  height: 4vw;
   cursor:pointer
 }
 
@@ -45,80 +61,28 @@
   max-width: 37vw;
   max-height: 64vh;
   margin: auto;
-  /* display: block; */
   cursor: zoom-in;
 }
 
 .leftButton {
   position: absolute;
-  margin-left: 3vw;
-  height: 50px;
+  margin-left: 5vw;
+  height: 40px;
+  width: 40px;
   margin-top: 27vh;
-  cursor:pointer
+  cursor:pointer;
+  font-size: 20px
 }
 
 .rightButton {
   position: absolute;
-  height: 50px;
+  height: 40px;
+  width: 40px;
   margin-left: 34vw;
   margin-top: 27vh;
   cursor:pointer;
-}
+  font-size: 20px
 
-.expanded {
-  /* text-align: center; */
-  /* position: relative; */
-  /* display: flex;
-  border: solid lightgray 2px;
-  height: 61vh;
-  background-color: white;
-  position: absolute;
-  top: 8vh; */
-  /* height: 61vh; */
-  /* transform: scale(1.5) */
-
-  display: flex;
-  margin: auto;
-
-}
-
-.expandedImage {
-  max-width: 70vw;
-  max-height: 55vh;
-  /* margin: auto;
-  display: block; */
-  transform: scale(1.5);
-  margin: auto;
-  margin-top: 10vh;
-}
-
-.expandedGallery {
-  display: flex;
-  margin-top: 15vh;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.expandedThumbNail {
-  height: 7vh;
-  margin: 5px;
-  cursor:pointer;
-}
-
-.leftImage {
-  position: absolute;
-  margin-left: 8vw;
-  height: 60px;
-  margin-top: 27vh;
-  cursor:pointer
-}
-
-.rightImage {
-  position: absolute;
-  height: 60px;
-  margin-left: 83vw;
-  margin-top: 27vh;
-  cursor:pointer;
 }
 
 .upButton {
@@ -132,6 +96,72 @@
   cursor:pointer;
   position: relative;
 }
+
+.expanded {
+  display: flex;
+  margin: auto;
+}
+
+.expandedImage {
+  max-width: 70vw;
+  max-height: 55vh;
+  transform: scale(1.25);
+  margin: auto;
+  /* margin-top: 10vh; */
+  cursor: zoom-in;
+}
+
+.expandedGallery {
+  display: flex;
+  margin-top: 7vh;
+  justify-content: center;
+}
+
+.expandedThumbNail {
+  height: 7vh;
+  margin: 5px;
+  cursor:pointer;
+}
+
+.leftImage {
+  position: relative;
+  /* margin-left: 6vw; */
+  height: 60px;
+  width: 60px;
+  font-size: 30px;
+  margin-top: 27vh;
+  cursor:pointer
+}
+
+.rightImage {
+  position: relative;
+  height: 60px;
+  width: 60px;
+  font-size: 30px;
+  /* margin-left: 83vw; */
+  margin-top: 27vh;
+  cursor:pointer;
+}
+
+
+.zoom {
+  text-align: center;
+}
+
+.zoomedImage {
+  margin-top: 500px;
+  transform: scale(2.5);
+  cursor: zoom-out;
+}
+
+.closeButton {
+  cursor: pointer;
+  height: 3vw;
+  width: 3vw;
+  font-size: 20px;
+  position: relative;
+}
+
 .selectedImage{
   background-color: lightgray;
 }
@@ -150,17 +180,19 @@
 }
 
 .style {
-  font-Weight:bold;
-  margin-right: 10px
+  font-weight:bolder;
+  margin-right: 10px;
+  font-size: 18px;
 }
 
 .styleSelector {
   display: flex;
   flex-wrap: wrap;
   width: 28vw;
+  margin-left: 1vw;
 }
 
-.checkmark {
+#checkmark {
   font-size: 20px;
   margin-left: 70%;
   height: 0px;
@@ -173,7 +205,7 @@
   border-radius: 50%;
   overflow:hidden;
   cursor: pointer;
-  margin: 2px;
+  margin: 0.1vw;
 }
 
 select {

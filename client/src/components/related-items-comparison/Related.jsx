@@ -50,11 +50,11 @@ const Related = ({ productID, setProductID, styleID }) => {
 
     return (
       <div className='container'>
-        <h3>Related Items:</h3>
+        <h3>Related Products</h3>
         <div id='relatedContainer'>
         <button
           onClick={() => {decrementCards(setStartingIndex)}}
-          className={startingIndex !== 0 ?  '': 'hidden'}
+          className={startingIndex !== 0 ?  'cardNavButton': 'hidden cardNavButton'}
           disabled={startingIndex !== 0 ?  false : true}>
             {'<'}
         </button>
@@ -76,7 +76,7 @@ const Related = ({ productID, setProductID, styleID }) => {
         </div>
         <button
           onClick={() => {incrementCards(setStartingIndex)}}
-          className={relatedItems[startingIndex + 4] !== undefined ? '': 'hidden'}
+          className={relatedItems[startingIndex + 4] !== undefined ? 'cardNavButton': 'hidden cardNavButton'}
           disabled= {relatedItems[startingIndex + 4] !== undefined ? false : true}
         >
             {'>'}

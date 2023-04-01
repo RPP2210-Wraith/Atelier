@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 const AddToCart = ({ skus, productID, styleID, addCart, addToOutfit, myOutfit, like, setLike }) => {
 
   const [stocks, setStocks] = useState([]);
+  const [sku_id, setSku_id] = useState([]);
   const [stockQuantity, setStockQuantity] = useState(0);
 
   const [index, setIndex] = useState('')
@@ -17,6 +18,7 @@ const AddToCart = ({ skus, productID, styleID, addCart, addToOutfit, myOutfit, l
 
   useEffect(() => {
     setStocks(Object.values(skus));
+    setSku_id(Object.keys(skus))
 
     var like = myOutfit.some((outfit) => (outfit.style === styleID))
     if (like) {
@@ -24,15 +26,13 @@ const AddToCart = ({ skus, productID, styleID, addCart, addToOutfit, myOutfit, l
     } else {
       setLike(false)
     }
-  }, [skus])
+  }, [styleID])
 
   useEffect(() => {
     setIndex('');
-    setStockQuantity(0);
     setSize('');
     setStockQuantity(0);
     setQuantity(0)
-
   }, [productID])
 
   const handleSize = (index) => {
@@ -80,7 +80,7 @@ const AddToCart = ({ skus, productID, styleID, addCart, addToOutfit, myOutfit, l
       </div>
       <div className='flex'>
         <div>
-          <button className='AddCartButton' onClick={() => addCart(size, quantity)} disabled={!size} >Add to Cart  ➕</button>
+          <button className='AddCartButton' onClick={() => addCart(sku_id[index], quantity)} disabled={!size} >Add to Cart  ➕</button>
         </div>
         <div>
           {like ? <button className='likeBotton'>❤️</button>
