@@ -1,8 +1,8 @@
-/* #ratingsList * {
-  border-style: solid;
-  border-color: pink;
-  padding: 5px;
-} */
+#ratingsList {
+  overflow: auto;
+  max-width: 1000px;
+  max-height: 900px;
+}
 
 /* #ratingsOverview * {
   border-style: solid;
@@ -36,7 +36,6 @@
 .center {
   margin: auto;
   width: 90%;
-  border: 3px solid green;
   padding: 10px;
 }
 
@@ -89,4 +88,53 @@
 
 .button:hover {
   background-color: darkgrey;
+}
+
+.bottom-margin {
+  margin-bottom: 50px;
+}
+
+.submit-rating-star {
+  font-size: 35px;
+  margin-right: 20px;
+}
+
+.submit-rating-star:hover {
+  color: orange;
+}
+
+/*end of styling for dropdown menu*/
+.star-rating {
+  display: inline-block;
+  unicode-bidi: bidi-override;
+  color: grey;
+  font-size: 25px;
+  height: 25px;
+  width: auto;
+  margin: 0;
+  position: relative;
+  padding: 0;
+  border-style: solid;
+  border-color: red;
+}
+
+.back-stars {
+  padding: 0;
+  display: flex;
+  z-index: 0;
+  border-style: solid;
+  border-color: blue;
+}
+
+.front-stars {
+  color: goldenrod;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  border-style: solid;
+  border-color: purple;
 }
