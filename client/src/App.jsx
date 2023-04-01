@@ -21,7 +21,7 @@ const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [styles, setStyles] = useState(null);
   const [product, setProduct] = useState({});
-
+  const [mean, setMean] = useState(0);
 
   useEffect(() => {
     if (!localStorage.getItem('myOutfit')) {
@@ -92,6 +92,7 @@ const App = () => {
         setLike={setLike}
         setProduct={setProduct}
         product={product}
+        mean={mean}
       />
 
       <InteractionTracking
@@ -114,6 +115,8 @@ const App = () => {
         productID={productID}
         reviews={reviews}
         setReviews={setReviews}
+        product={product}
+        setMean={setMean}
       />
 
     </div>

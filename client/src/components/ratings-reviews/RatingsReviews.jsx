@@ -31,7 +31,7 @@ const RatingsReviews = (props) => {
 
   return (
     <div id='ratings-review-widget' class='flex-parent center'>
-      <RatingsOverviewSection productID={props.productID} />
+      <RatingsOverviewSection productID={props.productID} setMean={props.setMean}/>
       <RatingsList reviews={reviews} />
     </div>
   )

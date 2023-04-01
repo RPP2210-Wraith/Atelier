@@ -40,6 +40,7 @@ const RatingsOverviewSection = (props) => {
     }
     var mean = (sumOfRatings / numOfVotes).toFixed(2);
     console.log('Mean rating: ', mean);
+    props.setMean(mean);
     return mean;
   };
 

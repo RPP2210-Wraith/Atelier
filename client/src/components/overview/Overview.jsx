@@ -8,7 +8,7 @@ import ImageGallery from './ImageGallery.jsx';
 import StarRatings from 'react-star-ratings';
 import Rating from '../ratings-reviews/ratings-overview-section.jsx'
 
-const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, reviews, like, setLike, product, setProduct }) => {
+const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, reviews, like, setLike, product, setProduct, mean }) => {
 
   // const [product, setProduct] = useState({});
   const [styles, setStyles] = useState([]);
@@ -85,7 +85,7 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
 
         <div className='right'>
           <div className='div'>
-            <StarRatings rating = {3.85} starDimension="20px" starSpacing="1%vh" starRatedColor = 'orange'/>
+            <StarRatings rating = {mean} starDimension="20px" starSpacing="1%vh" starRatedColor = 'orange'/>
             <a className='div' href='#ratings-review-widget'>Read all {reviews.length} reviews</a></div>
           <div className='div'>{product.category}</div>
           <div className='div'><h2>{product.name}</h2></div>
