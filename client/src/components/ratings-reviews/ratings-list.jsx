@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import RatingsTile from './ratings-tile.jsx';
 import SubmitReviewModal from './submit-review-modal.jsx';
+import Modal from 'react-modal';
 
 const RatingsList = (props) => {
 
   const [sortBy, setSortBy] = useState('relevant');
   const [modalIsShowing, setModalIsShowing] = useState(false);
 
+
+
   const addNewReview = () => {
     console.log('Add new review clicked!');
-    setModalIsShowing(!modalIsShowing);
+    setModalIsShowing(!modalIsShowing)
+    
   };
 
   const seeMoreReviews = () => {
@@ -19,11 +23,11 @@ const RatingsList = (props) => {
   const sortReviews = (sortBy) => {
     console.log('Sort reviews button clicked! Reviews will be sorted by: ' + sortBy);
     setSortBy(sortBy);
+    props.getReviews(sortBy, props.productID);
   };
 
   return (
     <div class='flex-child-2' id='ratingsList' >
-      <h2>Ratings List</h2>
       {props.reviews ?
 
         <div>
@@ -43,9 +47,7 @@ const RatingsList = (props) => {
               }}>helpful</button>
               <button class='button' onClick={() => {
                 sortReviews('relevant');
-              }
-
-              }>relevant</button>
+              }}>relevant</button>
             </div>
           </div>
         </div>
@@ -60,7 +62,16 @@ const RatingsList = (props) => {
         <button class='button-center flex-child-1'
           onClick={addNewReview}
         >Add A Review</button>
-        {modalIsShowing ? <SubmitReviewModal /> : null}
+        {modalIsShowing ? <Modal
+          isOpen={modalIsShowing}
+          onRequestClose={() => {
+            setModalIsShowing(false);
+          }}
+          contentLabel='Submit Review'
+
+        >
+          <SubmitReviewModal productID={props.productID} setModalIsShowing={setModalIsShowing} />
+        </Modal> : null}
       </div>
     </div >
 

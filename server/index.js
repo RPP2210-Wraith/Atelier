@@ -33,9 +33,10 @@ app.post('/interactions', logInteraction)
 app.get('/reviews', (req, res) => {
   ratingsReviews.getReviews(req, res);
 })
-// app.get('/reviews/meta', (req, res) => {
-//   ratingsReviews.getReviewsMetaData(req, res);
-// })
+
+app.get('/reviews/meta', (req, res) => {
+  ratingsReviews.getReviewsMetaData(req, res);
+})
 
 app.put('/reviews/:review_id/helpful', (req, res) => {
   ratingsReviews.markReviewHelpful(req, res);
@@ -43,6 +44,10 @@ app.put('/reviews/:review_id/helpful', (req, res) => {
 
 app.put('/reviews/:review_id/report', (req, res) => {
   ratingsReviews.reportReview(req, res);
+});
+
+app.post('/reviews', (req, res) => {
+  ratingsReviews.postNewReview(req, res);
 });
 
 
