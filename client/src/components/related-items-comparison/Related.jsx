@@ -39,35 +39,7 @@ const Related = ({ productID, setProductID, styleID }) => {
         setStartingIndex(0);
         setIsLoading(false);
       })
-
     }
-
-  }
-
-
-
-
-
-  // Need to fix inside App and remove this; default value of 1 was useless
-
-  const fetchRelatedItems = () => {
-    console.log('productID inside Related USEeFFECT: ', productID)
-    setIsLoading(true);
-    axios.get('/relatedItems', {
-      params: {
-        productID: productID
-      }
-    })
-    .then((response) => {
-      console.log('related items server response: ', response.data)
-      setRelatedItems(response.data);
-    })
-    .then(() => {
-      setStartingIndex(0);
-    })
-    .then(() => {
-      setIsLoading(false);
-    })
   }
 
   // Retrieve related items whenever product ID updates
@@ -100,7 +72,7 @@ const Related = ({ productID, setProductID, styleID }) => {
           key={i}
           id={item.id}
           setProductID={setProductID}
-          handleClick={fetchRelatedItems}
+          handleClick={fetchAndCacheRelatedItems}
           productID={productID}
           styleID={styleID}
           />

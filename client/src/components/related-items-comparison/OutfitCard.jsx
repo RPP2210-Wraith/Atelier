@@ -8,7 +8,6 @@ const OutfitCard = ({ item, remove, }) => {
 
   const removeItem = () => {remove(item.id, item.style)};
   const onSale = (item.salePrice ? true : false);
-  console.log('item.rating: ', typeof item.rating)
   return (
     <div className='card outfitCard'>
       <img src={item.image} className='cardThumbs' alt='Product Image'></img>

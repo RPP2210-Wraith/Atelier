@@ -17,7 +17,7 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
   const loadOutfit = () => {
     // Outfit is an array of objects with product and style keys
     // Send an axios request for items
-    console.log('Outfit inside Outfit component: ', outfit);
+    setIsLoading(true);
     if (outfit.length > 0) {
       axios.get('/outfitItems', {
         params: {
@@ -25,8 +25,8 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
         }
       })
       .then((items) => {
-        //console.log('outfit items: ', items.data)
-        setOutfitItems(items.data)
+        setOutfitItems(items.data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log('error inside get outfit items', err)
@@ -55,41 +55,44 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
   useEffect(loadOutfit, [outfit])
 
 
-  if (!isLoading) {
+  if (isLoading) {
     return (
       <div>
         <h3>Loading your outfit...</h3>
       </div>
     )
+  } else {
+
+    return (
+      <div className='container'>
+        <h3>Your Outfit</h3>
+        <div id='outfitContainer'>
+        <button
+          onClick={() => {decrementCards(setStartingIndex)}}
+          className={startingIndex !== 0 ?  'cardNavButton': 'hidden cardNavButton'}
+          disabled={startingIndex !== 0 ?  false : true}>
+            {'<'}
+        </button>
+        <div className='cardContainer'>
+          <button id='addToOutfit' onClick={addHandler}>Add To Outfit</button>
+        {outfitItems.slice(startingIndex, startingIndex + numOfCards).map((item, i) => {
+         return <OutfitCard item={item} key={i} remove={removeHandler}/>
+        })}
+        </div>
+
+
+        <button
+          onClick={() => {incrementCards(setStartingIndex)}}
+          className={outfitItems[startingIndex + numOfCards] !== undefined ? 'cardNavButton': 'hidden cardNavButton'}
+          disabled= {outfitItems[startingIndex + numOfCards] !== undefined ? false : true} >
+            {'>'}
+        </button>
+
+        </div>
+      </div>
+    )
+
   }
 
-  return (
-    <div className='container'>
-      <h3>Your Outfit</h3>
-      <div id='outfitContainer'>
-      <button
-        onClick={() => {decrementCards(setStartingIndex)}}
-        className={startingIndex !== 0 ?  'cardNavButton': 'hidden cardNavButton'}
-        disabled={startingIndex !== 0 ?  false : true}>
-          {'<'}
-      </button>
-      <div className='cardContainer'>
-        <button id='addToOutfit' onClick={addHandler}>Add To Outfit</button>
-      {outfitItems.slice(startingIndex, startingIndex + numOfCards).map((item, i) => {
-       return <OutfitCard item={item} key={i} remove={removeHandler}/>
-      })}
-      </div>
-
-
-      <button
-        onClick={() => {incrementCards(setStartingIndex)}}
-        className={outfitItems[startingIndex + numOfCards] !== undefined ? 'cardNavButton': 'hidden cardNavButton'}
-        disabled= {outfitItems[startingIndex + numOfCards] !== undefined ? false : true} >
-          {'>'}
-      </button>
-
-      </div>
-    </div>
-  )
 }
 export default Outfit;
