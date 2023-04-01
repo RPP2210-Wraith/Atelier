@@ -11,9 +11,42 @@ const Related = ({ productID, setProductID, styleID }) => {
   const [ isLoading, setIsLoading ] = useState(true);
   const [ relatedItems, setRelatedItems ] = useState({});
   const [ startingIndex, setStartingIndex ] = useState(0);
+  const [ cachedRelatedItems, setCachedRelatedItems ] = useState({});
 
   const { incrementCards } = helpers;
   const { decrementCards } = helpers;
+
+
+  const fetchAndCacheRelatedItems = () => {
+    setIsLoading(true);
+    //  If the product ID is in the cache
+    if (cachedRelatedItems[productID]) {
+      console.log('pulled from cache');
+      setRelatedItems(cachedRelatedItems[productID]);
+      setStartingIndex(0);
+      setIsLoading(false);
+    } else {
+      console.log('pulled from server')
+      axios.get('/relatedItems', {
+        params: { productID: productID }
+      })
+      .then((response) => {
+        setCachedRelatedItems((prevState) => {
+          prevState[productID] = response.data;
+          return prevState;
+        })
+        setRelatedItems(response.data);
+        setStartingIndex(0);
+        setIsLoading(false);
+      })
+
+    }
+
+  }
+
+
+
+
 
   // Need to fix inside App and remove this; default value of 1 was useless
 
@@ -26,6 +59,7 @@ const Related = ({ productID, setProductID, styleID }) => {
       }
     })
     .then((response) => {
+      console.log('related items server response: ', response.data)
       setRelatedItems(response.data);
     })
     .then(() => {
@@ -37,7 +71,7 @@ const Related = ({ productID, setProductID, styleID }) => {
   }
 
   // Retrieve related items whenever product ID updates
-  useEffect(fetchRelatedItems, [productID]);
+  useEffect(fetchAndCacheRelatedItems, [productID]);
 
   // If still loading, render still loading message
   if (isLoading) {
