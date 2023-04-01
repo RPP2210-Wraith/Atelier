@@ -31,6 +31,11 @@ const App = () => {
   }, [])
 
   useEffect(() => {
+    console.log('current style ID: ', styleID)
+
+  }, [styleID])
+
+  useEffect(() => {
     var styleSheet = document.getElementById('lightMode');
     if (isDarkMode) {styleSheet.disabled = true; }
       else { styleSheet.disabled = false; }
@@ -44,6 +49,7 @@ const App = () => {
 
   // Function to add item to myOutfit localStorage
   const addToOutfit = (productID, styleID) => {
+    console.log('style ID added to outfit: ', styleID)
     // Get current outfit array
     const outfit = JSON.parse(localStorage.getItem('myOutfit'));
     // Add to it

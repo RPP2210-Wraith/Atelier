@@ -13,8 +13,8 @@ const RelatedCard = ( { item, setProductID, styleID, productID, handleClick, set
 //console.log('item in relatedCard component: ', item);
 
   return (
-    <div className="card relatedCard" onClick={() => {setProductID(item.id); setStyleID(item.style_id)} }>
-      <div>
+    <div className="card relatedCard" onClick={modalIsOpen ? null : () => {setProductID(item.id); setStyleID(item.style_id) }}>
+      <div className='cardImgContainer'>
       <img src={item.image || placeholder} className="cardThumbs" alt='ProductImage'></img>
       </div>
       <p>{item !== undefined ? item.category : 'Category'}</p>
