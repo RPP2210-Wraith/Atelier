@@ -30,14 +30,7 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
       setProduct(response.data[0]);
       setStyles(response.data[1].results);
       setFeatures(response.data[0].features)
-
-      const currentStyle = response.data[1].results.find((style) => {
-        // Return the one where the styleID props === style_id
-        return style.style_id === styleID
-      })
-      setSelectedStyle(currentStyle);
     })
-
   }
 
   useEffect(fetchProduct, [productID]);
@@ -69,8 +62,6 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
     //   url: '/cart',
     //   params: {sku_id, quantity}
     // })
-    console.log('myCart', myCart)
-    console.log('cccc', sku_id, quantity)
   }
 
   return (
@@ -90,7 +81,7 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
           <div className='div'>{product.category}</div>
           <div className='div'><h2>{product.name}</h2></div>
 
-          <StyleSelector styles={styles} select={select} selectedStyle={selectedStyle} key={styles.length}/>
+          <StyleSelector styles={styles} styleID={styleID} select={select} selectedStyle={selectedStyle} key={styles.length}/>
 
           <AddToCart skus={skus} productID={productID} styleID={styleID} myOutfit={myOutfit} addCart={addCart} addToOutfit={addToOutfit} like={like} setLike={setLike} key={skus} />
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Style from "./Style.jsx";
 
-const StyleSelector = ({ styles, select, selectedStyle }) => {
+const StyleSelector = ({ styles, styleID, select, selectedStyle }) => {
 
   return (
     <div>
@@ -18,13 +18,13 @@ const StyleSelector = ({ styles, select, selectedStyle }) => {
             return (
               <div key={index}>
                 <div id='checkmark'>☑️</div>
-                <Style Default={style['default?'] ? true : false} style={style} thumbNail={style.photos[0].thumbnail_url} select={select} key={style.style_id} />
+                <Style Default={style['default?'] ? true : false} style={style} styles={styles} thumbNail={style.photos[0].thumbnail_url} select={select} key={style.style_id} />
               </div>
             )
           } else {
             return (
               <div key={index}>
-                <Style Default={style['default?'] ? true : false} style={style} thumbNail={style.photos[0].thumbnail_url} select={select} key={style.style_id} />
+                <Style Default={style['default?'] ? true : false} style={style} styles={styles} thumbNail={style.photos[0].thumbnail_url} select={select} key={style.style_id} />
               </div>
             )
           }

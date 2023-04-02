@@ -10,9 +10,7 @@ const Gallery = ({ thumbNail, image, index, imageIndex, images, renderImage, set
   }, [images])
 
   useEffect(() => {
-    if (index === imageIndex) {
-      renderImage(image, index)
-    }
+    renderImage(images[imageIndex].url, imageIndex)
   }, [imageIndex])
 
   return (

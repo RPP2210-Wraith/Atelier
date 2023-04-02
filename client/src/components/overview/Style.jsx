@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 
-const Style = ({ Default, style, select, thumbNail }) => {
+const Style = ({ Default, style, styles, select, thumbNail }) => {
 
   useEffect(() => {
+
     if (Default) {
       select(style);
-    }
-  }, [style])
+    } else (
+      select(styles[0])
+    )
+  }, [styles])
 
 
   return (
