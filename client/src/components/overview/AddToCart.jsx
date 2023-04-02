@@ -11,10 +11,10 @@ const AddToCart = ({ skus, productID, styleID, addCart, addToOutfit, myOutfit, l
   const [size, setSize] = useState('');
   const [quantity, setQuantity] = useState(0);
 
-  console.log('size', size)
-  console.log('stockQuantity', stockQuantity)
-  console.log('quantity', quantity)
-  console.log('like', like)
+  // console.log('size', size)
+  // console.log('stockQuantity', stockQuantity)
+  // console.log('quantity', quantity)
+  // console.log('like', like)
 
   useEffect(() => {
     setStocks(Object.values(skus));

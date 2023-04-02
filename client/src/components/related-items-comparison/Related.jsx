@@ -6,7 +6,7 @@ import axios from 'axios';
 import helpers from './helpers.js';
 
 
-const Related = ({ productID, setProductID, styleID }) => {
+const Related = ({ productID, setProductID, styleID, setStyleID }) => {
   // Handle loading with a user-friendly message
   const [ isLoading, setIsLoading ] = useState(true);
   const [ relatedItems, setRelatedItems ] = useState({});
@@ -85,6 +85,7 @@ const Related = ({ productID, setProductID, styleID }) => {
           handleClick={fetchAndCacheRelatedItems}
           productID={productID}
           styleID={styleID}
+          setStyleID={setStyleID}
           />
          })
         }

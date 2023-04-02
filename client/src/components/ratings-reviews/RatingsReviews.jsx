@@ -36,7 +36,9 @@ const RatingsReviews = (props) => {
 
   return (
     <div id='ratings-review-widget' class='flex-parent center'>
-      <RatingsOverviewSection productID={props.productID} />
+      <RatingsOverviewSection productID={props.productID} setMean={props.setMean}/>
+      {/* // <RatingsList reviews={reviews} /> */}
+      {/* <RatingsOverviewSection productID={props.productID} /> */}
       <RatingsList productID={props.productID} reviews={reviews} setReviews={setReviews} getReviews={getReviews} />
     </div>
   )

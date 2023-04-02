@@ -34,6 +34,7 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
 
     } else {
       setOutfitItems([])
+      setIsLoading(false);
     }
 
   }

@@ -14,13 +14,14 @@ import logo from '../../img/logo.png';
 const App = () => {
 
   const [productID, setProductID] = useState(71699);
-  const [styleID, setStyleID] = useState(1);
+  const [styleID, setStyleID] = useState(444228);
   const [myOutfit, setMyOutfit] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [like, setLike] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [styles, setStyles] = useState(null);
-
+  const [product, setProduct] = useState({});
+  const [mean, setMean] = useState(0);
 
   useEffect(() => {
     if (!localStorage.getItem('myOutfit')) {
@@ -30,15 +31,25 @@ const App = () => {
   }, [])
 
   useEffect(() => {
+    console.log('current style ID: ', styleID)
+
+  }, [styleID])
+
+  useEffect(() => {
     var styleSheet = document.getElementById('lightMode');
     if (isDarkMode) {styleSheet.disabled = true; }
       else { styleSheet.disabled = false; }
 
   }, [isDarkMode])
 
+  useEffect(() => {
+    console.log('New Style ID: ', styleID)
+  }, [ styleID ])
+
 
   // Function to add item to myOutfit localStorage
   const addToOutfit = (productID, styleID) => {
+    console.log('style ID added to outfit: ', styleID)
     // Get current outfit array
     const outfit = JSON.parse(localStorage.getItem('myOutfit'));
     // Add to it
@@ -85,6 +96,9 @@ const App = () => {
         reviews={reviews}
         like={like}
         setLike={setLike}
+        setProduct={setProduct}
+        product={product}
+        mean={mean}
       />
 
       <InteractionTracking
@@ -93,6 +107,7 @@ const App = () => {
         productID={productID}
         styleID={styleID}
         setProductID={setProductID}
+        setStyleID={setStyleID}
         addToOutfit={addToOutfit}
         removeFromOutfit={removeFromOutfit}
         outfit={myOutfit}
@@ -106,6 +121,8 @@ const App = () => {
         productID={productID}
         reviews={reviews}
         setReviews={setReviews}
+        product={product}
+        setMean={setMean}
       />
 
     </div>

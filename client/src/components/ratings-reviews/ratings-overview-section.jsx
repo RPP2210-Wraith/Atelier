@@ -11,6 +11,7 @@ const RatingsOverviewSection = (props) => {
   const [ratings, setRating] = useState('0%');
 
 
+
   useEffect(() => {
     //console.log('ProductID:', props.productID);
     axios({
@@ -23,7 +24,9 @@ const RatingsOverviewSection = (props) => {
       console.log('Review MetaData:', res.data);
       setReviewMetaData(res.data);
       setFitRatings(res.data.characteristics);
+      // getMeanRating(reviewMetaData.ratings);
       setRating(res.data.ratings);
+      props.setMean(getMeanRating(res.data.ratings));
     }
     )
   }, [props.productID]);
@@ -44,6 +47,7 @@ const RatingsOverviewSection = (props) => {
     }
     var mean = (sumOfRatings / numOfVotes);
     console.log('Mean rating: ', mean);
+    //props.setMean(mean);
     return mean;
   };
 

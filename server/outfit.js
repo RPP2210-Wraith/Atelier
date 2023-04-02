@@ -59,7 +59,7 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
     // Third Attempt
     const getOutfitItems = (req, res) => {
       //console.log('req.query: ', req.query);
-      console.log('req.query.outfit: ', req.query.outfit);
+      //console.log('req.query.outfit: ', req.query.outfit);
 
       const outfitItems = req.query.outfit;
       //const endpoints = [""]
@@ -76,9 +76,9 @@ const  API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
       // Return promise.all and pass it the array of promises
       return Promise.all(promises)
       .then((info) => {
-        console.log('result from ')
+        //console.log('result from ')
         info.forEach((dataTuple, index) => {
-          console.log('dataTuple: ', dataTuple)
+          //console.log('dataTuple: ', dataTuple)
           var style = dataTuple[1].data.results.find((result) => {
             return result.style_id.toString() === outfitItems[index].style;
           })
