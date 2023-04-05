@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.jsx';
+import CustomRouter from './Router.jsx';
 import { render } from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import Modal from 'react-modal';
@@ -12,6 +12,6 @@ const domNode = document.getElementById("root");
 
 const root = createRoot(domNode);
 
-root.render(<App />);
+root.render(<CustomRouter />);
 
 Modal.setAppElement('#root')

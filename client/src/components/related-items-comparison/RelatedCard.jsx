@@ -10,7 +10,7 @@ const RelatedCard = ( { item, setProductID, styleID, productID, handleClick, set
   const closeModal = () => {
     setModalIsOpen(false);
   }
-//console.log('item in relatedCard component: ', item);
+console.log('item in relatedCard component: ', item);
 
   return (
     <div className="card relatedCard" onClick={modalIsOpen ? null : () => {setProductID(item.id); setStyleID(item.style_id) }}>

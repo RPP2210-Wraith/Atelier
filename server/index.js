@@ -20,6 +20,16 @@ app.get('/overview', (req, res) => {
   overview.getProduct(req, res)
 })
 
+// Idea...
+// app.get('/:productID', (req, res) => {
+//   // console.log('productID: ', productID);
+//   // console.log('req: ', req.params.productID)
+//   // req.query.productID = req.params.productID;
+//   req.query.productID = req.params.productID
+//   overview.getProduct(req, res)
+
+// })
+
 app.post('/cart', (req, res) => {
   overview.postCart(req, res)
 })
@@ -49,8 +59,6 @@ app.put('/reviews/:review_id/report', (req, res) => {
 app.post('/reviews', (req, res) => {
   ratingsReviews.postNewReview(req, res);
 });
-
-
 
 
 app.listen(port, () => {
