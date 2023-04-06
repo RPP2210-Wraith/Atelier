@@ -25,8 +25,6 @@ const RatingsOverviewSection = (props) => {
       console.log('Review MetaData:', res.data);
       setReviewMetaData(res.data);
       setFitRatings(res.data.characteristics);
-      // getMeanRating(reviewMetaData.ratings);
-      setRating(res.data.ratings);
       props.setMean(getMeanRating(res.data.ratings));
     }
     )
