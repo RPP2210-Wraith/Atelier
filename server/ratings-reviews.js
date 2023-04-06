@@ -13,7 +13,7 @@ exports.getReviews = (req, res) => {
     params: {
       product_id: req.query.product_id,
       //page: req.query.page
-      count: 10,
+      count: 3,
       sort: req.query.sort
     },
     headers: {

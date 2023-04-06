@@ -77,27 +77,39 @@ const RatingsOverviewSection = (props) => {
         </div>
         <h3>{getRecommendedPercentage(reviewMetaData.recommended) + '% of reviews recommend this product'}</h3>
         <div>
-          <span>1</span>
-          <ProgressBar bgcolor="orange" progress={`${reviewMetaData.ratings[1] / totalVotes.totalStars * 100}`} height={15} />
-          <span>2</span>
-          <ProgressBar bgcolor="orange" progress={`${reviewMetaData.ratings[2] / totalVotes.totalStars * 100}`} height={15} />
-          <span>3</span>
-          <ProgressBar bgcolor="orange" progress={`${reviewMetaData.ratings[3] / totalVotes.totalStars * 100}`} height={15} />
-          <span>4</span>
-          <ProgressBar bgcolor="orange" progress={`${reviewMetaData.ratings[4] / totalVotes.totalStars * 100}`} height={15} />
-          <span>5</span>
-          <ProgressBar bgcolor="orange" progress={`${reviewMetaData.ratings[5] / totalVotes.totalStars * 100}`} height={15} />
+          <div class='flex-parent'>
+            <span class='progress-bar-label'>1</span>
+            <ProgressBar bgcolor="orange" progress={`${reviewMetaData.ratings[1] / totalVotes.totalStars * 100}`} height={15} />
+          </div>
+          <div class='flex-parent'>
+            <span class='progress-bar-label'>2</span>
+            <ProgressBar bgcolor="orange" progress={`${reviewMetaData.ratings[2] / totalVotes.totalStars * 100}`} height={15} />
+          </div>
+          <div class='flex-parent'>
+            <span class='progress-bar-label'>3</span>
+            <ProgressBar bgcolor="orange" progress={`${reviewMetaData.ratings[3] / totalVotes.totalStars * 100}`} height={15} />
+          </div>
+          <div class='flex-parent'>
+            <span class='progress-bar-label'>4</span>
+            <ProgressBar bgcolor="orange" progress={`${reviewMetaData.ratings[5] / totalVotes.totalStars * 100}`} height={15} />
+          </div>
+          <div class='flex-parent'>
+            <span class='progress-bar-label'>5</span>
+            <ProgressBar bgcolor="orange" progress={`${reviewMetaData.ratings[5] / totalVotes.totalStars * 100}`} height={15} />
+          </div>
         </div>
-        {fitRatings.Fit ?
-          <div>
-            <h4>{'Mean Size Rating: ' + parseFloat(fitRatings.Fit.value).toFixed(2)}</h4>
+        {
+          fitRatings.Fit ?
+            <div>
+              <h4>{'Mean Size Rating: ' + parseFloat(fitRatings.Fit.value).toFixed(2)}</h4>
+              <ProgressBar bgcolor="orange" progress={0} height={10} />
+            </div> : <div>Loading...</div>
+        }
+        {
+          fitRatings.Comfort ? <div>
+            <h4>{'Mean Comfort Rating: ' + parseFloat(fitRatings.Comfort.value).toFixed(2)}</h4>
             <ProgressBar bgcolor="orange" progress={0} height={10} />
           </div> : <div>Loading...</div>
-        }
-        {fitRatings.Comfort ? <div>
-          <h4>{'Mean Comfort Rating: ' + parseFloat(fitRatings.Comfort.value).toFixed(2)}</h4>
-          <ProgressBar bgcolor="orange" progress={0} height={10} />
-        </div> : <div>Loading...</div>
         }
         {/* progress bar https://www.geeksforgeeks.org/how-to-create-a-custom-progress-bar-component-in-react-js/ */}
       </div > : <div>Loading</div>
