@@ -4,6 +4,10 @@
   max-height: 900px;
 }
 
+.list {
+  overflow: auto;
+}
+
 /* #ratingsOverview * {
   border-style: solid;
   border-color: red;

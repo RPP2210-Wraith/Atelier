@@ -12,18 +12,20 @@ const RatingsList = (props) => {
 
   const addNewReview = () => {
     console.log('Add new review clicked!');
-    setModalIsShowing(!modalIsShowing)
-    
+    setModalIsShowing(!modalIsShowing);
   };
 
   const seeMoreReviews = () => {
-    console.log('See more reviews clicked!');
+    props.setReviewCount(props.reviewCount + 5);
+    //console.log('See more reviews clicked! ', props.reviewCount);
+    //we need to render more reviews, by passing a param to server call that incr count
+    props.getReviews(sortBy, props.productID, props.reviewCount);
   };
 
   const sortReviews = (sortBy) => {
     console.log('Sort reviews button clicked! Reviews will be sorted by: ' + sortBy);
     setSortBy(sortBy);
-    props.getReviews(sortBy, props.productID);
+    props.getReviews(sortBy, props.productID, props.reviewCount);
   };
 
   return (
@@ -32,8 +34,6 @@ const RatingsList = (props) => {
 
         <div>
           <h1 class='in-line'>{props.reviews.length + ' reviews, sorted by'}</h1>
-          {/* <h1 class='in-line underline'
-            onClick={sortReviews}> relevance </h1> */}
           <div class='in-line dropdown'>
             <button class='button'>
               {sortBy}
@@ -56,7 +56,7 @@ const RatingsList = (props) => {
         {props.reviews ? props.reviews.map((review, index) => <RatingsTile review={review} key={index} />) : 'Loading...'}
       </ul>
       <div class='flex-parent'>
-        <button class='button-center flex-child-1'
+        <button disabled={!props.canShowMoreReviews} id='more-reviews-btn' class='button-center flex-child-1'
           onClick={seeMoreReviews}
         >More Reviews</button>
         <button class='button-center flex-child-1'
@@ -68,7 +68,6 @@ const RatingsList = (props) => {
             setModalIsShowing(false);
           }}
           contentLabel='Submit Review'
-
         >
           <SubmitReviewModal productID={props.productID} setModalIsShowing={setModalIsShowing} />
         </Modal> : null}
