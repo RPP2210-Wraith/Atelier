@@ -25,6 +25,9 @@ const RatingsOverviewSection = (props) => {
       console.log('Review MetaData:', res.data);
       setReviewMetaData(res.data);
       setFitRatings(res.data.characteristics);
+      // getMeanRating(reviewMetaData.ratings);
+      setRating(res.data.ratings);
+      props.setMean(getMeanRating(res.data.ratings));
     }
     )
   }, [props.productID]);
@@ -46,8 +49,7 @@ const RatingsOverviewSection = (props) => {
     totalVotes.totalStars = numOfVotes;
     var mean = (sumOfRatings / numOfVotes);
     console.log('Mean rating: ', mean);
-    console.log(totalVotes);
-    console.log('ratings raw data: ', ratings);
+    //props.setMean(mean);
     return mean;
   };
 

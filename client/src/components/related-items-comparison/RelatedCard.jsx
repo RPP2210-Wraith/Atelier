@@ -5,16 +5,16 @@ import Modal from 'react-modal';
 import StarRatings from 'react-star-ratings';
 import placeholder from '../../../../img/product-placeholder.jpg'
 
-const RelatedCard = ( { item, setProductID, styleID, productID, handleClick }) => {
+const RelatedCard = ( { item, setProductID, styleID, productID, handleClick, setStyleID }) => {
   const [ modalIsOpen, setModalIsOpen ] = useState(false)
   const closeModal = () => {
     setModalIsOpen(false);
   }
-
+//console.log('item in relatedCard component: ', item);
 
   return (
-    <div className="card relatedCard" onClick={() => {setProductID(item.id)}}>
-      <div>
+    <div className="card relatedCard" onClick={modalIsOpen ? null : () => {setProductID(item.id); setStyleID(item.style_id) }}>
+      <div className='cardImgContainer'>
       <img src={item.image || placeholder} className="cardThumbs" alt='ProductImage'></img>
       </div>
       <p>{item !== undefined ? item.category : 'Category'}</p>
