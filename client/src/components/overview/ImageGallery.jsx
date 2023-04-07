@@ -52,7 +52,7 @@ const ImageGallery = ({ images, productID }) => {
       </div>
 
 
-      <Modal isOpen={expandedImage} ariaHideApp={false} stle={{overlay: {position: 'fixed', top: 0, left: 0, width: '100vw', 'align-items': 'center'}, content: {position: 'absolute', top: 0, left: 0, width: '100vw'}}}>
+      <Modal isOpen={expandedImage} ariaHideApp={false} style={{ content: {position: 'absolute', height:'100vh', width: '95vw', 'align-items': 'center'}}}>
         {zoom ? <div className='zoom' onClick={() => setZoom(false)}><img className='zoomedImage' src={Image} /></div>
         :
         <><div className='expanded'>
