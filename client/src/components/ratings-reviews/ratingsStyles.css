@@ -4,6 +4,10 @@
   max-height: 900px;
 }
 
+.list {
+  overflow: auto;
+}
+
 /* #ratingsOverview * {
   border-style: solid;
   border-color: red;
@@ -27,6 +31,7 @@
 
 .flex-child-1 {
   flex: 1 1 0;
+
 }
 
 .flex-child-2 {
@@ -137,4 +142,9 @@
   overflow: hidden;
   border-style: solid;
   border-color: purple;
+}
+
+.progress-bar-label {
+  padding-right: 10px;
+  padding-bottom: 5px;
 }
