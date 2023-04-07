@@ -36,6 +36,8 @@
     "react-refresh": "^0.14.0",
     "react-star-ratings": "^2.3.0",
     "react-testing-library": "^8.0.1",
+    "socket.io": "^4.6.1",
+    "socket.io-client": "^4.6.1",
     "style-loader": "^3.3.2"
   },
   "devDependencies": {

@@ -147,7 +147,12 @@
   border: 1px solid black;
 }
 
-.ReactModal__Content {
+ReactModal__Content {
   width: 70%;
   height: 70%;
+  text-decoration: line-through;
+}
+
+ReactModal__Overlay {
+
 }
