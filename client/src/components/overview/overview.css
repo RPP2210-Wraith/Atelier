@@ -66,83 +66,138 @@
 
 .leftButton {
   position: absolute;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: transparent;
+  color: black;
+  transition: background-color 0.4s ease-in-out;
+  border: none;
   margin-left: 5vw;
-  height: 40px;
-  width: 40px;
-  margin-top: 27vh;
+  margin-top: 30vh;
   cursor:pointer;
-  font-size: 20px
 }
 
 .rightButton {
   position: absolute;
-  height: 40px;
-  width: 40px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: transparent;
+  color: black;
+  transition: background-color 0.4s ease-in-out;
+  border: none;
   margin-left: 34vw;
-  margin-top: 27vh;
+  margin-top: 30vh;
   cursor:pointer;
-  font-size: 20px
+}
 
+.leftButton:hover {
+  background-color: lightslategray;
+}
+
+.rightButton:hover {
+  background-color: lightslategray;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .upButton {
   width: 4vw;
   cursor:pointer;
   position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
 }
 
 .downButton {
   width: 4vw;
   cursor:pointer;
   position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+.upButton:hover {
+  background-color: lightslategray;
+}
+.downButton:hover {
+  background-color: lightslategray;
 }
 
 .expanded {
   display: flex;
   margin: auto;
+  align-items: center;
 }
 
 .expandedImage {
   max-width: 70vw;
   max-height: 55vh;
-  transform: scale(1.25);
+  transform: scale(1.5);
   margin: auto;
-  /* margin-top: 10vh; */
+  margin-top: 10vh;
   cursor: zoom-in;
 }
 
 .expandedGallery {
   display: flex;
-  margin-top: 7vh;
+  margin-top: 15vh;
   justify-content: center;
 }
 
 .expandedThumbNail {
   height: 7vh;
-  margin: 5px;
+  margin: 8px;
   cursor:pointer;
 }
 
 .leftImage {
   position: relative;
-  /* margin-left: 6vw; */
-  height: 60px;
-  width: 60px;
+  margin-left: 6vw;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
   font-size: 30px;
-  margin-top: 27vh;
+  font-weight: bold;
+  background-color: transparent;
+  color: black;
+  transition: background-color 0.4s ease-in-out;
+  border: none;
+  /* margin-top: 27vh; */
   cursor:pointer
 }
 
 .rightImage {
   position: relative;
-  height: 60px;
-  width: 60px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
   font-size: 30px;
-  /* margin-left: 83vw; */
-  margin-top: 27vh;
+  font-weight: bold;
+  background-color: transparent;
+  color: black;
+  transition: background-color 0.4s ease-in-out;
+  border: none;
+  margin-right: 6vw;
+  /* margin-top: 27vh; */
   cursor:pointer;
 }
 
+.leftImage:hover {
+  background-color: lightslategray;
+}
+
+.rightImage:hover {
+  background-color: lightslategray;
+}
 
 .zoom {
   text-align: center;
@@ -160,10 +215,15 @@
   width: 3vw;
   font-size: 20px;
   position: relative;
+  top: 0;
+}
+
+.closeButton:hover {
+  background-color: lightslategray;
 }
 
 .selectedImage{
-  background-color: lightgray;
+  background-color: lightslategray;
 }
 
 .productName {

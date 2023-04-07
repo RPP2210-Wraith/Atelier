@@ -90,7 +90,7 @@ const Overview = ({ productID, styleID, setStyleID, addToOutfit, myOutfit, revie
 
       <div className='flex'>
         <div className='left'><h3>{product.slogan}</h3>{product.description}</div>
-        <div className='right'><h3>Features</h3>
+        <div className='right div'><h3>Features</h3>
           {features.map((feature) => {
             return <div key={feature.feature}>{feature.feature}: {feature.value}</div>;
           })}
