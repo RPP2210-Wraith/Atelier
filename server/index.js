@@ -8,17 +8,29 @@ const ratingsReviews = require('./ratings-reviews');
 const relatedItemsComparison = require('./related-items-comparison.js');
 const getOutfitItems = require('./outfit.js');
 const logInteraction = require('./interactions');
-
+// const App = require('../client/src/App.jsx');
 
 const app = express();
-const port = 3000
+const port = 3000;
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
+
 app.use(bodyParser());
 
 app.get('/overview', (req, res) => {
   overview.getProduct(req, res)
 })
+
+// Idea...
+app.get('/products/:productID', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+
+
+
+})
+
+
+
 
 app.post('/cart', (req, res) => {
   overview.postCart(req, res)
@@ -49,8 +61,6 @@ app.put('/reviews/:review_id/report', (req, res) => {
 app.post('/reviews', (req, res) => {
   ratingsReviews.postNewReview(req, res);
 });
-
-
 
 
 app.listen(port, () => {

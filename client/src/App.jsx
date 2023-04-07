@@ -8,13 +8,10 @@ import InteractionTracking from './InteractionTracking.jsx';
 import Modal from 'react-modal';
 import logo from '../../img/logo.png';
 
-
-
-
 const App = () => {
 
-  const [productID, setProductID] = useState(71699);
-  const [styleID, setStyleID] = useState(444228);
+  const [productID, setProductID] = useState();
+  const [styleID, setStyleID] = useState();
   const [myOutfit, setMyOutfit] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [like, setLike] = useState(false);
@@ -28,12 +25,21 @@ const App = () => {
       localStorage.setItem('myOutfit', '[]')
     }
     setMyOutfit(JSON.parse(localStorage.getItem('myOutfit')));
+
+    // console.log('current url: ', window.location.href);
+    // console.log('current url 2: ', location.pathname);
+    let path = location.pathname;
+    if (path === '/') {
+      setProductID(71699);
+    } else {
+      // setProductID(71699);
+      let id = path.split('/')[2]
+      console.log('current id: ', id)
+      setProductID(id);
+    }
+
   }, [])
 
-  useEffect(() => {
-    console.log('current style ID: ', styleID)
-
-  }, [styleID])
 
   useEffect(() => {
     var styleSheet = document.getElementById('lightMode');
