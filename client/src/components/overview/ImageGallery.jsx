@@ -27,7 +27,7 @@ const ImageGallery = ({ images, productID }) => {
     <div className='left'>
       <div className='imageGallery' >
         <div className='gallery'>
-          <button className='upButton' onClick={() => setStartingIndex(startingIndex - 7)} disabled={startingIndex === 0}>{'^'}</button>
+          <button className={startingIndex === 0 ? 'hidden upButton' : 'upButton'} onClick={() => setStartingIndex(startingIndex - 7)} disabled={startingIndex === 0}>{'^'}</button>
           {images && images.slice(startingIndex, startingIndex + 7).map((image, index) => {
             if (image.url === Image) {
               return (
@@ -43,28 +43,41 @@ const ImageGallery = ({ images, productID }) => {
               )
             }
           })}
-          <button className='downButton' onClick={() => setStartingIndex(startingIndex + 7)} disabled={startingIndex + 7 > lastIndex}>{'⌄'}</button>
+          <button className={startingIndex + 7 > lastIndex ? 'hidden downButton' : 'downButton'} onClick={() => setStartingIndex(startingIndex + 7)} disabled={startingIndex + 7 > lastIndex}>{'⌄'}</button>
         </div>
 
-        <button className='leftButton' onClick={() => setImageIndex(imageIndex - 1)} disabled={imageIndex === 0}>{'<'}</button>
+        <button className={imageIndex !== 0 ? 'leftButton' : 'hidden leftButton'} onClick={() => setImageIndex(imageIndex - 1)} disabled={imageIndex === 0}>{'<'}</button>
         <img className='image' src={Image} onClick={() => setExpandedImage(true)} />
-        <button className='rightButton' onClick={() => setImageIndex(imageIndex + 1)} disabled={imageIndex + 1 === lastIndex}>{'>'}</button>
+        <button className={imageIndex + 1 < lastIndex ? 'rightButton' : 'hidden rightButton'} onClick={() => setImageIndex(imageIndex + 1)} disabled={imageIndex + 1 === lastIndex}>{'>'}</button>
       </div>
 
 
       <Modal isOpen={expandedImage} ariaHideApp={false} style={{ content: {position: 'absolute', height:'100vh', width: '95vw', 'align-items': 'center'}}}>
         {zoom ? <div className='zoom' onClick={() => setZoom(false)}><img className='zoomedImage' src={Image} /></div>
         :
-        <><div className='expanded'>
-            <button className='leftImage' onClick={() => setImageIndex(imageIndex - 1)} disabled={imageIndex === 0}>{'<'}</button>
+        <><button className='closeButton' onClick={() => setExpandedImage(false)}>✖</button>
+          <div className='expanded'>
+            <button className={imageIndex !== 0 ? 'leftImage' : 'hidden leftImage'} onClick={() => setImageIndex(imageIndex - 1)} disabled={imageIndex === 0}>{'<'}</button>
             <img className='expandedImage' src={Image} onClick={() => setZoom(true)} />
-            <button className='rightImage' onClick={() => setImageIndex(imageIndex + 1)} disabled={imageIndex + 1 === lastIndex}>{'>'}</button>
-            <button className='closeButton' onClick={() => setExpandedImage(false)}>✖</button>
+            <button className={imageIndex + 1 < lastIndex ? 'rightImage' : 'hidden rightImage'} onClick={() => setImageIndex(imageIndex + 1)} disabled={imageIndex + 1 === lastIndex}>{'>'}</button>
           </div><div className='expandedGallery'>
-              {images && images.map((image, index) => (
-                <img className='expandedThumbNail' src={image.thumbnail_url} onClick={() => renderImage(image.url, index)} key={index}/>
-              ))}
-            </div></>}
+              {images && images.map((image, index) => {
+                if (image.url === Image) {
+                  return (
+                    <div className='selectedImage' key={index}>
+                      <img className='expandedThumbNail' src={image.thumbnail_url} onClick={() => renderImage(image.url, index)} key={index}/>
+                    </div>
+                  )
+                } else {
+                  return (
+                    <div key={index}>
+                      <img className='expandedThumbNail' src={image.thumbnail_url} onClick={() => renderImage(image.url, index)} key={index}/>
+                    </div>
+                  )
+                }
+              })}
+            </div>
+        </>}
       </Modal>
 
     </div>
