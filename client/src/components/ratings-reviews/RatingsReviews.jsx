@@ -26,7 +26,7 @@ const RatingsReviews = (props) => {
     }).then((res) => {
       //console.log('Review Data:', res.data);
       setReviews(res.data.results);
-      if (reviews.length === res.data.results.length) {
+      if (reviews.length === res.data.results.length || res.data.results.length === 0) {
         setCanShowMoreReviews(false);
         //console.log('Num of reviews: ', res.data.results.length);
         //console.log('Num of reviews increased from ', reviews.length, ' to ', res.data.results.length);
@@ -38,7 +38,7 @@ const RatingsReviews = (props) => {
   useEffect(() => {
     //console.log('ProductID in Ratings/Review: ', props.productID);
     getReviews(null, props.productID, null);
-    setReviewCount(10); //reset # reviews showing when new product is selected
+    setReviewCount(7); //reset # reviews showing when new product is selected
     setCanShowMoreReviews(true)
   }, [props.productID]);
 
@@ -47,8 +47,6 @@ const RatingsReviews = (props) => {
   return (
     <div id='ratings-review-widget' class='flex-parent center'>
       <RatingsOverviewSection productID={props.productID} setMean={props.setMean} />
-      {/* // <RatingsList reviews={reviews} /> */}
-      {/* <RatingsOverviewSection productID={props.productID} /> */}
       <RatingsList productID={props.productID} reviews={reviews}
         getReviews={getReviews} reviewCount={reviewCount}
         setReviewCount={setReviewCount} canShowMoreReviews={canShowMoreReviews} />

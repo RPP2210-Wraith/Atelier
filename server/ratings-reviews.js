@@ -21,7 +21,7 @@ exports.getReviews = (req, res) => {
       'Authorization': auth.TOKEN
     }
   }).then((response) => {
-    //console.log('REVIEWS: ', response.data);
+    console.log('REVIEWS: ', response.data);
     res.send(JSON.stringify(response.data));
   });
 

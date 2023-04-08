@@ -16,7 +16,7 @@ const RatingsList = (props) => {
   };
 
   const seeMoreReviews = () => {
-    props.setReviewCount(props.reviewCount + 5);
+    props.setReviewCount(props.reviewCount + 2);
     //console.log('See more reviews clicked! ', props.reviewCount);
     //we need to render more reviews, by passing a param to server call that incr count
     props.getReviews(sortBy, props.productID, props.reviewCount);
@@ -25,7 +25,7 @@ const RatingsList = (props) => {
   const sortReviews = (sortBy) => {
     console.log('Sort reviews button clicked! Reviews will be sorted by: ' + sortBy);
     setSortBy(sortBy);
-    props.getReviews(sortBy, props.productID, props.reviewCount);
+    props.getReviews(sortBy, props.productID, props.reviews.length);
   };
 
   return (
@@ -67,8 +67,7 @@ const RatingsList = (props) => {
           onRequestClose={() => {
             setModalIsShowing(false);
           }}
-          contentLabel='Submit Review'
-        >
+          contentLabel='Submit Review'>
           <SubmitReviewModal productID={props.productID} setModalIsShowing={setModalIsShowing} />
         </Modal> : null}
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CharacterisitcsRadioButton = ({ title, characteristics, setCharacteristics }) => {
+const CharacterisitcsRadioButton = ({ title, characteristics, setCharacteristics, descriptions }) => {
 
   const characteristicsRadioButtonHandler = (e) => {
     if (e.target.name === 'Size') {
@@ -23,16 +23,21 @@ const CharacterisitcsRadioButton = ({ title, characteristics, setCharacteristics
     <div>
       <label>{title}</label>
       <br></br>
-      <label>1</label>
       <input name={title} type='radio' value='1' onClick={characteristicsRadioButtonHandler}></input>
-      <label>2</label>
+      <label>{'1: ' + descriptions[0] + '  '}</label>
+      <br></br>
       <input name={title} type='radio' value='2' onClick={characteristicsRadioButtonHandler}></input>
-      <label>3</label>
+      <label>{'2: ' + descriptions[1] + '  '}</label>
+      <br></br>
       <input name={title} type='radio' value='3' onClick={characteristicsRadioButtonHandler}></input>
-      <label>4</label>
+      <label>{'3: ' + descriptions[2] + '  '}</label>
+      <br></br>
       <input name={title} type='radio' value='4' onClick={characteristicsRadioButtonHandler}></input>
-      <label>5</label>
+      <label>{'4: ' + descriptions[3] + '  '}</label>
+      <br></br>
       <input name={title} type='radio' value='5' onClick={characteristicsRadioButtonHandler}></input>
+      <label>{'5: ' + descriptions[4] + '  '}</label>
+      <br></br>
       <br></br>
     </div>
   );
