@@ -49,7 +49,7 @@ const RatingsReviews = (props) => {
       <RatingsOverviewSection productID={props.productID} setMean={props.setMean} />
       <RatingsList productID={props.productID} reviews={reviews}
         getReviews={getReviews} reviewCount={reviewCount}
-        setReviewCount={setReviewCount} canShowMoreReviews={canShowMoreReviews} />
+        setReviewCount={setReviewCount} canShowMoreReviews={canShowMoreReviews} productName={props.product.name} />
     </div>
   )
 }

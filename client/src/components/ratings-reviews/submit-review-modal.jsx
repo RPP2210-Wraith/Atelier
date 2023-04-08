@@ -60,7 +60,7 @@ const SubmitReviewModal = (props) => {
 
   const onSubmit = () => {
 
-    if (starRating === 0 || recommend === null || reviewBody === '') {
+    if (starRating === 0 || recommend === null || reviewBody === '' || username === '' || email === '') {
       alert('Fields with a \'*\' next to them must be filled in order to submit a new review. Please fill them in.');
     } else {
 
@@ -97,7 +97,7 @@ const SubmitReviewModal = (props) => {
     <h1 onClick={() => {
       //console.log('Characteristics: ', characteristics);
     }}>Write Your Review</h1>
-    <h4>{'About the [Product Name Here]'}</h4>
+    <h4>{'About the ' + props.productName}</h4>
 
     <label>Overall Rating *</label>
 
@@ -132,7 +132,7 @@ const SubmitReviewModal = (props) => {
     <label>no</label>
     <br></br>
 
-    <h3>Characterisitcs</h3>
+    <h3>Characterisitcs *</h3>
     <br></br>
 
     <CharacterisitcsRadioButton title='Size' characteristics={characteristics} setCharacteristics={setCharacteristics} descriptions={ratingDescriptions['Size']} />
@@ -155,12 +155,12 @@ const SubmitReviewModal = (props) => {
     <button disabled={true} >upload your photos</button>
     <br></br>
 
-    <h3>username</h3>
+    <h3>username *</h3>
     <br></br>
     <textarea placeholder='Example: jackson11!' cols='50' onChange={usernameChangeHandler}></textarea>
     <br></br>
 
-    <h3>email</h3>
+    <h3>email *</h3>
     <br></br>
     <textarea placeholder='Example: jackson11@email.com' cols='50' onChange={emailChangeHandler}></textarea>
     <br></br>

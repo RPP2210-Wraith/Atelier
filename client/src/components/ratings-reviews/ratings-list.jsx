@@ -68,7 +68,7 @@ const RatingsList = (props) => {
             setModalIsShowing(false);
           }}
           contentLabel='Submit Review'>
-          <SubmitReviewModal productID={props.productID} setModalIsShowing={setModalIsShowing} />
+          <SubmitReviewModal productID={props.productID} setModalIsShowing={setModalIsShowing} productName={props.productName} />
         </Modal> : null}
       </div>
     </div >
