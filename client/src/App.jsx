@@ -30,7 +30,7 @@ const App = () => {
     // console.log('current url 2: ', location.pathname);
     let path = location.pathname;
     if (path === '/') {
-      setProductID(71699);
+      setProductID(71704);
     } else {
       // setProductID(71699);
       let id = path.split('/')[2]
