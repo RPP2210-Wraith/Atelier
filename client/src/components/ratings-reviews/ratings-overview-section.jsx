@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import StarRating from './star-rating-component.jsx';
 import ProgressBar from './progress-bar.jsx';
+import RangeSlider from './range-slider.jsx';
 
 const RatingsOverviewSection = (props) => {
 
@@ -101,15 +102,34 @@ const RatingsOverviewSection = (props) => {
         {
           fitRatings.Fit ?
             <div>
-              <h4>{'Mean Size Rating: ' + parseFloat(fitRatings.Fit.value).toFixed(2)}</h4>
-              <ProgressBar bgcolor="orange" progress={0} height={10} />
-            </div> : <div>Loading...</div>
+              <h4>Size</h4>
+              <RangeSlider value={fitRatings.Fit.value / 5 * 100} />
+              <div className='flex-parent'>
+                <span className='flex-child-1'>Too Small</span>
+                <span className='flex-child-1 text-center'>Perfect</span>
+                <span className='flex-child-1 text-end' >Too Large</span>
+              </div>
+
+            </div> :
+            <div>
+              <h4>Fit</h4>
+              <div>Loading...</div>
+            </div>
         }
         {
           fitRatings.Comfort ? <div>
-            <h4>{'Mean Comfort Rating: ' + parseFloat(fitRatings.Comfort.value).toFixed(2)}</h4>
-            <ProgressBar bgcolor="orange" progress={0} height={10} />
-          </div> : <div>Loading...</div>
+            <h4>Comfort</h4>
+            <RangeSlider value={fitRatings.Comfort.value / 5 * 100} />
+            <div className='flex-parent'>
+              <span className='flex-child-1'>Poor</span>
+              <span className='flex-child-1 text-end'>Perfect</span>
+            </div>
+
+          </div> :
+            <div>
+              <h4>Comfort</h4>
+              <div>Loading...</div>
+            </div>
         }
         {/* progress bar https://www.geeksforgeeks.org/how-to-create-a-custom-progress-bar-component-in-react-js/ */}
       </div > : <div>Loading</div>

@@ -10,7 +10,7 @@ import logo from '../../img/logo.png';
 
 const App = () => {
 
-  const [productID, setProductID] = useState();
+  const [productID, setProductID] = useState(71704);
   const [styleID, setStyleID] = useState();
   const [myOutfit, setMyOutfit] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -43,14 +43,14 @@ const App = () => {
 
   useEffect(() => {
     var styleSheet = document.getElementById('lightMode');
-    if (isDarkMode) {styleSheet.disabled = true; }
-      else { styleSheet.disabled = false; }
+    if (isDarkMode) { styleSheet.disabled = true; }
+    else { styleSheet.disabled = false; }
 
   }, [isDarkMode])
 
   useEffect(() => {
     console.log('New Style ID: ', styleID)
-  }, [ styleID ])
+  }, [styleID])
 
 
   // Function to add item to myOutfit localStorage

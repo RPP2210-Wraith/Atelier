@@ -5,8 +5,6 @@ import axios from 'axios';
 
 const SubmitReviewModal = (props) => {
 
-
-
   const characteristicsObj = {
     Size: 0,
     Width: 0,
@@ -14,6 +12,15 @@ const SubmitReviewModal = (props) => {
     Quality: 0,
     Length: 0,
     Fit: 0
+  };
+
+  const ratingDescriptions = {
+    'Size': ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide'],
+    'Width': ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide '],
+    'Comfort': ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect'],
+    'Quality': ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect'],
+    'Length': ['Runs Short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'],
+    'Fit': ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
   };
 
   const [starRating, setStarRating] = useState(0);
@@ -53,7 +60,7 @@ const SubmitReviewModal = (props) => {
 
   const onSubmit = () => {
 
-    if (starRating === 0 || recommend === null || reviewBody === '') {
+    if (starRating === 0 || recommend === null || reviewBody === '' || username === '' || email === '') {
       alert('Fields with a \'*\' next to them must be filled in order to submit a new review. Please fill them in.');
     } else {
 
@@ -90,7 +97,7 @@ const SubmitReviewModal = (props) => {
     <h1 onClick={() => {
       //console.log('Characteristics: ', characteristics);
     }}>Write Your Review</h1>
-    <h4>{'About the [Product Name Here]'}</h4>
+    <h4>{'About the ' + props.productName}</h4>
 
     <label>Overall Rating *</label>
 
@@ -125,15 +132,15 @@ const SubmitReviewModal = (props) => {
     <label>no</label>
     <br></br>
 
-    <h3>Characterisitcs</h3>
+    <h3>Characterisitcs *</h3>
     <br></br>
 
-    <CharacterisitcsRadioButton title='Size' characteristics={characteristics} setCharacteristics={setCharacteristics} />
-    <CharacterisitcsRadioButton title='Width' characteristics={characteristics} setCharacteristics={setCharacteristics} />
-    <CharacterisitcsRadioButton title='Comfort' characteristics={characteristics} setCharacteristics={setCharacteristics} />
-    <CharacterisitcsRadioButton title='Quality' characteristics={characteristics} setCharacteristics={setCharacteristics} />
-    <CharacterisitcsRadioButton title='Length' characteristics={characteristics} setCharacteristics={setCharacteristics} />
-    <CharacterisitcsRadioButton title='Fit' characteristics={characteristics} setCharacteristics={setCharacteristics} />
+    <CharacterisitcsRadioButton title='Size' characteristics={characteristics} setCharacteristics={setCharacteristics} descriptions={ratingDescriptions['Size']} />
+    <CharacterisitcsRadioButton title='Width' characteristics={characteristics} setCharacteristics={setCharacteristics} descriptions={ratingDescriptions['Width']} />
+    <CharacterisitcsRadioButton title='Comfort' characteristics={characteristics} setCharacteristics={setCharacteristics} descriptions={ratingDescriptions['Comfort']} />
+    <CharacterisitcsRadioButton title='Quality' characteristics={characteristics} setCharacteristics={setCharacteristics} descriptions={ratingDescriptions['Quality']} />
+    <CharacterisitcsRadioButton title='Length' characteristics={characteristics} setCharacteristics={setCharacteristics} descriptions={ratingDescriptions['Length']} />
+    <CharacterisitcsRadioButton title='Fit' characteristics={characteristics} setCharacteristics={setCharacteristics} descriptions={ratingDescriptions['Fit']} />
 
     <h3>Review Summary</h3>
     <br></br>
@@ -145,15 +152,15 @@ const SubmitReviewModal = (props) => {
     <textarea placeholder='Why did you like the product or not?' maxLength='1000' cols='50' rows='10' onChange={reviewBodyChangeHandler}></textarea>
     <br></br>
 
-    <button>upload your photos</button>
+    <button disabled={true} >upload your photos</button>
     <br></br>
 
-    <h3>username</h3>
+    <h3>username *</h3>
     <br></br>
     <textarea placeholder='Example: jackson11!' cols='50' onChange={usernameChangeHandler}></textarea>
     <br></br>
 
-    <h3>email</h3>
+    <h3>email *</h3>
     <br></br>
     <textarea placeholder='Example: jackson11@email.com' cols='50' onChange={emailChangeHandler}></textarea>
     <br></br>
