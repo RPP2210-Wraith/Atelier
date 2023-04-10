@@ -7,6 +7,8 @@
     "test": "jest",
     "client-dev": "npx webpack --watch",
     "server-dev": "nodemon server",
+    "server": "node server",
+    "client": "npx webpack --mode production",
     "test-overview": "jest --testPathPattern=./spec/overview-testing",
     "test-related": "jest --testPathPattern=./spec/relatedComparisonSpec",
     "test-ratings": "jest --testPathPattern=./spec/ratingsReviewSpec"
