@@ -121,7 +121,7 @@ const App = () => {
 
 
 
-      <InteractionTracking
+      {/* <InteractionTracking
         Widget={RatingsReviews}
         widgetName={'Ratings & Reviews'}
         productID={productID}
@@ -129,7 +129,7 @@ const App = () => {
         setReviews={setReviews}
         product={product}
         setMean={setMean}
-      />
+      /> */}
 
     </div>
   )

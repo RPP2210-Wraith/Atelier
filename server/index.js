@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const compression = require('compression');
 
 const overview = require('./overview.js');
 const questionAnswer = require('./question-answer.js');
@@ -8,7 +9,7 @@ const ratingsReviews = require('./ratings-reviews');
 const relatedItemsComparison = require('./related-items-comparison.js');
 const getOutfitItems = require('./outfit.js');
 const logInteraction = require('./interactions');
-// const App = require('../client/src/App.jsx');
+
 
 const app = express();
 const port = 3000;
@@ -24,11 +25,12 @@ app.get('/overview', (req, res) => {
 // Idea...
 app.get('/products/:productID', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-
-
-
 })
 
+app.use(compression({
+  level: 6, // Set the compression level (0-9)
+  strategy: require('zlib').constants.BROTLI_MODE_TEXT, // Set the compression algorithm
+}));
 
 
 

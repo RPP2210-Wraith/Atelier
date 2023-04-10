@@ -56,13 +56,7 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
   useEffect(loadOutfit, [outfit])
 
 
-  if (isLoading) {
-    return (
-      <div>
-        <h3>Loading your outfit...</h3>
-      </div>
-    )
-  } else {
+
 
     return (
       <div className='container'>
@@ -93,7 +87,7 @@ const Outfit = ({ outfit, productID, styleID, addToOutfit, removeFromOutfit }) =
       </div>
     )
 
-  }
+
 
 }
 export default Outfit;

@@ -136,7 +136,7 @@
 .compareTable {
   margin: 0 auto;
   border-collapse: collapse;
-  width: 70%;
+  width: 100%;
 }
 
 .compareTable th,
@@ -147,12 +147,18 @@
   border: 1px solid black;
 }
 
-ReactModal__Content {
-  width: 70%;
-  height: 70%;
-  text-decoration: line-through;
+.ReactModal__Content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  width: 95%;
+
+
 }
 
-ReactModal__Overlay {
-
+.ReactModal__Overlay {
+  text-align:center;
+  background-color: #d3d3d3;
+  border: solid black 2px;
 }
