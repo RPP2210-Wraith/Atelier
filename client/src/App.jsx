@@ -10,7 +10,7 @@ import logo from '../../img/logo.png';
 
 const App = () => {
 
-  const [productID, setProductID] = useState();
+  const [productID, setProductID] = useState(71704);
   const [styleID, setStyleID] = useState();
   const [myOutfit, setMyOutfit] = useState([]);
   const [reviews, setReviews] = useState([]);
