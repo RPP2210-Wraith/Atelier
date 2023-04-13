@@ -1,7 +1,7 @@
 # Front-End Capstone Atelier - Wraith Edition
 
 ## Overview:
-This project is a complete redesign client-facing retail web-portal. Focus on providing the minimum viable product for our retail application, enhanced the user experience and modernized the site. 
+This project is a complete redesign of the client-facing retail web-portal. Focused on providing the minimum viable product for our retail application, enhancing the user experience and modernizing the site. 
 
 ## Table of Contents
 - ### [Description](#description)
