@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import RatingsOverviewSection from './ratings-overview-section.jsx';
 import RatingsList from './ratings-list.jsx';
 import axios from 'axios';
-import './ratingsStyles.css';
+//import './ratingsStyles.css';
 
 
 
@@ -45,7 +45,7 @@ const RatingsReviews = (props) => {
 
 
   return (
-    <div id='ratings-review-widget' class='flex-parent center'>
+    <div id='ratings-review-widget' className='flex-parent center'>
       <RatingsOverviewSection productID={props.productID} setMean={props.setMean} />
       <RatingsList productID={props.productID} reviews={reviews}
         getReviews={getReviews} reviewCount={reviewCount}

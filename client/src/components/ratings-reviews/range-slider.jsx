@@ -1,5 +1,5 @@
 import React from 'react';
-import './ratingsStyles.css';
+//import './ratingsStyles.css';
 
 
 const RangeSlider = ({ value }) => {
@@ -10,7 +10,7 @@ const RangeSlider = ({ value }) => {
   }
   return (
     <div style={slideContainer}>
-      <input type="range" min="1" max="100" value={value} class="slider" id="myRange"></input>
+      <input type="range" min="1" max="100" value={value} className="slider" id="myRange"></input>
     </div>
   );
 };

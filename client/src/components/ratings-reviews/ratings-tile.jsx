@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './ratingsStyles.css';
+//import './ratingsStyles.css';
 import { format, parseISO } from "date-fns";
 import axios from 'axios';
 import StarRating from './star-rating-component.jsx';
@@ -39,13 +39,13 @@ const RatingsTile = (props) => {
       console.log(`review ${props.review.review_id} reported: `, response.data);
     });
   }
-  
+
   return (
     <ul>
       <div>
-        <div class='flex-parent'>
+        <div className='flex-parent'>
           <StarRating rating={props.review.rating} size='20px' />
-          <small class='flex-child-1 center-vertically'>{props.review.reviewer_name + ", " + format(parseISO(props.review.date), 'MMMMMMM i, yyyy')}</small>
+          <small className='flex-child-1 center-vertically'>{props.review.reviewer_name + ", " + format(parseISO(props.review.date), 'MMMMMMM i, yyyy')}</small>
         </div>
         <h2>{props.review.summary}</h2>
         <p>{props.review.body}</p>
@@ -53,12 +53,12 @@ const RatingsTile = (props) => {
         {props.review.response ? <p>This is where responses will go</p> : null}
         <div>
           <small>Helpful?  </small>
-          <small class='underline'
+          <small className='underline'
             onClick={markAsHelpful}>Yes</small>
           <small>{
             ' (' + helpfulnessCount + ') | '
           }</small>
-          <small class='underline'
+          <small className='underline'
             onClick={reportReview}>Report</small>
         </div>
 

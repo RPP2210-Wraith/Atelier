@@ -71,31 +71,31 @@ const RatingsOverviewSection = (props) => {
   return (
 
     reviewMetaData.ratings ?
-      < div class='flex-child-1' id='ratingsOverview' >
+      < div className='flex-child-1' id='ratingsOverview' >
         <div>
           <h1>{getMeanRating(reviewMetaData.ratings).toFixed(2)}</h1>
           <StarRating rating={getMeanRating(reviewMetaData.ratings)} size='30px' />
         </div>
         <h3>{getRecommendedPercentage(reviewMetaData.recommended) + '% of reviews recommend this product'}</h3>
         <div>
-          <div class='flex-parent'>
-            <span class='progress-bar-label'>1</span>
+          <div className='flex-parent'>
+            <span className='progress-bar-label'>1</span>
             <ProgressBar bgcolor="orange" progress={`${reviewMetaData.ratings[1] / totalVotes.totalStars * 100}`} height={15} />
           </div>
-          <div class='flex-parent'>
-            <span class='progress-bar-label'>2</span>
+          <div className='flex-parent'>
+            <span className='progress-bar-label'>2</span>
             <ProgressBar bgcolor="orange" progress={`${reviewMetaData.ratings[2] / totalVotes.totalStars * 100}`} height={15} />
           </div>
-          <div class='flex-parent'>
-            <span class='progress-bar-label'>3</span>
+          <div className='flex-parent'>
+            <span className='progress-bar-label'>3</span>
             <ProgressBar bgcolor="orange" progress={`${reviewMetaData.ratings[3] / totalVotes.totalStars * 100}`} height={15} />
           </div>
-          <div class='flex-parent'>
-            <span class='progress-bar-label'>4</span>
+          <div className='flex-parent'>
+            <span className='progress-bar-label'>4</span>
             <ProgressBar bgcolor="orange" progress={`${reviewMetaData.ratings[5] / totalVotes.totalStars * 100}`} height={15} />
           </div>
-          <div class='flex-parent'>
-            <span class='progress-bar-label'>5</span>
+          <div className='flex-parent'>
+            <span className='progress-bar-label'>5</span>
             <ProgressBar bgcolor="orange" progress={`${reviewMetaData.ratings[5] / totalVotes.totalStars * 100}`} height={15} />
           </div>
         </div>

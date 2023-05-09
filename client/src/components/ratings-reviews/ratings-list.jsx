@@ -29,23 +29,23 @@ const RatingsList = (props) => {
   };
 
   return (
-    <div class='flex-child-2' id='ratingsList' >
+    <div className='flex-child-2' id='ratingsList' >
       {props.reviews ?
 
         <div>
-          <h1 class='in-line'>{props.reviews.length + ' reviews, sorted by'}</h1>
-          <div class='in-line dropdown'>
-            <button class='button'>
+          <h1 className='in-line'>{props.reviews.length + ' reviews, sorted by'}</h1>
+          <div className='in-line dropdown'>
+            <button className='button'>
               {sortBy}
             </button>
-            <div class='dropdown-options'>
-              <button class='button' onClick={() => {
+            <div className='dropdown-options'>
+              <button className='button' onClick={() => {
                 sortReviews('newest');
               }}>newest</button>
-              <button class='button' onClick={() => {
+              <button className='button' onClick={() => {
                 sortReviews('helpful');
               }}>helpful</button>
-              <button class='button' onClick={() => {
+              <button className='button' onClick={() => {
                 sortReviews('relevant');
               }}>relevant</button>
             </div>
@@ -55,11 +55,11 @@ const RatingsList = (props) => {
       <ul>
         {props.reviews ? props.reviews.map((review, index) => <RatingsTile review={review} key={index} />) : 'Loading...'}
       </ul>
-      <div class='flex-parent'>
-        <button disabled={!props.canShowMoreReviews} id='more-reviews-btn' class='button-center flex-child-1'
+      <div className='flex-parent'>
+        <button disabled={!props.canShowMoreReviews} id='more-reviews-btn' className='button-center flex-child-1'
           onClick={seeMoreReviews}
         >More Reviews</button>
-        <button class='button-center flex-child-1'
+        <button className='button-center flex-child-1'
           onClick={addNewReview}
         >Add A Review</button>
         {modalIsShowing ? <Modal
